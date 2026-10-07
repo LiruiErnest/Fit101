@@ -3,15 +3,16 @@
 我的健身网站。模块：课程（12 节教练课）、自练、下次训练、动作库、饮食与知识。设计方案见 `plan/课程模块-v1.packed.html`，实现契约见 `SPEC.md`。
 
 ## 打开
-- 中文首页：`site/index.zh-CN.html`
-- English home: `site/index.html`
+- 线上：https://liruiernest.github.io/Fit101/ （中文浏览器自动跳到中文首页；也可直接打开 `index.zh-CN.html`）
+- 本地：`site/index.zh-CN.html` 或 `site/index.html`
 
 电脑和手机浏览器都能看，不需要服务器。每页左侧目录栏有 EN / 中文 切换，选过一次之后其他页面会记住。
 
-## 重新生成
+## 重新生成和发布
 ```sh
-cd Fit101
+cd ~/Downloads/Dev/Fit101
 node scripts/build.mjs        # 或 npm run build
+git add -A && git commit -m "..." && git push   # 推送到 main 后 GitHub Actions 自动把 site/ 发布到 Pages
 node scripts/check-data.mjs   # 只校验数据
 node scripts/gen-anim.mjs     # 改了 data/poses.json 之后重新生成动画
 ```
