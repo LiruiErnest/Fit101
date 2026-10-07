@@ -281,3 +281,42 @@ type Next = {
 - `data/next.json` 的 `cooldown` 改为 `{ text, text_en, rest?, rest_en?, items: [...] }`，items 和 block 的 items 同形。build（代理 D）：有 items 就按 block 渲染成 `## 放松` 加卡片，`text` 作为这段开头的一句话；没有 items 就只渲染文字（兼容旧格式）。
 - 动作库页：`type: "stretch"` 的动作排在最后，前面加一个 `## 拉伸与放松` / `## Stretches & Cool-down` 的分隔标题（普通动作前面也加 `## 力量动作` / `## Strength`），卡片不变。
 - 动画风格和第 5 节一致。俯视视角（open-book）：人体平躺在画面里，地面不画线，用一块浅色垫子矩形代替。
+
+## 14. 动画风格 v2：伪 3D 四分之三视角（2026-10-07 选定）
+
+用户在四个方向里选了 B（见本地 `eval/choose.html` 和 `eval/B-isometric/`），并要求两处加强：肌肉形状更像解剖、器械更写实。现在把它推广到全部 30 个动作，替换 `assets/anim/*.svg`。
+
+### 生成器
+- `scripts/gen-anim.mjs` 升级为 v2（原文件先复制为 `scripts/gen-anim-v1.mjs` 留作对照，不再被 build 使用）。数据源仍是 `data/poses.json`，关节角度、IK、关键帧、seq/loop/ease 全部沿用；每个动作新增可选字段 `iso`（各关节的左右偏移 z，没写就用按视角的默认值）。
+- 投影：绕竖直轴偏转约 34°、俯视约 16° 的正交投影（和 eval 版一致）。正面视角的动作（band-pull-apart、cable-crossover、cable-fly、pallof-press 以外的 front 动作：standing-press、band-walk、lat-pulldown、triceps-stretch）把正面 rig 也展开成 3D 后用同一投影，人面朝镜头偏转 34°。俯视动作 open-book 用垫子平面，相机同样 3/4。
+- 输出仍是纯 SMIL SVG（可放 `<img>`），viewBox 0 0 400 300，颜色只用 SPEC 第 5 节的色板加 #e9e3d6 / #efeadf / #fffdf8 做亮面和高光。渐变、mask 的 id 带动作前缀。
+
+### 体积预算（硬性）
+- 每个 SVG 原始 ≤ 70 KB，gzip ≤ 12 KB。办法：坐标保留 1 位小数；每半周期采样 8 帧（往返 17 帧）；渐变、圆片、网格放 `<defs>` 用 `<use>`；地面网格一次绘制不参与动画；接触阴影合并进主阴影。
+- 生成结束打印每个文件的体积，超预算的列出来并失败退出。
+
+### 肌肉（更像解剖）
+- 按部位画出可辨认的形状，不再是等宽色带：股四头（大腿前侧梭形，膝上收窄成腱）、腘绳（大腿后侧两条）、臀大肌（骨盆后侧饱满的半椭圆，下缘有臀沟）、小腿肚（上粗下细的梭形，跟腱收细）、胸大肌（从胸骨向肩呈扇形，下缘弧线）、三角肌（肩头的倒水滴）、二头（上臂前侧梭形）、三头（上臂后侧长条）、背阔（躯干后侧从腋下到腰的三角）、腹直（躯干前侧带 2 到 3 道腱划的长块）、斜方（颈肩斜坡）、前臂（肘下饱满、腕上收窄）。
+- 这些形状以肢体段的局部坐标定义，跟段一起投影和插值；主要 #d9481f，辅助 #f0a58a，各带一道更深的边和一道高光，像贴在圆柱面上。
+- 20 个肌肉 id 全部要有映射（含 side-delt、rear-delt、front-delt、obliques、hip-flexors、adductors、glute-med、upper-back、lower-back、forearms、traps、calves）。
+
+### 器械（更写实，仍是色板内）
+- 哑铃：手柄 + 两端各两片有厚度的圆片（大片 + 小片），圆片正面有同心圆和高光。
+- 弹力带：有宽度的扁带，拉伸时变细，两端绕在手或膝上。
+- 龙门架：两根带底座的立柱、顶部横梁、滑轮（有轮缘）、绳索、D 形把手或直杆。
+- TRX：顶部锚点、两条有宽度的带子、泡沫把手。
+- 台阶/跳箱：有三个可见面的长方体，顶面略亮。
+- 平凳和上斜凳：垫面（圆角厚块）+ 金属支架（两条 A 形腿）；上斜凳靠背抬起。
+- 瑞士球：带高光和接触阴影的球。
+- 高位下拉机：座椅、压腿垫、立柱、顶部滑轮、宽杆。
+- 门框/立柱：一根有厚度的竖柱。
+- 垫子：圆角矩形，有厚度边。
+- 地面：等轴网格 + 淡色地块 + 随动椭圆软影，同 eval 版。
+
+### 验收
+- `assets/anim/contact-sheet.html` 30 格；用 `<object>` + `setCurrentTime` 在周期 0%、30%、60% 各截一张合图，逐个看：遮挡顺序、关节不脱节、肌肉在正确的段上、器械在手上或身下、人物在画框里大小一致（站姿头顶留白约 20 px）。
+- 30 个文件都通过体积预算；无 `<style>`、`<script>`、NaN。
+
+### 页面侧
+- `build.mjs` 输出的卡片 `<img>` 加 `loading="lazy"` 和 `decoding="async"`。
+- 动作库和课程页同时有十几到三十个动画，加“只在视口内播放”：build 在每页末尾放一小段脚本，用 IntersectionObserver 把离开视口超过一屏的 `<img>` 的 `src` 换成 `data-src` 保存的同名静态首帧（`assets/anim/<id>.poster.svg`，由生成器一并输出，无动画，≤ 15 KB），进入视口再换回动画。没有 IntersectionObserver 就不处理。

@@ -6,3 +6,5 @@ data/_sample/
 .DS_Store
 node_modules/
 *.log
+# local experiments, never published
+eval/

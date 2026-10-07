@@ -8,7 +8,9 @@
 .prose h2 + .ex { margin-top: 8px; }
 .ex-anim { background: var(--fig-bg); border: 1px solid var(--line); border-radius: var(--r-sm); aspect-ratio: 4 / 3; overflow: hidden;
   display: flex; align-items: center; justify-content: center; }
-.ex-anim img { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* keep the 4:3 box before the image loads (lazy / poster ↔ animation swaps must not shift layout) */
+@supports not (aspect-ratio: 4 / 3) { .ex-anim { height: 0; padding-top: 75%; position: relative; } .ex-anim img { position: absolute; inset: 0; } }
+.ex-anim img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: contain; }
 .ex-body { min-width: 0; }
 
 /* ── meta table ──────────────────────────────────── */

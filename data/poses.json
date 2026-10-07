@@ -13,7 +13,8 @@
       "keyframe.front": "root [x,y]；armL/armR [外展, 肘, 长度比例]（0 = 下垂，90 = 侧平举；长度比例 <1 表示手臂朝镜头伸出）；legL/legR [外展, 膝, 长度比例]。L = 画面左侧",
       "anchor": "{joint, at:[x,y]}：不给 root，而是让某个关节（如 toeN、anN、knN、head）落在 at，反推髋的位置",
       "ik": "让手脚落到指定点，自动算肩/肘或髋/膝角度：handN/handF/footN/footF（侧视）、handL/handR/footL/footR（正面）。值可以是世界坐标 [x,y]（脚可加第三个数 = 脚掌世界角度，正 = 脚尖朝下），或 {rel:\"torso\", at:[x,y]}（躯干坐标系，x 向前，y 向上为负）。neck:[x,y] 让躯干指向这个点（仰卧时肩贴地）。elbowFlip:[\"N\"] 把肘翻到另一侧。",
-      "props": "关键帧里的额外数值（如球的位置 ballX），器械里用 \"$ballX\" 引用"
+      "props": "关键帧里的额外数值（如球的位置 ballX），器械里用 \"$ballX\" 引用",
+      "iso": "（v2 生成器，可选）3D 展开参数：侧视各关节左右偏移 sh/el/ha/hip/kn/an（默认 17/17/16/9/10/10）；yaw/pitch/scale/lift 覆盖投影；bellAt:\"mid\" 手持器械放两手中点；eq:{\"<器械序号>\":{z}} 场景器械的 z；top:true 俯视（2D 平面 = 垫子）"
     },
     "add_new": "复制一个最像的动作，改 id/zh/en/view/muscles/equipment，再改 keyframes 里的 root、torso、arm、leg 或 ik 目标点；跑 node scripts/gen-anim.mjs --only <id> --frames /tmp/x 看每个关键帧的静态图。"
   },
@@ -60,6 +61,7 @@
     },
     {
       "id": "goblet-squat", "zh": "高脚杯深蹲", "en": "Goblet Squat", "view": "side", "period": 3,
+      "iso": {"el": 14, "ha": 5, "kn": 18, "an": 15, "bellAt": "mid"},
       "muscles": { "primary": ["quads", "glutes"], "secondary": ["abs", "upper-back"] },
       "equipment": [ { "type": "dumbbell", "hands": ["haN"], "angle": 90, "scale": 1.1 } ],
       "base": { "ik": { "footN": [205, 279], "footF": [205, 279], "handN": { "rel": "torso", "at": [24, -46] }, "handF": { "rel": "torso", "at": [24, -46] } } },
@@ -70,6 +72,7 @@
     },
     {
       "id": "push-up", "zh": "俯卧撑", "en": "Push Ups", "view": "side", "period": 2.6,
+      "iso": {"el": 24, "ha": 21, "kn": 8, "an": 7},
       "muscles": { "primary": ["chest", "triceps"], "secondary": ["front-delt", "abs"] },
       "equipment": [],
       "base": { "legN": [0, 0, 0], "legF": [0, 0, 0], "anchor": { "joint": "toeN", "at": [88, 279] }, "ik": { "handN": [232, 277], "handF": [232, 277] } },
@@ -95,6 +98,7 @@
     },
     {
       "id": "db-rdl", "zh": "哑铃罗马尼亚硬拉", "en": "Dumbbell Romanian Deadlift", "view": "side", "period": 3,
+      "iso": {"el": 17, "ha": 15},
       "muscles": { "primary": ["hamstrings", "glutes"], "secondary": ["lower-back", "forearms"] },
       "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
       "base": { "ik": { "footN": [205, 279], "footF": [205, 279] } },
@@ -105,6 +109,7 @@
     },
     {
       "id": "cable-crossover", "zh": "绳索交叉", "en": "Dumbbell Cable Cross over", "view": "front", "period": 3,
+      "iso": {"scale": 0.92, "lift": 14},
       "muscles": { "primary": ["chest"], "secondary": ["front-delt"] },
       "equipment": [
         { "type": "column", "x": 36, "top": 26, "pulleys": [44] },
@@ -192,6 +197,7 @@
     },
     {
       "id": "db-bench-press", "zh": "哑铃卧推", "en": "DB Bench Press", "view": "side", "period": 3,
+      "iso": {"el": 25, "ha": 24},
       "muscles": { "primary": ["chest"], "secondary": ["triceps", "front-delt"] },
       "equipment": [ { "type": "bench", "x": 70, "y": 226, "w": 170 }, { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
       "base": { "rot": -90, "root": [165, 213], "torso": 0, "ik": { "footN": [234, 279], "footF": [234, 279] } },
@@ -293,6 +299,7 @@
     },
     {
       "id": "incline-db-press", "zh": "上斜哑铃卧推", "en": "Incline Dumbbell Press", "view": "side", "period": 3,
+      "iso": {"el": 25, "ha": 24},
       "muscles": { "primary": ["chest", "front-delt"], "secondary": ["triceps"] },
       "equipment": [ { "type": "inclineBench", "x": 200, "y": 222, "seatW": 52, "backL": 96, "angle": 30 }, { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
       "base": { "rot": -60, "root": [208, 212], "torso": 0, "neck": -10, "ik": { "footN": [276, 279], "footF": [276, 279] } },
@@ -303,6 +310,7 @@
     },
     {
       "id": "lat-pulldown", "zh": "高位下拉", "en": "Lat Pulldown", "view": "front", "period": 3,
+      "iso": {"eq": {"7": {"z": 46}}},
       "muscles": { "primary": ["lats"], "secondary": ["biceps", "rear-delt", "upper-back"] },
       "hideMuscles": ["upper-back"],
       "equipment": [
@@ -345,6 +353,7 @@
     },
     {
       "id": "open-book", "zh": "开书式", "en": "Open Book", "view": "side", "viewLabel": "俯视", "period": 3.6, "ground": false,
+      "iso": {"top": true, "pitch": 55, "scale": 1, "lift": 136},
       "muscles": { "primary": ["chest", "obliques"], "secondary": ["front-delt", "upper-back"] },
       "muscleSide": "N",
       "equipment": [ { "type": "mat", "x": 30, "y": 28, "w": 340, "h": 244, "rx": 14 } ],

@@ -210,13 +210,30 @@ function bodyMap(ex, lang) {
 const exName = (ex, lang) => (lang === 'zh' ? ex.zh : ex.en);
 const exHeading = (ex, lang) => (lang === 'zh' ? `${ex.zh} · ${ex.en}` : `${ex.en} · ${ex.zh}`);
 // up: '../' for pages in a subfolder, '' for root pages. rows: [label, html] (empty html rows are dropped).
+// Animation <img>: starts on the static first frame (assets/anim/<id>.poster.svg); ANIM_SCRIPT swaps in the
+// animation while the card is within one screen of the viewport. No poster yet → the animation is both.
+const ANIM_ROOT = SAMPLE ? DATA : ASSETS;
+function animImg(ex, up, alt) {
+  const anim = ex.anim || `anim/${ex.id}.svg`, poster = anim.replace(/\.svg$/, '.poster.svg');
+  const hasPoster = poster !== anim && existsSync(path.join(ANIM_ROOT, poster));
+  if (!hasPoster) miss('animation poster (animation used as poster)', ex.id);
+  const a = `${up}assets/${esc(anim)}`, p = hasPoster ? `${up}assets/${esc(poster)}` : a;
+  return `<div class="ex-anim"><img src="${p}" data-anim="${a}" data-poster="${p}" alt="${esc(alt)}" width="400" height="300" loading="lazy" decoding="async"></div>`;
+}
+// Play animations only near the viewport (rootMargin = one screen); without IntersectionObserver, animate all.
+const ANIM_SCRIPT = `<script>(function(){var m=document.querySelectorAll('.ex-anim img[data-anim]');if(!m.length)return;`
+  + `function set(i,u){if(u&&i.getAttribute('src')!==u)i.setAttribute('src',u)}`
+  + `if(!('IntersectionObserver' in window)){for(var j=0;j<m.length;j++)set(m[j],m[j].getAttribute('data-anim'));return}`
+  + `var h=Math.max(window.innerHeight||0,document.documentElement.clientHeight||0,600);`
+  + `var o=new IntersectionObserver(function(es){es.forEach(function(e){set(e.target,e.target.getAttribute(e.isIntersecting?'data-anim':'data-poster'))})},{rootMargin:h+'px 0px'});`
+  + `for(var k=0;k<m.length;k++)o.observe(m[k])})();</script>`;
 function card(ex, lang, up, rows) {
   const t = labels[lang];
   const dl = rows.filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join('\n');
   const cue = en(ex, 'cue', lang, 'Exercise.cue_en', ex.id);
   return [
     '<div class="ex">',
-    `<div class="ex-anim"><img src="${up}assets/${esc(ex.anim || `anim/${ex.id}.svg`)}" alt="${esc(`${exName(ex, lang)} ${t.anim}`)}" loading="lazy"></div>`,
+    animImg(ex, up, `${exName(ex, lang)} ${t.anim}`),
     '<div class="ex-body">',
     `<dl class="ex-meta">\n${dl}\n</dl>`,
     cue ? `<p class="ex-cue"><b>${esc(t.cue)}</b> ${esc(cue)}</p>` : '',
@@ -237,7 +254,7 @@ const LANG_SCRIPT = `<script>(function(){var K='fit-lang';try{var a=document.que
 // English home only: with no stored choice, a zh-* browser goes to the Chinese home (relative URL, works under a subpath).
 const HOME_EN_SCRIPT = LANG_SCRIPT.replace(`if(s&&a&&s!==document.documentElement.lang)location.replace(a.href)`,
   `if(s&&a&&s!==document.documentElement.lang)location.replace(a.href);else if(!s&&/^zh/i.test(navigator.language||''))location.replace('index.zh-CN.html')`);
-const page = (parts, script = LANG_SCRIPT) => parts.filter((x) => x !== '' && x != null).join('\n\n') + '\n\n' + script + '\n';
+const page = (parts, script = LANG_SCRIPT) => parts.filter((x) => x !== '' && x != null).join('\n\n') + '\n\n' + script + '\n' + (parts.some((x) => typeof x === 'string' && x.includes('class="ex-anim"')) ? ANIM_SCRIPT + '\n' : '');
 
 // ── session pages ───────────────────────────────────────────────────────────
 const uniqueCount = (blocks) => new Set((blocks || []).flatMap((b) => (b.items || []).map((it) => it.ex))).size;
