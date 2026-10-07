@@ -1,0 +1,427 @@
+[
+  {
+    "n": 1,
+    "date": "2026-09-28",
+    "weekday": "周一",
+    "status": "done",
+    "kind": "trainer",
+    "title": "全身循环 A",
+    "title_en": "Full Body Circuit A",
+    "blocks": [
+      {
+        "name": "热身",
+        "items": [
+          {
+            "ex": "step-up",
+            "sets": "3",
+            "reps": "8 每侧",
+            "weight": "自重"
+          },
+          {
+            "ex": "bodyweight-squat",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "glute-bridge",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "band-pull-apart",
+            "sets": "3",
+            "reps": "10"
+          }
+        ]
+      },
+      {
+        "name": "第一组",
+        "rest": "1 分钟",
+        "items": [
+          {
+            "ex": "goblet-squat",
+            "sets": "3",
+            "reps": "10-12",
+            "weight": "20 lb"
+          },
+          {
+            "ex": "push-up",
+            "sets": "3",
+            "reps": "5-10",
+            "weight": "自重"
+          },
+          {
+            "ex": "trx-row",
+            "sets": "3",
+            "reps": "10-15",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "items": [
+          {
+            "ex": "db-rdl",
+            "sets": "3",
+            "reps": "8",
+            "weight": "20-30 lb"
+          },
+          {
+            "ex": "cable-crossover",
+            "sets": "3",
+            "reps": "12",
+            "weight": "2.5",
+            "note": "教练表原文 2.5，单位不明（可能是龙门架挡位或 kg），待确认",
+            "note_en": "Trainer's sheet says 2.5 — unit unclear (possibly a cable-stack setting or kg); to be confirmed"
+          },
+          {
+            "ex": "cable-fly",
+            "sets": "3",
+            "reps": "10",
+            "weight": "12.5",
+            "note": "教练表原文 12.5，单位不明（可能是龙门架挡位或 kg），待确认",
+            "note_en": "Trainer's sheet says 12.5 — unit unclear (possibly a cable-stack setting or kg); to be confirmed"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "items": [
+          {
+            "ex": "half-kneeling-press",
+            "sets": "3",
+            "reps": "10",
+            "weight": "12.5 lb"
+          },
+          {
+            "ex": "farmer-carry",
+            "sets": "3",
+            "reps": "30 秒",
+            "weight": "40 lb"
+          }
+        ]
+      },
+      {
+        "name": "放松",
+        "items": [
+          {
+            "ex": "childs-pose",
+            "sets": "1",
+            "reps": "未记录",
+            "weight": "自重",
+            "note": "教练教过的放松动作，具体节次和时长未记录",
+            "note_en": "Cool-down stretch the trainer taught; exact session and hold time not recorded"
+          },
+          {
+            "ex": "triceps-stretch",
+            "sets": "1",
+            "reps": "未记录",
+            "weight": "自重",
+            "note": "教练教过的放松动作，具体节次和时长未记录",
+            "note_en": "Cool-down stretch the trainer taught; exact session and hold time not recorded"
+          },
+          {
+            "ex": "open-book",
+            "sets": "1",
+            "reps": "未记录",
+            "weight": "自重",
+            "note": "教练教过的放松动作，具体节次和时长未记录",
+            "note_en": "Cool-down stretch the trainer taught; exact session and hold time not recorded"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "n": 2,
+    "date": "2026-10-02",
+    "weekday": "周五",
+    "status": "done",
+    "kind": "trainer",
+    "title": "全身循环 B",
+    "title_en": "Full Body Circuit B",
+    "blocks": [
+      {
+        "name": "热身",
+        "items": [
+          {
+            "ex": "worlds-greatest-stretch",
+            "sets": "2",
+            "reps": "未记录",
+            "weight": "自重"
+          },
+          {
+            "ex": "dead-bug",
+            "sets": "2",
+            "reps": "未记录",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第一组",
+        "items": [
+          {
+            "ex": "db-reverse-lunge",
+            "sets": "3",
+            "reps": "6 每侧"
+          },
+          {
+            "ex": "db-bench-press",
+            "sets": "3",
+            "reps": "10"
+          },
+          {
+            "ex": "trx-row",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "items": [
+          {
+            "ex": "pallof-press",
+            "sets": "3",
+            "reps": "10 每侧"
+          },
+          {
+            "ex": "tricep-pushdown",
+            "sets": "3",
+            "reps": "10"
+          },
+          {
+            "ex": "bicep-curl",
+            "sets": "3",
+            "reps": "10"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "items": [
+          {
+            "ex": "physio-ball",
+            "sets": "3",
+            "reps": "10",
+            "note": "具体动作待和教练确认",
+            "note_en": "Exact exercise still to be confirmed with the trainer"
+          },
+          {
+            "ex": "standing-press",
+            "sets": "3",
+            "reps": "6",
+            "weight": "15 lb"
+          },
+          {
+            "ex": "plank",
+            "sets": "3",
+            "reps": "30 秒",
+            "weight": "自重"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "n": 3,
+    "date": "2026-10-05",
+    "weekday": "周一",
+    "status": "done",
+    "kind": "trainer",
+    "title": "全身循环 A",
+    "title_en": "Full Body Circuit A",
+    "blocks": [
+      {
+        "name": "热身",
+        "items": [
+          {
+            "ex": "step-up",
+            "sets": "3",
+            "reps": "8 每侧",
+            "weight": "自重"
+          },
+          {
+            "ex": "bodyweight-squat",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "glute-bridge",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "band-pull-apart",
+            "sets": "3",
+            "reps": "10"
+          }
+        ]
+      },
+      {
+        "name": "第一组",
+        "rest": "1 分钟",
+        "items": [
+          {
+            "ex": "goblet-squat",
+            "sets": "3",
+            "reps": "10-12",
+            "weight": "30 lb",
+            "note": "比第 1 节加 10 lb",
+            "note_en": "+10 lb vs. Session 1"
+          },
+          {
+            "ex": "push-up",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "trx-row",
+            "sets": "3",
+            "reps": "10-15",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "items": [
+          {
+            "ex": "db-rdl",
+            "sets": "3",
+            "reps": "8",
+            "weight": "25 lb"
+          },
+          {
+            "ex": "weighted-step-up",
+            "sets": "3",
+            "reps": "8",
+            "weight": "25 lb"
+          },
+          {
+            "ex": "band-walk",
+            "sets": "3",
+            "reps": "15"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "items": [
+          {
+            "ex": "half-kneeling-press",
+            "sets": "3",
+            "reps": "10",
+            "weight": "12.5 lb"
+          },
+          {
+            "ex": "farmer-carry",
+            "sets": "3",
+            "reps": "30 秒",
+            "weight": "40 lb"
+          }
+        ]
+      },
+      {
+        "name": "放松",
+        "items": [
+          {
+            "ex": "childs-pose",
+            "sets": "1",
+            "reps": "未记录",
+            "weight": "自重",
+            "note": "教练教过的放松动作，具体节次和时长未记录",
+            "note_en": "Cool-down stretch the trainer taught; exact session and hold time not recorded"
+          },
+          {
+            "ex": "triceps-stretch",
+            "sets": "1",
+            "reps": "未记录",
+            "weight": "自重",
+            "note": "教练教过的放松动作，具体节次和时长未记录",
+            "note_en": "Cool-down stretch the trainer taught; exact session and hold time not recorded"
+          },
+          {
+            "ex": "open-book",
+            "sets": "1",
+            "reps": "未记录",
+            "weight": "自重",
+            "note": "教练教过的放松动作，具体节次和时长未记录",
+            "note_en": "Cool-down stretch the trainer taught; exact session and hold time not recorded"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "n": 4,
+    "date": "2026-10-09",
+    "weekday": "周五",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 5,
+    "date": "2026-10-12",
+    "weekday": "周一",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 6,
+    "date": "2026-10-16",
+    "weekday": "周五",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 7,
+    "date": "2026-10-19",
+    "weekday": "周一",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 8,
+    "date": "2026-10-23",
+    "weekday": "周五",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 9,
+    "date": "2026-10-26",
+    "weekday": "周一",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 10,
+    "date": "2026-10-30",
+    "weekday": "周五",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 11,
+    "date": "2026-11-02",
+    "weekday": "周一",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 12,
+    "date": "2026-11-06",
+    "weekday": "周五",
+    "status": "planned",
+    "kind": "trainer"
+  }
+]

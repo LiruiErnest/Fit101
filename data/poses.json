@@ -1,0 +1,370 @@
+{
+  "_doc": {
+    "what": "每个动作的姿势关键帧。scripts/gen-anim.mjs 读这个文件生成 assets/anim/<id>.svg。坐标系是 SVG 的 viewBox 0 0 400 300，y 向下；地面线 y=286，站立时脚踝 y=279。",
+    "fields": {
+      "id/zh/en": "动作 id（与 SPEC 第 3 节一致）和预览页显示的名字",
+      "view": "side（侧视，人面朝右）或 front（正面）",
+      "period": "一个循环的秒数（2 到 3）",
+      "muscles": "primary / secondary 肌肉 id（SPEC 第 2 节），画成深红 / 浅红色块",
+      "equipment": "器械列表。手持：dumbbell / handle / barbell，用 hands:[\"haN\"] 指定手，angle 为世界角度（0 = 水平）。场景：box{x,y,w}、bench{x,y,w}、column{x,top,pulleys:[y]}、anchor{x,y}、ball{cx,r}（cx 可写 \"$ballX\" 引用 props）、ticks（地面滚动刻痕）。连线：cable / strap / band {from,to}，端点可以是 [x,y]、关节名（haN、haF、haL、haR、knL…）或 {node,at:[x,y]}。可选 layer: back | mid | front。",
+      "base": "所有关键帧共用的默认姿势，关键帧里同名字段覆盖它",
+      "keyframes": "2 到 3 个关键帧（步态类可以更多）。默认往返播放 0→1→2→1→0；seq 可以指定顺序；loop:\"cycle\" 表示 0→1→…→0 单向循环",
+      "keyframe.side": "root [x,y] 髋的位置；rot 整体旋转（仰卧 -90 头朝左，俯卧 90 头朝右）；torso 前倾角；neck 头部点头角；armN/armF [肩前屈, 肘屈]（0 = 贴身下垂，90 = 前平举，180 = 举过头）；legN/legF [髋前屈, 膝屈, 踝?]（省略踝 = 脚掌保持水平）",
+      "keyframe.front": "root [x,y]；armL/armR [外展, 肘, 长度比例]（0 = 下垂，90 = 侧平举；长度比例 <1 表示手臂朝镜头伸出）；legL/legR [外展, 膝, 长度比例]。L = 画面左侧",
+      "anchor": "{joint, at:[x,y]}：不给 root，而是让某个关节（如 toeN、anN、knN、head）落在 at，反推髋的位置",
+      "ik": "让手脚落到指定点，自动算肩/肘或髋/膝角度：handN/handF/footN/footF（侧视）、handL/handR/footL/footR（正面）。值可以是世界坐标 [x,y]（脚可加第三个数 = 脚掌世界角度，正 = 脚尖朝下），或 {rel:\"torso\", at:[x,y]}（躯干坐标系，x 向前，y 向上为负）。neck:[x,y] 让躯干指向这个点（仰卧时肩贴地）。elbowFlip:[\"N\"] 把肘翻到另一侧。",
+      "props": "关键帧里的额外数值（如球的位置 ballX），器械里用 \"$ballX\" 引用"
+    },
+    "add_new": "复制一个最像的动作，改 id/zh/en/view/muscles/equipment，再改 keyframes 里的 root、torso、arm、leg 或 ik 目标点；跑 node scripts/gen-anim.mjs --only <id> --frames /tmp/x 看每个关键帧的静态图。"
+  },
+  "exercises": [
+    {
+      "id": "step-up", "zh": "登台阶", "en": "Step Ups", "view": "side", "period": 3,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["hamstrings", "calves"] },
+      "equipment": [ { "type": "box", "x": 205, "y": 236, "w": 95 } ],
+      "base": { "torso": 8 },
+      "keyframes": [
+        { "root": [180, 172], "armN": [-15, 20], "armF": [20, 25], "ik": { "footN": [224, 231], "footF": [168, 279] } },
+        { "root": [227, 120], "torso": 3, "armN": [25, 30], "armF": [-20, 20], "legF": [75, 95], "ik": { "footN": [224, 231] } }
+      ]
+    },
+    {
+      "id": "bodyweight-squat", "zh": "徒手深蹲", "en": "Body Weight Squats", "view": "side", "period": 3,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["hamstrings", "abs"] },
+      "equipment": [],
+      "base": { "ik": { "footN": [205, 279], "footF": [205, 279] } },
+      "keyframes": [
+        { "root": [200, 168], "torso": 5, "armN": [5, 10], "armF": [5, 10] },
+        { "root": [160, 222], "torso": 42, "armN": [128, 5], "armF": [128, 5] }
+      ]
+    },
+    {
+      "id": "glute-bridge", "zh": "臀桥", "en": "Glute Bridge", "view": "side", "period": 3,
+      "muscles": { "primary": ["glutes"], "secondary": ["hamstrings", "lower-back"] },
+      "equipment": [],
+      "base": { "rot": -90, "ik": { "footN": [238, 279], "footF": [238, 279], "handN": [192, 277], "handF": [192, 277] } },
+      "keyframes": [
+        { "root": [168, 271] },
+        { "root": [166, 236], "ik": { "neck": [104, 271] }, "neck": 25 }
+      ]
+    },
+    {
+      "id": "band-pull-apart", "zh": "弹力带拉开", "en": "Band Pull Apart", "view": "front", "period": 2.6,
+      "muscles": { "primary": ["rear-delt", "upper-back"], "secondary": ["traps"] },
+      "equipment": [ { "type": "band", "from": "haL", "to": "haR", "width": 5, "restLen": 40 } ],
+      "base": { "root": [200, 165], "armL": [0, 0, 1], "armR": [0, 0, 1] },
+      "keyframes": [
+        { "ik": { "handL": [170, 110], "handR": [230, 110] } },
+        { "ik": { "handL": [94, 110], "handR": [306, 110] } }
+      ]
+    },
+    {
+      "id": "goblet-squat", "zh": "高脚杯深蹲", "en": "Goblet Squat", "view": "side", "period": 3,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["abs", "upper-back"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN"], "angle": 90, "scale": 1.1 } ],
+      "base": { "ik": { "footN": [205, 279], "footF": [205, 279], "handN": { "rel": "torso", "at": [24, -46] }, "handF": { "rel": "torso", "at": [24, -46] } } },
+      "keyframes": [
+        { "root": [200, 168], "torso": 4 },
+        { "root": [163, 221], "torso": 33 }
+      ]
+    },
+    {
+      "id": "push-up", "zh": "俯卧撑", "en": "Push Ups", "view": "side", "period": 2.6,
+      "muscles": { "primary": ["chest", "triceps"], "secondary": ["front-delt", "abs"] },
+      "equipment": [],
+      "base": { "legN": [0, 0, 0], "legF": [0, 0, 0], "anchor": { "joint": "toeN", "at": [88, 279] }, "ik": { "handN": [232, 277], "handF": [232, 277] } },
+      "keyframes": [
+        { "rot": 67 },
+        { "rot": 85 }
+      ]
+    },
+    {
+      "id": "trx-row", "zh": "TRX 划船", "en": "TRX Row", "view": "side", "period": 2.8,
+      "muscles": { "primary": ["lats", "upper-back"], "secondary": ["biceps", "rear-delt"] },
+      "equipment": [
+        { "type": "anchor", "x": 335, "y": 22 },
+        { "type": "strap", "from": [335, 22], "to": "haF", "layer": "back" },
+        { "type": "strap", "from": [335, 22], "to": "haN", "layer": "front" },
+        { "type": "handle", "hands": ["haN", "haF"], "angle": 90 }
+      ],
+      "base": { "legN": [0, 0], "legF": [0, 0], "anchor": { "joint": "anN", "at": [252, 279] } },
+      "keyframes": [
+        { "rot": -33, "ik": { "handN": [335, 22], "handF": [335, 22] } },
+        { "rot": -22, "ik": { "handN": { "rel": "torso", "at": [20, -38] }, "handF": { "rel": "torso", "at": [20, -38] } } }
+      ]
+    },
+    {
+      "id": "db-rdl", "zh": "哑铃罗马尼亚硬拉", "en": "Dumbbell Romanian Deadlift", "view": "side", "period": 3,
+      "muscles": { "primary": ["hamstrings", "glutes"], "secondary": ["lower-back", "forearms"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "ik": { "footN": [205, 279], "footF": [205, 279] } },
+      "keyframes": [
+        { "root": [201, 168], "torso": 4, "armN": [4, 0], "armF": [4, 0] },
+        { "root": [168, 178], "torso": 78, "armN": [78, 0], "armF": [78, 0] }
+      ]
+    },
+    {
+      "id": "cable-crossover", "zh": "绳索交叉", "en": "Dumbbell Cable Cross over", "view": "front", "period": 3,
+      "muscles": { "primary": ["chest"], "secondary": ["front-delt"] },
+      "equipment": [
+        { "type": "column", "x": 36, "top": 26, "pulleys": [44] },
+        { "type": "column", "x": 364, "top": 26, "pulleys": [44] },
+        { "type": "cable", "from": [36, 44], "to": "haL" },
+        { "type": "cable", "from": [364, 44], "to": "haR" },
+        { "type": "handle", "hands": ["haL", "haR"], "angle": 0 }
+      ],
+      "base": { "root": [200, 165], "armL": [0, 15, 1], "armR": [0, 15, 1] },
+      "keyframes": [
+        { "ik": { "handL": [98, 74], "handR": [302, 74] } },
+        { "ik": { "handL": [214, 180], "handR": [186, 180] } }
+      ]
+    },
+    {
+      "id": "cable-fly", "zh": "绳索夹胸", "en": "Dumbbell Cable Fly", "view": "front", "period": 3,
+      "muscles": { "primary": ["chest"], "secondary": ["front-delt"] },
+      "equipment": [
+        { "type": "column", "x": 36, "top": 26, "pulleys": [114] },
+        { "type": "column", "x": 364, "top": 26, "pulleys": [114] },
+        { "type": "cable", "from": [36, 114], "to": "haL" },
+        { "type": "cable", "from": [364, 114], "to": "haR" },
+        { "type": "handle", "hands": ["haL", "haR"], "angle": 90 }
+      ],
+      "base": { "root": [200, 165], "armL": [0, 10, 1], "armR": [0, 10, 1] },
+      "keyframes": [
+        { "ik": { "handL": [94, 114], "handR": [306, 114] } },
+        { "ik": { "handL": [167, 110], "handR": [233, 110] } },
+        { "ik": { "handL": [193, 112], "handR": [207, 112] } }
+      ]
+    },
+    {
+      "id": "half-kneeling-press", "zh": "半跪姿哑铃推举", "en": "1/2 Kneeling Shoulder Press", "view": "side", "period": 2.8,
+      "muscles": { "primary": ["front-delt", "side-delt"], "secondary": ["triceps", "abs"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN"], "angle": 0 } ],
+      "base": { "root": [195, 219], "torso": 0, "legN": [0, 90, 0], "armF": [-12, 75], "ik": { "footF": [262, 279] } },
+      "keyframes": [
+        { "ik": { "handN": { "rel": "torso", "at": [24, -84] } } },
+        { "ik": { "handN": { "rel": "torso", "at": [4, -144] } } }
+      ]
+    },
+    {
+      "id": "farmer-carry", "zh": "农夫行走", "en": "Farmer Carry", "view": "side", "period": 2.2, "loop": "cycle", "ease": "linear",
+      "muscles": { "primary": ["forearms", "traps"], "secondary": ["abs", "obliques"] },
+      "equipment": [ { "type": "ticks", "spacing": 50, "distance": 100 }, { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "torso": 3 },
+      "keyframes": [
+        { "root": [200, 170], "armN": [-7, 4], "armF": [7, 4], "ik": { "footN": [225, 279], "footF": [175, 279] } },
+        { "root": [200, 165], "armN": [0, 4], "armF": [0, 4], "ik": { "footN": [200, 279], "footF": [200, 262] } },
+        { "root": [200, 170], "armN": [7, 4], "armF": [-7, 4], "ik": { "footN": [175, 279], "footF": [225, 279] } },
+        { "root": [200, 165], "armN": [0, 4], "armF": [0, 4], "ik": { "footN": [200, 262], "footF": [200, 279] } }
+      ]
+    },
+    {
+      "id": "worlds-greatest-stretch", "zh": "世界最伟大拉伸", "en": "Worlds Greatest Stretch", "view": "side", "period": 3, "seq": [0, 1, 0, 2, 0],
+      "muscles": { "primary": ["hip-flexors", "hamstrings"], "secondary": ["obliques"] },
+      "equipment": [],
+      "base": { "ik": { "footN": [262, 279], "footF": [90, 279, 40], "handF": [240, 277] } },
+      "keyframes": [
+        { "root": [185, 238], "torso": 66, "ik": { "handN": [242, 277] } },
+        { "root": [185, 238], "torso": 58, "armN": [-118, 0] },
+        { "root": [176, 206], "torso": 80, "ik": { "handN": [242, 277] } }
+      ]
+    },
+    {
+      "id": "dead-bug", "zh": "死虫式", "en": "Dead Bug", "view": "side", "period": 3, "seq": [0, 1, 0, 2, 0],
+      "muscles": { "primary": ["abs"], "secondary": ["hip-flexors"] },
+      "equipment": [],
+      "base": { "rot": -90, "root": [172, 271], "torso": 0, "armN": [90, 0], "armF": [90, 0], "legN": [90, 90, 0], "legF": [90, 90, 0] },
+      "keyframes": [
+        {},
+        { "armN": [172, 0], "legF": [12, 0, 0] },
+        { "armF": [172, 0], "legN": [12, 0, 0] }
+      ]
+    },
+    {
+      "id": "db-reverse-lunge", "zh": "哑铃反向弓步", "en": "DB Reverse Lunge", "view": "side", "period": 3,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["hamstrings", "abs"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "ik": { "footN": [224, 279] } },
+      "keyframes": [
+        { "root": [220, 168], "torso": 3, "armN": [3, 0], "armF": [3, 0], "ik": { "footF": [216, 279] } },
+        { "root": [192, 216], "torso": 6, "armN": [6, 0], "armF": [6, 0], "ik": { "footF": [110, 262, 60] } }
+      ]
+    },
+    {
+      "id": "db-bench-press", "zh": "哑铃卧推", "en": "DB Bench Press", "view": "side", "period": 3,
+      "muscles": { "primary": ["chest"], "secondary": ["triceps", "front-delt"] },
+      "equipment": [ { "type": "bench", "x": 70, "y": 226, "w": 170 }, { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "rot": -90, "root": [165, 213], "torso": 0, "ik": { "footN": [234, 279], "footF": [234, 279] } },
+      "keyframes": [
+        { "armN": [88, 0], "armF": [88, 0] },
+        { "armN": [-30, 118], "armF": [-30, 118] }
+      ]
+    },
+    {
+      "id": "pallof-press", "zh": "Pallof 推", "en": "Pallof Press", "view": "side", "period": 3,
+      "muscles": { "primary": ["obliques", "abs"], "secondary": ["front-delt"] },
+      "equipment": [
+        { "type": "column", "x": 60, "top": 40, "pulleys": [130] },
+        { "type": "cable", "from": [60, 130], "to": "haN", "layer": "mid" },
+        { "type": "handle", "hands": ["haN"], "angle": 90 }
+      ],
+      "base": { "root": [212, 174], "torso": 5, "ik": { "footN": [232, 279], "footF": [196, 279] } },
+      "keyframes": [
+        { "ik": { "handN": { "rel": "torso", "at": [22, -42] }, "handF": { "rel": "torso", "at": [22, -42] } } },
+        { "ik": { "handN": { "rel": "torso", "at": [90, -48] }, "handF": { "rel": "torso", "at": [90, -48] } } }
+      ]
+    },
+    {
+      "id": "tricep-pushdown", "zh": "三头下压", "en": "Tricep Pushdown", "view": "side", "period": 2.6,
+      "muscles": { "primary": ["triceps"], "secondary": ["forearms"] },
+      "equipment": [
+        { "type": "column", "x": 300, "top": 24, "pulleys": [40] },
+        { "type": "cable", "from": [300, 40], "to": "haN" },
+        { "type": "handle", "hands": ["haN"], "angle": 0 }
+      ],
+      "base": { "root": [228, 168], "torso": 12, "ik": { "footN": [232, 279], "footF": [232, 279] } },
+      "keyframes": [
+        { "armN": [10, 112], "armF": [10, 112] },
+        { "armN": [8, 4], "armF": [8, 4] }
+      ]
+    },
+    {
+      "id": "bicep-curl", "zh": "二头弯举", "en": "Bicep Curl", "view": "side", "period": 2.6,
+      "muscles": { "primary": ["biceps"], "secondary": ["forearms"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "root": [200, 167], "torso": 2, "ik": { "footN": [203, 279], "footF": [203, 279] } },
+      "keyframes": [
+        { "armN": [2, 6], "armF": [2, 6] },
+        { "armN": [10, 138], "armF": [10, 138] }
+      ]
+    },
+    {
+      "id": "physio-ball", "zh": "瑞士球动作", "en": "Physio Ball Sets", "view": "side", "period": 3,
+      "muscles": { "primary": ["abs"], "secondary": ["lower-back", "glutes"] },
+      "equipment": [ { "type": "ball", "cx": "$ballX", "r": 38 } ],
+      "base": { "anchor": { "joint": "knN", "at": [170, 276] } },
+      "keyframes": [
+        { "legN": [10, 100, 0], "legF": [10, 100, 0], "torso": 48, "props": { "ballX": 264 }, "ik": { "handN": [257, 210], "handF": [257, 210] } },
+        { "legN": [-35, 55, 0], "legF": [-35, 55, 0], "torso": 74, "props": { "ballX": 340 }, "ik": { "handN": [333, 210], "handF": [333, 210] } }
+      ]
+    },
+    {
+      "id": "standing-press", "zh": "站姿哑铃推举", "en": "Standing Shoulder Press", "view": "front", "period": 2.8,
+      "muscles": { "primary": ["front-delt", "side-delt"], "secondary": ["triceps", "abs"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haL", "haR"], "angle": 0 } ],
+      "base": { "root": [200, 165] },
+      "keyframes": [
+        { "armL": [88, 92, 1], "armR": [88, 92, 1] },
+        { "armL": [166, 14, 1], "armR": [166, 14, 1] }
+      ]
+    },
+    {
+      "id": "plank", "zh": "平板支撑", "en": "Plank", "view": "side", "period": 3,
+      "muscles": { "primary": ["abs"], "secondary": ["obliques", "front-delt"] },
+      "equipment": [],
+      "base": { "legN": [0, 0, 0], "legF": [0, 0, 0], "anchor": { "joint": "toeN", "at": [88, 279] }, "ik": { "handN": [298, 278], "handF": [298, 278] } },
+      "keyframes": [
+        { "rot": 81 },
+        { "rot": 79.5 }
+      ]
+    },
+    {
+      "id": "weighted-step-up", "zh": "负重登台阶", "en": "Weighted Step Up", "view": "side", "period": 3,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["hamstrings", "forearms"] },
+      "equipment": [ { "type": "box", "x": 205, "y": 236, "w": 95 }, { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "torso": 6 },
+      "keyframes": [
+        { "root": [180, 172], "armN": [6, 0], "armF": [6, 0], "ik": { "footN": [224, 231], "footF": [168, 279] } },
+        { "root": [227, 120], "torso": 3, "armN": [3, 0], "armF": [3, 0], "legF": [75, 95], "ik": { "footN": [224, 231] } }
+      ]
+    },
+    {
+      "id": "band-walk", "zh": "弹力带横走", "en": "Bandwalks", "view": "front", "period": 3,
+      "muscles": { "primary": ["glute-med"], "secondary": ["quads"] },
+      "equipment": [ { "type": "band", "from": { "node": "knL", "at": [0, -8] }, "to": { "node": "knR", "at": [0, -8] }, "width": 5, "restLen": 50 } ],
+      "base": { "armL": [35, -95, 1], "armR": [35, -95, 1] },
+      "keyframes": [
+        { "root": [170, 172], "ik": { "footL": [148, 279], "footR": [192, 279] } },
+        { "root": [177, 170], "ik": { "footL": [148, 279], "footR": [216, 266] } },
+        { "root": [186, 172], "ik": { "footL": [148, 279], "footR": [236, 279] } },
+        { "root": [199, 170], "ik": { "footL": [170, 266], "footR": [236, 279] } },
+        { "root": [214, 172], "ik": { "footL": [192, 279], "footR": [236, 279] } }
+      ]
+    },
+    {
+      "id": "incline-db-press", "zh": "上斜哑铃卧推", "en": "Incline Dumbbell Press", "view": "side", "period": 3,
+      "muscles": { "primary": ["chest", "front-delt"], "secondary": ["triceps"] },
+      "equipment": [ { "type": "inclineBench", "x": 200, "y": 222, "seatW": 52, "backL": 96, "angle": 30 }, { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "rot": -60, "root": [208, 212], "torso": 0, "neck": -10, "ik": { "footN": [276, 279], "footF": [276, 279] } },
+      "keyframes": [
+        { "armN": [-22, 142], "armF": [-22, 142] },
+        { "armN": [118, 0], "armF": [118, 0] }
+      ]
+    },
+    {
+      "id": "lat-pulldown", "zh": "高位下拉", "en": "Lat Pulldown", "view": "front", "period": 3,
+      "muscles": { "primary": ["lats"], "secondary": ["biceps", "rear-delt", "upper-back"] },
+      "hideMuscles": ["upper-back"],
+      "equipment": [
+        { "type": "line", "x1": 200, "y1": 12, "x2": 340, "y2": 12, "width": 7 },
+        { "type": "column", "x": 340, "top": 8 },
+        { "type": "pulley", "cx": 200, "cy": 20 },
+        { "type": "line", "x1": 158, "y1": 214, "x2": 242, "y2": 214, "width": 12 },
+        { "type": "line", "x1": 200, "y1": 220, "x2": 200, "y2": 284, "width": 7 },
+        { "type": "line", "x1": 170, "y1": 284, "x2": 230, "y2": 284, "width": 7 },
+        { "type": "bar", "from": "haL", "to": "haR", "half": 82, "cableFrom": [200, 20] },
+        { "type": "line", "x1": 156, "y1": 216, "x2": 244, "y2": 216, "width": 9, "layer": "front" }
+      ],
+      "base": { "root": [200, 205], "legL": [26, -26, 0.34, 1.0], "legR": [26, -26, 0.34, 1.0] },
+      "keyframes": [
+        { "armL": [150, 10, 1], "armR": [150, 10, 1] },
+        { "armL": [45, 110, 1], "armR": [45, 110, 1] }
+      ]
+    },
+    {
+      "id": "childs-pose", "zh": "婴儿式", "en": "Child's Pose", "view": "side", "period": 3,
+      "muscles": { "primary": ["lats", "lower-back"], "secondary": ["glutes"] },
+      "equipment": [],
+      "base": { "anchor": { "joint": "knN", "at": [228, 276] } },
+      "keyframes": [
+        { "legN": [60, 150, -90], "legF": [60, 150, -90], "torso": 103, "neck": -12, "ik": { "handN": [400, 278], "handF": [400, 278] } },
+        { "legN": [72, 162, -90], "legF": [72, 162, -90], "torso": 98, "neck": -8, "ik": { "handN": [420, 278], "handF": [420, 278] } }
+      ]
+    },
+    {
+      "id": "triceps-stretch", "zh": "过头肱三头拉伸", "en": "Overhead Triceps Stretch", "view": "front", "period": 3,
+      "muscles": { "primary": ["triceps"], "secondary": ["lats"] },
+      "muscleSide": "L",
+      "armsBehind": ["L", "R"],
+      "equipment": [],
+      "base": { "root": [200, 165], "armR": [0, 70, 1] },
+      "keyframes": [
+        { "armL": [165, 130, 1], "ik": { "handR": { "rel": "elL", "at": [0, 0] } } },
+        { "armL": [190, 113, 1], "ik": { "handR": { "rel": "elL", "at": [0, 0] } } }
+      ]
+    },
+    {
+      "id": "open-book", "zh": "开书式", "en": "Open Book", "view": "side", "viewLabel": "俯视", "period": 3.6, "ground": false,
+      "muscles": { "primary": ["chest", "obliques"], "secondary": ["front-delt", "upper-back"] },
+      "muscleSide": "N",
+      "equipment": [ { "type": "mat", "x": 30, "y": 28, "w": 340, "h": 244, "rx": 14 } ],
+      "base": { "rot": -90, "root": [232, 160], "torso": 0, "armF": [90, 0], "legN": [90, 92, 0], "legF": [0, 0, 0] },
+      "keyframes": [
+        { "armN": [90, 0, 1, 1], "props": { "face": 9 } },
+        { "armN": [180, 0, 0.55, 0.55], "props": { "face": 0 } },
+        { "armN": [270, 0, 1, 1], "props": { "face": -9 } }
+      ]
+    },
+    {
+      "id": "doorway-pec-stretch", "zh": "门框胸部拉伸", "en": "Doorway Pec Stretch", "view": "side", "period": 3,
+      "muscles": { "primary": ["chest", "front-delt"], "secondary": ["biceps"] },
+      "muscleSide": "N",
+      "equipment": [ { "type": "column", "x": 180, "top": 20 } ],
+      "base": { "armF": [0, 10], "ik": { "footN": [252, 279], "footF": [205, 279], "elbowN": [187, 110], "forearmWorld": 180 } },
+      "keyframes": [
+        { "root": [214, 173], "torso": 1 },
+        { "root": [222, 174], "torso": 11 }
+      ]
+    }
+  ]
+}

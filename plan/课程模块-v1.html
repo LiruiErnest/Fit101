@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>Fit101 课程模块</title>
+<link rel="stylesheet" href="htmlplan.css">
+<script src="htmlplan.js" defer></script>
+<style data-mock-shared>
+  .ui { font: 14px/1.45 -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif; color: #1a1915; background: #fffdf8; border: 1px solid #ddd5c5; border-radius: 10px; overflow: hidden; }
+  .ui .hd { padding: 10px 14px; border-bottom: 1px solid #e9e3d6; display: flex; gap: 10px; align-items: baseline; }
+  .ui .hd b { font-size: 15px; } .ui .hd small { color: #948d7f; font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+  .ui .card { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding: 12px 14px; }
+  .ui .card.stack { grid-template-columns: 1fr; }
+  .ui .anim { position: relative; aspect-ratio: 1; background: #efeadf; border-radius: 8px; display: grid; place-items: center; color: #948d7f; font-size: 12px; overflow: hidden; }
+  .ui .anim .fr { position: absolute; inset: 0; display: grid; place-items: center; }
+  .ui .anim .fr.b { opacity: .35; }
+  .ui .anim .tag { position: absolute; left: 6px; bottom: 6px; background: #1a1915; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 4px; font-family: ui-monospace, Menlo, monospace; }
+  .ui .meta { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 13px; }
+  .ui .meta dt { color: #948d7f; } .ui .meta dd { margin: 0; } .ui .meta dd b { font-weight: 600; }
+  .ui .meta .kg { color: #948d7f; font-size: 12px; }
+  .ui .cue { margin: 8px 0 0; padding: 8px 10px; background: #f7ddd2; border-left: 3px solid #d9481f; border-radius: 0 6px 6px 0; font-size: 13px; color: #5f5a4f; }
+  .ui .cue b { color: #1a1915; }
+  .ui .pill { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 99px; background: #efeadf; color: #5f5a4f; margin-right: 4px; font-family: ui-monospace, Menlo, monospace; }
+  .ui .pill.on { background: #d8eee2; color: #1f7a52; } .ui .pill.todo { background: #f5e6c4; color: #a86b0c; }
+  .ui .sec { padding: 6px 14px; font-size: 12px; color: #948d7f; background: #faf8f3; border-top: 1px solid #e9e3d6; border-bottom: 1px solid #e9e3d6; font-family: ui-monospace, Menlo, monospace; }
+  /* page overview */
+  .pg { display: grid; grid-template-columns: 190px 1fr; gap: 28px; padding: 26px 28px 30px; font: 13px/1.5 -apple-system, "PingFang SC", sans-serif; color: #1a1915; background: #f6f3ec; }
+  .pg .rail { font: 11.5px/1.6 ui-monospace, Menlo, monospace; color: #5f5a4f; }
+  .pg .rail .t { font-weight: 700; color: #1a1915; margin-bottom: 6px; } .pg .rail .h { color: #948d7f; margin-top: 10px; letter-spacing: .08em; }
+  .pg .rail .on { color: #d9481f; }
+  .pg .rail .bar { color: #948d7f; }
+  .pg .main h2 { font-size: 22px; margin: 0 0 2px; } .pg .main .sub { color: #948d7f; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; margin-bottom: 14px; }
+  .pg .main h3 { font-size: 15px; margin: 14px 0 6px; }
+  .pg .ui { margin-bottom: 10px; }
+  .ph { font: 13px/1.45 -apple-system, "PingFang SC", sans-serif; color: #1a1915; background: #f6f3ec; min-height: 100%; }
+  .ph .top { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #fffdf8; border-bottom: 1px solid #ddd5c5; font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+  .ph .top b { font-family: -apple-system, "PingFang SC", sans-serif; }
+  .ph .body { padding: 12px 14px; }
+  .ph h2 { font-size: 20px; margin: 0 0 2px; } .ph .sub { color: #948d7f; font-family: ui-monospace, Menlo, monospace; font-size: 11px; margin-bottom: 12px; }
+  .ph h3 { font-size: 15px; margin: 12px 0 6px; }
+  .ph .ui .anim { aspect-ratio: 16 / 10; }
+</style>
+<body>
+
+<header>
+  <h1>Fit101 的课程页面</h1>
+  <doc-changes new="11"></doc-changes>
+  <details class="thread"><summary>为什么 · 1 个请求</summary>
+    <doc-quote via="prompt" from="用户">将目前我已经上的三节课和未来要上的9节课，教练给我规划的内容进行可视化，由于目前的一些专业名词我不是特别熟悉。我经常会忘记某个词对应的动作是什么样子的</doc-quote>
+    <doc-quote via="prompt" from="用户">我希望可以在网页上显示我每一次课程的各组动作的中英文，一个动态图展示这个动作是做什么的。我使用的器械名称和对应的重量。以及一两句话介绍这个动作的要点是什么</doc-quote>
+    <doc-quote via="prompt" from="用户" at="2026-10-06">关于svg生成，你可以考虑参考训记这个app中的风格……对于每一个动作，我们可以点开一个expandable的卡片看到它锻炼的肌肉是哪一块</doc-quote>
+    <doc-quote via="prompt" from="用户">长远来看，我甚至希望可以制作一个属于我自己的健身app。但是现在为了简单，让我们只实现网页版本。但是请考虑电脑和手机端的适配</doc-quote>
+  </details>
+</header>
+
+<main>
+<doc-plan>
+
+<!-- ═════ 1 ═════ -->
+<doc-claim>
+  <p>每一节课的页面把每个动作显示为一张卡片：中英文名、动图、器械和重量、要点。</p>
+  <doc-mock frame="none" w="460" caption="第 3 节课的第一张卡片。左边是动图，右边是数据和要点。"><template>
+<div class="ui">
+  <div class="hd"><b>高脚杯深蹲</b><small data-ref="en">Goblet Squat</small><span class="pill" style="margin-left:auto">腿 · 臀</span></div>
+  <div class="card">
+    <div class="anim" data-ref="anim"><div class="fr">帧 0 · 站立</div><div class="fr b">帧 1 · 下蹲</div><span class="tag">2 帧循环</span></div>
+    <dl class="meta" data-ref="meta">
+      <dt>器械</dt><dd>哑铃 · <b>30 lb</b> <span class="kg">≈ 13.6 kg</span></dd>
+      <dt>组 × 次</dt><dd><b>3 × 10-12</b></dd>
+      <dt>休息</dt><dd>1 分钟</dd>
+      <dt>进度</dt><dd><span class="pill">第 1 节 20 lb</span><span class="pill on">第 3 节 30 lb</span></dd>
+    </dl>
+  </div>
+  <div class="cue" data-ref="cue"><b>要点</b> 哑铃贴胸，肘尖向下。脚跟踩实，膝盖跟着脚尖方向。蹲到大腿与地面平行。</div>
+</div></template>
+    <doc-pin ref="en" title="中英文名" anchor="tl">英文名是教练表格里的原名。</doc-pin>
+    <doc-pin ref="anim" title="两帧动图" anchor="bl">起始和结束两帧交替，每秒切换一次。</doc-pin>
+    <doc-pin ref="meta" title="器械和重量" anchor="tr">单位用 lb，旁边写 kg。</doc-pin>
+    <doc-pin ref="cue" title="一到两句要点" anchor="br">我写要点，你可以改。</doc-pin>
+  </doc-mock>
+
+  <doc-ask id="anim">
+    <p>动图从哪里来？</p>
+    <label><input type="radio" name="anim" value="fedb"> free-exercise-db 的两帧照片，做成交替动画 <small>公共领域，800 多个动作，离线可用</small></label>
+    <label><input type="radio" name="anim" value="svg" checked> 我手画简笔 SVG 动画 <small>已选定。风格参考训记：灰色人体，发力肌肉标红，器械深灰</small></label>
+    <label><input type="radio" name="anim" value="video"> 不放动图，只放 B 站或 YouTube 链接 <small>最省事，但离线看不到</small></label>
+    <label><input type="radio" name="anim" value="own"> 先留空位，以后放你自己拍的视频 <small>卡片先显示灰色占位</small></label>
+  </doc-ask>
+  <div data-if="anim=fedb"><doc-note tone="info"><strong>覆盖</strong> 教练教过的 20 个动作里，TRX 划船、Pallof press、弹力带横走在这个库里可能没有。缺的动作用最接近的动作代替，并在卡片上注明。</doc-note></div>
+  <div data-if="anim=svg"><doc-note tone="info"><strong>做法</strong> 不逐个手画。用一套关节骨架加姿势关键帧生成 SVG，24 个动作共用一个人体，动作只定义起止姿势和器械。</doc-note></div>
+
+  <doc-ask id="units">
+    <p>重量用什么单位显示？</p>
+    <div class="opts-row">
+      <label><input type="radio" name="units" value="lb-kg" checked> lb 为主，括号里写 kg</label>
+      <label><input type="radio" name="units" value="lb"> 只写 lb</label>
+      <label><input type="radio" name="units" value="kg"> 只写 kg</label>
+    </div>
+  </doc-ask>
+
+  <doc-claim>
+    <p>生成脚本把每个动作写成一个 <code>###</code> 标题加一段 HTML 卡片。</p>
+    <doc-code title="docs/课程/03.md · 草稿（生成结果）" lang="html">
+<script type="text/plain">
+### 高脚杯深蹲 · Goblet Squat
+
+<div class="ex" data-muscles="腿 臀">
+  <div class="ex-anim">
+    <img src="../img/goblet-squat/0.jpg" alt="起始">
+    <img src="../img/goblet-squat/1.jpg" alt="结束">
+  </div>
+  <dl class="ex-meta">
+    <dt>器械</dt><dd>哑铃 · <b>30 lb</b> <small>≈ 13.6 kg</small></dd>
+    <dt>组 × 次</dt><dd><b>3 × 10-12</b></dd>
+    <dt>休息</dt><dd>1 分钟</dd>
+  </dl>
+  <p class="ex-cue"><b>要点</b> 哑铃贴胸，肘尖向下。脚跟踩实。</p>
+</div>
+</script>
+      <doc-pin line="1" title="标题进左侧目录树">html-author 用 ### 做目录，所以每个动作都能从目录跳到。</doc-pin>
+      <doc-pin line="3" title="Markdown 里直接写 HTML">marked 原样输出 HTML，不用改 html-author。</doc-pin>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>两帧动画只用 CSS 完成，不需要 JavaScript。</p>
+    <doc-code title="assets/fit.css · 草稿" lang="css">
+<script type="text/plain">
+.ex { display: grid; grid-template-columns: 180px 1fr; gap: 14px;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 14px; }
+.ex-anim { position: relative; aspect-ratio: 1; }
+.ex-anim img { position: absolute; inset: 0; width: 100%; height: 100%;
+               object-fit: contain; }
+.ex-anim img + img { animation: flip 2s steps(1) infinite; }
+@keyframes flip { 0% { opacity: 0 } 50% { opacity: 1 } }
+@media (max-width: 600px) { .ex { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .ex-anim img + img { animation: none } }
+</script>
+      <doc-pin line="2" title="沿用 html-author 的颜色变量">卡片在深色模式下也正确。</doc-pin>
+      <doc-pin line="7" title="第二帧每秒出现一次">两帧交替，看起来像慢速 GIF。</doc-pin>
+      <doc-pin line="9" title="手机上图在上，数据在下">见第 4 条。</doc-pin>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>每张卡片可以展开，显示这个动作练到的肌肉：主要肌群深色，辅助肌群浅色。</p>
+    <doc-mock frame="none" w="460" caption="展开后的肌肉部位图。正面和背面各一个人体，同一张 SVG 全站共用。"><template>
+<div class="ui">
+  <div class="hd"><b>部位</b><small>高脚杯深蹲</small><span class="pill" style="margin-left:auto">▲ 收起</span></div>
+  <div class="card" style="grid-template-columns:1fr 1fr;align-items:center">
+    <div class="anim" style="aspect-ratio:3/4" data-ref="front"><div class="fr">正面<br><span style="color:#2b5fab;font-weight:600">股四头肌 ■</span><br><span style="color:#8fb0e6">腹部 ■</span></div></div>
+    <div class="anim" style="aspect-ratio:3/4"><div class="fr">背面<br><span style="color:#2b5fab;font-weight:600">臀大肌 ■</span><br><span style="color:#8fb0e6">下背 ■</span></div></div>
+  </div>
+  <div class="sec">■ 主要 &nbsp; <span style="color:#8fb0e6">■</span> 辅助</div>
+</div></template>
+      <doc-pin ref="front" title="来自 exercises.json 的 muscles 字段" anchor="tl">主要和辅助分开写，脚本给 SVG 区域加 class。</doc-pin>
+    </doc-mock>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 2 ═════ -->
+<doc-claim>
+  <p>左侧目录列出 12 节课。已上的课有内容，未上的课显示为“待上课”。</p>
+  <doc-mock frame="browser" url="file:///Fit101/site/课程/03.html" w="880" thumbnail caption="第 3 节课的页面。左边是 html-author 的目录栏，右边是卡片。"><template>
+<div class="pg">
+  <div class="rail">
+    <div class="t">Fit101</div>
+    <div class="h">本页</div>
+    <div>├ 热身</div><div>├ 第一组</div><div class="on">│ ├ 高脚杯深蹲</div><div>│ ├ 俯卧撑</div><div>│ └ TRX 划船</div><div>├ 第二组</div><div>└ 第三组</div>
+    <div class="bar">[████░░░░░░░░] 31%</div>
+    <div class="h">页面</div>
+    <div>01 · 9/28 ✓</div><div>02 · 10/2 ✓</div><div class="on">03 · 10/5 ✓</div><div data-ref="todo">04 · 待上课</div><div>05 · 待上课</div><div>…</div><div>12 · 待上课</div><div>动作库</div>
+  </div>
+  <div class="main">
+    <h2>第 3 节 · 全身循环 A</h2>
+    <div class="sub">2026-10-05 · 周一 11:00 · 教练课 · 8 个动作</div>
+    <h3>热身</h3>
+    <div class="ui"><div class="sec">登台阶 3 × 8 每侧 · 徒手深蹲 3 × 10 · 臀桥 3 × 10 · 弹力带拉开 3 × 10</div></div>
+    <h3>第一组 · 组间休息 1 分钟</h3>
+    <div class="ui"><div class="hd"><b>高脚杯深蹲</b><small>Goblet Squat</small></div><div class="card"><div class="anim">动图</div><dl class="meta"><dt>器械</dt><dd>哑铃 · <b>30 lb</b></dd><dt>组 × 次</dt><dd><b>3 × 10-12</b></dd></dl></div></div>
+    <div class="ui"><div class="hd"><b>俯卧撑</b><small>Push Ups</small></div><div class="card"><div class="anim">动图</div><dl class="meta"><dt>器械</dt><dd>自重</dd><dt>组 × 次</dt><dd><b>3 × 10</b></dd></dl></div></div>
+  </div>
+</div></template>
+    <doc-pin ref="todo" title="未上的课" anchor="r">页面存在，内容是占位。</doc-pin>
+  </doc-mock>
+
+  <doc-ask id="pages">
+    <p>页面怎么分？</p>
+    <label><input type="radio" name="pages" value="session" checked> 每节课一页，共 12 页 <small>目录栏最多放 14 页，刚好</small></label>
+    <label><input type="radio" name="pages" value="week"> 每周一页，周一和周五在同一页 <small>共 6 页，每页更长</small></label>
+    <label><input type="radio" name="pages" value="one"> 全部 12 节课放在一页 <small>手机上要滚很久</small></label>
+  </doc-ask>
+
+
+  <doc-claim>
+    <p>一节课在 <code>sessions.json</code> 里有 <code>status</code>，生成脚本按它决定页面内容。</p>
+    <doc-mock frame="none" w="440" caption="第 4 节课在上课前的样子。"><template>
+<div class="ui">
+  <div class="hd"><b>第 4 节</b><small>2026-10-10 · 周五 11:00</small><span class="pill todo" style="margin-left:auto">待上课</span></div>
+  <div class="card stack"><div style="color:#948d7f">上完课后告诉 Claude 这节课的动作和重量，这一页会自动更新。</div></div>
+</div></template>
+    </doc-mock>
+    <doc-ask id="future">
+    <p>还没上的 9 节课，页面上先放什么？</p>
+      <label><input type="radio" name="future" value="placeholder" checked> 只放日期和“待上课”，上完课再填 <small>内容永远是真的</small></label>
+      <label><input type="radio" name="future" value="predict"> 按教练 A/B 两天的规律先填预测内容，标注“预测” <small>上完课替换</small></label>
+    </doc-ask>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 3 ═════ -->
+<doc-claim>
+  <p>“动作库”页面把每个动作只列一次，并写出它出现在哪几节课。</p>
+  <doc-mock frame="none" w="460" caption="动作库里的一张卡片。"><template>
+<div class="ui">
+  <div class="hd"><b>哑铃罗马尼亚硬拉</b><small>Dumbbell Romanian Deadlift</small><span class="pill" style="margin-left:auto">腘绳肌 · 臀</span></div>
+  <div class="card">
+    <div class="anim"><div class="fr">帧 0</div><div class="fr b">帧 1</div></div>
+    <dl class="meta">
+      <dt>器械</dt><dd>哑铃，一手一个</dd>
+      <dt>出现在</dt><dd data-ref="where"><span class="pill on">第 1 节 20-30 lb</span><span class="pill on">第 3 节 25 lb</span></dd>
+      <dt>最好成绩</dt><dd><b>25 lb × 8</b></dd>
+    </dl>
+  </div>
+  <div class="cue"><b>要点</b> 膝盖微弯不动，屁股向后推。哑铃贴着大腿往下滑。背保持平直。</div>
+</div></template>
+    <doc-pin ref="where" title="从课程数据算出来" anchor="r">动作库不用手填，脚本从 12 节课汇总。</doc-pin>
+  </doc-mock>
+</doc-claim>
+
+<!-- ═════ 4 ═════ -->
+<doc-claim>
+  <p>在手机上，目录栏变成顶部抽屉，卡片变成上下排列。</p>
+  <doc-mock frame="phone" w="390" h="640" caption="iPhone 宽度。html-author 在 900 px 以下自动改用抽屉。"><template>
+<div class="ph">
+  <div class="top"><span data-ref="drawer">☰ 目录</span><b>第 3 节</b><span>◐</span></div>
+  <div class="body">
+    <h2>第 3 节 · 全身循环 A</h2>
+    <div class="sub">2026-10-05 · 周一 11:00</div>
+    <h3>第一组 · 组间休息 1 分钟</h3>
+    <div class="ui">
+      <div class="hd"><b>高脚杯深蹲</b><small>Goblet Squat</small></div>
+      <div class="card stack">
+        <div class="anim"><div class="fr">动图</div></div>
+        <dl class="meta"><dt>器械</dt><dd>哑铃 · <b>30 lb</b> <span class="kg">≈ 13.6 kg</span></dd><dt>组 × 次</dt><dd><b>3 × 10-12</b></dd><dt>休息</dt><dd>1 分钟</dd></dl>
+      </div>
+      <div class="cue"><b>要点</b> 哑铃贴胸，肘尖向下。脚跟踩实。</div>
+    </div>
+    <div class="ui"><div class="hd"><b>俯卧撑</b><small>Push Ups</small></div><div class="card stack"><div class="anim"><div class="fr">动图</div></div></div></div>
+  </div>
+</div></template>
+    <doc-pin ref="drawer" title="目录在抽屉里" anchor="bl">点开能跳到任一动作或任一节课。</doc-pin>
+  </doc-mock>
+</doc-claim>
+
+<!-- ═════ 5 ═════ -->
+<doc-claim>
+  <p>上完一节课，只改一个数据文件，跑一条命令，网站就更新。</p>
+  <doc-mock frame="terminal" title="Fit101" w="470"><template><span class="dim">$</span> node scripts/build.mjs
+<span class="g">✓</span> 读取 data/exercises.json · <b>20</b> 个动作
+<span class="g">✓</span> 读取 data/sessions.json · <b>12</b> 节课，<b>3</b> 节已上
+<span class="g">✓</span> 写入 docs/ · 14 个 Markdown
+<span class="g">✓</span> html-author → site/ · 15 个页面
+<span class="dim">打开</span> site/index.html</template></doc-mock>
+
+  <doc-ask id="logging">
+    <p>上完课之后，怎么把内容记进来？</p>
+    <label><input type="radio" name="logging" value="chat" checked> 在对话里告诉 Claude，Claude 改数据文件并重新生成 <small>你不用碰文件</small></label>
+    <label><input type="radio" name="logging" value="json"> 你自己改 <code>sessions.json</code>，然后跑命令 <small>格式见“共用”</small></label>
+    <label><input type="radio" name="logging" value="md"> 你自己改 Markdown，不用数据文件 <small>动作库就不能自动汇总，第 3 条去掉</small></label>
+  </doc-ask>
+  <div data-if="logging=md"><doc-note tone="warn"><strong>后果</strong> 没有数据文件，以后做 app 时要重新整理数据。</doc-note></div>
+
+  <doc-claim>
+    <p>项目只有一个新文件夹，生成的文件和手写的文件分开放。</p>
+    <doc-tree caption="docs/ 和 site/ 由脚本生成，不手改。">
+<script type="text/plain">
+Fit101/
+  + data/
+  +   exercises.json     # 动作库：中英文名、肌群、器械、要点、图片
+  +   sessions.json      # 12 节课：日期、状态、分组、动作、重量
+  + assets/
+  +   fit.css            # 卡片和两帧动画的样式
+  +   img/<动作>/0.jpg 1.jpg
+  + scripts/
+  +   build.mjs          # data → docs/*.md → html-author → site/
+  +   fetch-images.mjs   # 从 free-exercise-db 下载图片，跑一次
+  + docs/                # 生成的 Markdown
+  + site/                # 生成的网站，打开 index.html
+    plan/                # 这份计划
+</script>
+    </doc-tree>
+  </doc-claim>
+
+  <doc-claim>
+    <p>生成脚本先写 Markdown，再调用 html-author，自己不写 HTML 页面。</p>
+    <doc-code title="scripts/build.mjs · 草稿" lang="js">
+<script type="text/plain">
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+
+const ex = JSON.parse(readFileSync('data/exercises.json', 'utf8'));
+const sessions = JSON.parse(readFileSync('data/sessions.json', 'utf8'));
+const byId = Object.fromEntries(ex.map((e) => [e.id, e]));
+
+mkdirSync('docs/课程', { recursive: true });
+for (const s of sessions) {
+  const page = s.status === 'done' ? sessionPage(s, byId)
+                                   : placeholderPage(s);
+  writeFileSync(`docs/课程/${s.n}.md`, page);
+}
+writeFileSync('docs/动作库.md', libraryPage(ex, sessions));
+writeFileSync('docs/index.md', indexPage(sessions));
+
+const author = `${process.env.HOME}/.claude/skills/html-author`;
+execFileSync('node', [`${author}/scripts/build_pages.mjs`,
+  '--src', 'docs', '--out', 'site', '--title', 'Fit101',
+  '--lang', 'zh-CN', '--no-notes'], { stdio: 'inherit' });
+</script>
+      <doc-pin line="10" title="按状态选页面模板">done 出卡片，planned 出占位。</doc-pin>
+      <doc-pin line="18" title="html-author 原样调用">样式和目录栏都来自它。fit.css 由每页顶部的 link 引入。</doc-pin>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ shared ═════ -->
+<doc-claim aux="shared">
+  <p>共用：两个 JSON 文件的形状。</p>
+  <doc-schema id="data" lang="ts" title="data/*.json 的形状（TypeScript 写法）" caption="第 3 条和第 5 条都从这两个文件读。">
+<script type="text/plain">
+type Exercise = {
+  id: string;            // "goblet-squat"
+  zh: string;            // "高脚杯深蹲"
+  en: string;            // "Goblet Squat"，教练表格里的原名
+  muscles: string[];     // ["股四头肌", "臀大肌"]
+  equipment: string;     // "哑铃" | "自重" | "龙门架" | "TRX" | "弹力带" …
+  cue: string;           // 一到两句要点
+  images?: [string, string];   // 两帧，相对 assets/img/
+  source?: string;       // free-exercise-db 里的名字，没有就留空
+};
+
+type Session = {
+  n: number;             // 1…12
+  date: string;          // "2026-10-05"
+  status: 'done' | 'planned';
+  title?: string;        // "全身循环 A"
+  blocks: {
+    name: string;        // "热身" | "第一组" …
+    rest?: string;       // "1 分钟"
+    items: { ex: string; sets: string; reps: string;
+             weight?: string; note?: string }[];   // weight 用 lb 原文："30 lb"
+  }[];
+};
+</script>
+  </doc-schema>
+</doc-claim>
+
+<doc-claim aux="scope">
+  <p>不动的部分：Resources 里的两个表格、健身档案、html-author 本身。</p>
+  <ul>
+    <li>教练的 xlsx 还是原始记录，数据文件从它抄过来，不反向写回。</li>
+    <li><code>健身档案与进度追踪.md</code> 继续手工维护，第二版再考虑从同一数据生成。</li>
+    <li>不改 <code>~/.claude/skills/html-author</code> 的任何文件。</li>
+    <li>这一版没有自练计划、没有打卡、没有账号，只有“课程”和“动作库”。</li>
+  </ul>
+</doc-claim>
+
+</doc-plan>
+</main>
+</body>
+</html>

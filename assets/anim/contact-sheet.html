@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fit101 动画预览</title>
+<style>
+  :root { --bg: #f6f3ee; --card: #fff; --ink: #2b2925; --ink-2: #6b665d; --line: #e4ddd0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px 16px; background: var(--bg); color: var(--ink); font: 14px/1.4 -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  p.note { margin: 0 0 16px; color: var(--ink-2); font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  figure img { display: block; width: 100%; aspect-ratio: 4 / 3; background: #fbfaf7; }
+  figcaption { padding: 8px 10px; display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: baseline; border-top: 1px solid var(--line); }
+  figcaption b { font-size: 15px; }
+  figcaption span { color: var(--ink-2); }
+  figcaption code { width: 100%; font-size: 11px; color: #9a9488; }
+</style>
+</head>
+<body>
+<h1>Fit101 · 动作动画预览（30 个）</h1>
+<p class="note">由 scripts/gen-anim.mjs 从 data/poses.json 生成。每格都是 &lt;img&gt; 引入的 SVG（SMIL 动画），能动说明放进页面后也能动。深红 = 主要发力肌群，浅红 = 辅助。</p>
+<div class="grid">
+  <figure><img src="step-up.svg" alt="登台阶 动画"><figcaption><b>1. 登台阶</b><span>Step Ups</span><code>step-up · 侧视</code></figcaption></figure>
+  <figure><img src="bodyweight-squat.svg" alt="徒手深蹲 动画"><figcaption><b>2. 徒手深蹲</b><span>Body Weight Squats</span><code>bodyweight-squat · 侧视</code></figcaption></figure>
+  <figure><img src="glute-bridge.svg" alt="臀桥 动画"><figcaption><b>3. 臀桥</b><span>Glute Bridge</span><code>glute-bridge · 侧视</code></figcaption></figure>
+  <figure><img src="band-pull-apart.svg" alt="弹力带拉开 动画"><figcaption><b>4. 弹力带拉开</b><span>Band Pull Apart</span><code>band-pull-apart · 正面</code></figcaption></figure>
+  <figure><img src="goblet-squat.svg" alt="高脚杯深蹲 动画"><figcaption><b>5. 高脚杯深蹲</b><span>Goblet Squat</span><code>goblet-squat · 侧视</code></figcaption></figure>
+  <figure><img src="push-up.svg" alt="俯卧撑 动画"><figcaption><b>6. 俯卧撑</b><span>Push Ups</span><code>push-up · 侧视</code></figcaption></figure>
+  <figure><img src="trx-row.svg" alt="TRX 划船 动画"><figcaption><b>7. TRX 划船</b><span>TRX Row</span><code>trx-row · 侧视</code></figcaption></figure>
+  <figure><img src="db-rdl.svg" alt="哑铃罗马尼亚硬拉 动画"><figcaption><b>8. 哑铃罗马尼亚硬拉</b><span>Dumbbell Romanian Deadlift</span><code>db-rdl · 侧视</code></figcaption></figure>
+  <figure><img src="cable-crossover.svg" alt="绳索交叉 动画"><figcaption><b>9. 绳索交叉</b><span>Dumbbell Cable Cross over</span><code>cable-crossover · 正面</code></figcaption></figure>
+  <figure><img src="cable-fly.svg" alt="绳索夹胸 动画"><figcaption><b>10. 绳索夹胸</b><span>Dumbbell Cable Fly</span><code>cable-fly · 正面</code></figcaption></figure>
+  <figure><img src="half-kneeling-press.svg" alt="半跪姿哑铃推举 动画"><figcaption><b>11. 半跪姿哑铃推举</b><span>1/2 Kneeling Shoulder Press</span><code>half-kneeling-press · 侧视</code></figcaption></figure>
+  <figure><img src="farmer-carry.svg" alt="农夫行走 动画"><figcaption><b>12. 农夫行走</b><span>Farmer Carry</span><code>farmer-carry · 侧视</code></figcaption></figure>
+  <figure><img src="worlds-greatest-stretch.svg" alt="世界最伟大拉伸 动画"><figcaption><b>13. 世界最伟大拉伸</b><span>Worlds Greatest Stretch</span><code>worlds-greatest-stretch · 侧视</code></figcaption></figure>
+  <figure><img src="dead-bug.svg" alt="死虫式 动画"><figcaption><b>14. 死虫式</b><span>Dead Bug</span><code>dead-bug · 侧视</code></figcaption></figure>
+  <figure><img src="db-reverse-lunge.svg" alt="哑铃反向弓步 动画"><figcaption><b>15. 哑铃反向弓步</b><span>DB Reverse Lunge</span><code>db-reverse-lunge · 侧视</code></figcaption></figure>
+  <figure><img src="db-bench-press.svg" alt="哑铃卧推 动画"><figcaption><b>16. 哑铃卧推</b><span>DB Bench Press</span><code>db-bench-press · 侧视</code></figcaption></figure>
+  <figure><img src="pallof-press.svg" alt="Pallof 推 动画"><figcaption><b>17. Pallof 推</b><span>Pallof Press</span><code>pallof-press · 侧视</code></figcaption></figure>
+  <figure><img src="tricep-pushdown.svg" alt="三头下压 动画"><figcaption><b>18. 三头下压</b><span>Tricep Pushdown</span><code>tricep-pushdown · 侧视</code></figcaption></figure>
+  <figure><img src="bicep-curl.svg" alt="二头弯举 动画"><figcaption><b>19. 二头弯举</b><span>Bicep Curl</span><code>bicep-curl · 侧视</code></figcaption></figure>
+  <figure><img src="physio-ball.svg" alt="瑞士球动作 动画"><figcaption><b>20. 瑞士球动作</b><span>Physio Ball Sets</span><code>physio-ball · 侧视</code></figcaption></figure>
+  <figure><img src="standing-press.svg" alt="站姿哑铃推举 动画"><figcaption><b>21. 站姿哑铃推举</b><span>Standing Shoulder Press</span><code>standing-press · 正面</code></figcaption></figure>
+  <figure><img src="plank.svg" alt="平板支撑 动画"><figcaption><b>22. 平板支撑</b><span>Plank</span><code>plank · 侧视</code></figcaption></figure>
+  <figure><img src="weighted-step-up.svg" alt="负重登台阶 动画"><figcaption><b>23. 负重登台阶</b><span>Weighted Step Up</span><code>weighted-step-up · 侧视</code></figcaption></figure>
+  <figure><img src="band-walk.svg" alt="弹力带横走 动画"><figcaption><b>24. 弹力带横走</b><span>Bandwalks</span><code>band-walk · 正面</code></figcaption></figure>
+  <figure><img src="incline-db-press.svg" alt="上斜哑铃卧推 动画"><figcaption><b>25. 上斜哑铃卧推</b><span>Incline Dumbbell Press</span><code>incline-db-press · 侧视</code></figcaption></figure>
+  <figure><img src="lat-pulldown.svg" alt="高位下拉 动画"><figcaption><b>26. 高位下拉</b><span>Lat Pulldown</span><code>lat-pulldown · 正面</code></figcaption></figure>
+  <figure><img src="childs-pose.svg" alt="婴儿式 动画"><figcaption><b>27. 婴儿式</b><span>Child's Pose</span><code>childs-pose · 侧视</code></figcaption></figure>
+  <figure><img src="triceps-stretch.svg" alt="过头肱三头拉伸 动画"><figcaption><b>28. 过头肱三头拉伸</b><span>Overhead Triceps Stretch</span><code>triceps-stretch · 正面</code></figcaption></figure>
+  <figure><img src="open-book.svg" alt="开书式 动画"><figcaption><b>29. 开书式</b><span>Open Book</span><code>open-book · 俯视</code></figcaption></figure>
+  <figure><img src="doorway-pec-stretch.svg" alt="门框胸部拉伸 动画"><figcaption><b>30. 门框胸部拉伸</b><span>Doorway Pec Stretch</span><code>doorway-pec-stretch · 侧视</code></figcaption></figure>
+</div>
+</body>
+</html>

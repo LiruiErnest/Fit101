@@ -1,0 +1,60 @@
+/* Fit101 · exercise cards on top of html-author's site.css.
+   Only site.css tokens are used, so light/dark follow the theme on their own. */
+
+/* ── card: animation (200 px) + content ───────────── */
+.prose .ex { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 18px; align-items: start;
+  margin: 0 0 28px; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); }
+.prose h3 + .ex { margin-top: 0; }
+.prose h2 + .ex { margin-top: 8px; }
+.ex-anim { background: var(--fig-bg); border: 1px solid var(--line); border-radius: var(--r-sm); aspect-ratio: 4 / 3; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; }
+.ex-anim img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.ex-body { min-width: 0; }
+
+/* ── meta table ──────────────────────────────────── */
+.prose .ex-meta { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 14px; margin: 0 0 12px; font-size: 14.5px; line-height: 1.55; }
+.ex-meta dt { color: var(--ink-3); font-size: 13px; white-space: nowrap; padding-top: 1px; }
+.ex-meta dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.ex-meta dd b { color: var(--accent); font-weight: 650; }
+.ex-meta dd a { color: var(--ink); text-decoration-color: var(--line); text-underline-offset: 3px; }
+.ex-meta dd a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+/* ── cue ─────────────────────────────────────────── */
+.prose .ex-cue { margin: 0 0 12px; padding: 8px 12px; background: var(--accent-soft); border-radius: var(--r-sm); font-size: 14.5px; line-height: 1.6; color: var(--ink); }
+.ex-cue b { color: var(--accent); margin-right: 6px; }
+
+/* ── details: muscle map panel ───────────────────── */
+.ex-muscles { margin: 0; }
+.ex-muscles > summary { display: inline-flex; align-items: center; gap: 8px; list-style: none; cursor: pointer; user-select: none;
+  padding: 5px 12px; font-size: 13.5px; line-height: 1.4; color: var(--ink-2); background: var(--sunk); border: 1px solid var(--line); border-radius: 99px; }
+.ex-muscles > summary::-webkit-details-marker { display: none; }
+.ex-muscles > summary::before { content: "▸"; color: var(--blue); transition: transform .15s; }
+.ex-muscles > summary:hover { color: var(--ink); border-color: var(--blue); }
+.ex-muscles[open] > summary { color: var(--ink); border-color: var(--blue); }
+.ex-muscles[open] > summary::before { transform: rotate(90deg); }
+.ex-map { margin: 12px 0 0; padding: 10px; background: var(--fig-bg); border: 1px solid var(--line); border-radius: var(--r-sm); }
+.ex-map svg.bm { display: block; width: 100%; max-width: 380px; height: auto; margin: 0 auto; }
+.prose .ex-legend { margin: 8px 0 0; font-size: 13.5px; color: var(--ink-2); }
+
+/* muscle colours: primary deep blue, secondary pale blue with a blue edge */
+.m.p, .m.p * { fill: var(--blue); }
+.m.s, .m.s * { fill: var(--blue-soft); stroke: var(--blue); }
+/* the map always sits on light paper (--fig-bg); dark mode's --blue-soft is a dark tint that would read stronger than
+   the primary blue there, so mix the secondary from --blue and --fig-bg instead (same tokens, right in both themes) */
+@supports (fill: color-mix(in srgb, red, blue)) {
+  .m.s, .m.s * { fill: color-mix(in srgb, var(--blue) 32%, var(--fig-bg)); }
+}
+
+/* ── narrow: one column ──────────────────────────── */
+@media (max-width: 600px) {
+  .prose .ex { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 12px; }
+  .ex-anim { max-width: 260px; width: 100%; margin: 0 auto; }
+  .prose .ex-meta { font-size: 14px; }
+}
+@media print {
+  .ex-muscles:not([open]) > summary { display: none; }
+}
+
+/* "after the session" checklist */
+.prose ul:has(> li > input[type="checkbox"]) { list-style: none; padding-left: 2px; }
+.prose li > input[type="checkbox"] { margin: 0 8px 0 0; accent-color: var(--accent); vertical-align: -2px; }

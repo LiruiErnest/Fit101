@@ -1,0 +1,228 @@
+{
+  "date": "2026-10-07",
+  "weekday": "周三",
+  "weekday_en": "Wednesday",
+  "time": "11:00-12:00",
+  "duration": "约 55 分钟",
+  "duration_en": "about 55 minutes",
+  "title": "推拉加练 · 胸优先",
+  "title_en": "Push-Pull Extra · Chest Focus",
+  "goal": "给胸增加每周训练量，同时补足拉的量来平衡肩膀和姿态。腿只做热身，因为周一刚练、周五还有教练课。",
+  "goal_en": "Add weekly chest volume and balance it with pulling work for shoulder health and posture. Legs stay light: you squatted on Monday and have the trainer again on Friday.",
+  "rationale": [
+    "教练课每次胸只有 3 组（俯卧撑或哑铃卧推），一周约 6 组。胸要长，一周 10 到 16 组更合适。今天补 10 组：卧推 4 组、绳索交叉 3 组、绳索夹胸 3 组。",
+    "推和拉要平衡。教练课教过的拉只有 TRX 划船，今天就用它，和夹胸做超级组。",
+    "周一刚做了深蹲和硬拉，周五还会做，所以今天腿只在热身里出现，核心用 Pallof 推和平板支撑。",
+    "中午练，距早饭 2 到 4 小时，强度中等：组间休息 90 秒，大部分组留 2 次余力，不做到力竭。",
+    "全部动作都是前三节课学过的，没有新动作。重量以课上记录为起点，不确定的先轻一档试一组。"
+  ],
+  "rationale_en": [
+    "Trainer sessions give the chest only 3 sets each (push-ups or dumbbell bench), about 6 sets a week. Chest grows better at 10 to 16 weekly sets. Today adds 10: 4 sets of bench, 3 of cable crossover, 3 of cable fly.",
+    "Push and pull need balance. The only pull you have learned is the TRX row, so today uses it, supersetted with the fly.",
+    "You squatted and deadlifted on Monday and will again on Friday, so legs appear only in the warm-up. Core work comes from the Pallof press and plank.",
+    "Training at noon, 2 to 4 hours after breakfast, means moderate intensity: 90 seconds rest, leave 2 reps in reserve on most sets, no sets to failure.",
+    "Every exercise was learned in the first three sessions; nothing new. Start from the weights logged in class, and when unsure, try one set one step lighter."
+  ],
+  "blocks": [
+    {
+      "name": "热身",
+      "name_en": "Warm-up",
+      "rest": "不休息，约 8 分钟",
+      "rest_en": "no rest, about 8 minutes",
+      "items": [
+        {
+          "ex": "band-pull-apart",
+          "sets": "2",
+          "reps": "15",
+          "target": "自重",
+          "target_en": "bodyweight",
+          "how": "慢一点，感觉肩胛骨往中间夹。",
+          "how_en": "Go slow and feel the shoulder blades squeeze together."
+        },
+        {
+          "ex": "bodyweight-squat",
+          "sets": "2",
+          "reps": "10",
+          "target": "自重",
+          "target_en": "bodyweight"
+        },
+        {
+          "ex": "worlds-greatest-stretch",
+          "sets": "1",
+          "reps": "5 每侧",
+          "target": "自重",
+          "target_en": "bodyweight"
+        },
+        {
+          "ex": "push-up",
+          "sets": "1",
+          "reps": "8",
+          "target": "自重",
+          "target_en": "bodyweight",
+          "how": "慢速，3 秒下 1 秒上，当作卧推的热身。",
+          "how_en": "Slow tempo, 3 seconds down and 1 up, as a warm-up for the bench."
+        }
+      ]
+    },
+    {
+      "name": "第一组 · 胸",
+      "name_en": "Block 1 · Chest",
+      "rest": "90 秒",
+      "rest_en": "90 seconds",
+      "items": [
+        {
+          "ex": "db-bench-press",
+          "sets": "4",
+          "reps": "8-10",
+          "target": "每手 25 lb",
+          "target_en": "25 lb per hand",
+          "how": "第 2 节课没记重量，先用 20 lb 做一组 10 个试手。第 4 组做完还能多做 2 次就是对的重量；能做满 10 个就下次加 5 lb。",
+          "how_en": "Session 2 had no weight logged, so try one set of 10 at 20 lb first. The right weight leaves 2 reps in the tank after set 4. If you get all 10, add 5 lb next time."
+        },
+        {
+          "ex": "cable-crossover",
+          "sets": "3",
+          "reps": "12",
+          "target": "第 1 节记的 2.5 档，先试这一档",
+          "target_en": "the 2.5 setting logged in Session 1; try that first",
+          "how": "第 1 节课做过。滑轮调到最高，双手从上往下画弧到小腹前，手可以交叉。12 次做完还有 2 次余力就对了，记清档位。",
+          "how_en": "Done in Session 1. Pulleys at the top, sweep both hands down and in to the lower belly, hands may cross. 12 reps with 2 in reserve is right; note the exact pin."
+        }
+      ]
+    },
+    {
+      "name": "第二组 · 拉 + 夹胸（超级组）",
+      "name_en": "Block 2 · Pull + Fly (superset)",
+      "rest": "两个动作连做，然后休息 60 到 90 秒",
+      "rest_en": "do both back to back, then rest 60 to 90 seconds",
+      "items": [
+        {
+          "ex": "trx-row",
+          "sets": "3",
+          "reps": "10-15",
+          "target": "自重，身体放得越平越重",
+          "target_en": "bodyweight; the flatter you lean, the harder",
+          "how": "课上做过三次。脚往前挪一点让身体更平，10 次刚好吃力就对了。拉到胸口，肩胛骨夹紧停 1 秒。",
+          "how_en": "Done in all three sessions. Walk the feet forward so the body is flatter; the right angle makes 10 reps hard. Pull to the chest, squeeze the shoulder blades, hold 1 second."
+        },
+        {
+          "ex": "cable-fly",
+          "sets": "3",
+          "reps": "12",
+          "target": "每侧 12 次能完成的档位",
+          "target_en": "a pin setting you can do 12 times per side",
+          "how": "第 1 节课记的 12.5 单位不明，今天记清楚是哪个档位。手臂微弯固定，像抱一棵树。",
+          "how_en": "Session 1 logged 12.5 with no unit, so note the exact pin today. Keep a slight fixed bend in the elbows, like hugging a tree."
+        }
+      ]
+    },
+    {
+      "name": "第三组 · 肩 + 核心",
+      "name_en": "Block 3 · Shoulders + Core",
+      "rest": "60 秒",
+      "rest_en": "60 seconds",
+      "items": [
+        {
+          "ex": "half-kneeling-press",
+          "sets": "3",
+          "reps": "10 每侧",
+          "target": "12.5-15 lb",
+          "target_en": "12.5-15 lb",
+          "how": "课上用 12.5 lb，如果 10 个很轻松就换 15 lb。",
+          "how_en": "You used 12.5 lb in class. If 10 reps feel easy, move to 15 lb."
+        },
+        {
+          "ex": "pallof-press",
+          "sets": "3",
+          "reps": "10 每侧",
+          "target": "能站稳不转身的最轻档位",
+          "target_en": "the lightest pin at which you can stay square without twisting",
+          "how": "推出去停 2 秒，身体不转。",
+          "how_en": "Press out, hold 2 seconds, keep the torso square."
+        }
+      ]
+    },
+    {
+      "name": "收尾",
+      "name_en": "Finisher",
+      "rest": "60 秒",
+      "rest_en": "60 seconds",
+      "items": [
+        {
+          "ex": "push-up",
+          "sets": "2",
+          "reps": "力竭",
+          "target": "自重",
+          "target_en": "bodyweight",
+          "how": "两组都做到做不动为止，记下次数。这是俯卧撑 20 个里程碑的测试。",
+          "how_en": "Both sets to failure, write down the reps. This is the test for the 20 push-up milestone."
+        },
+        {
+          "ex": "plank",
+          "sets": "2",
+          "reps": "40 秒",
+          "target": "自重",
+          "target_en": "bodyweight"
+        }
+      ]
+    }
+  ],
+  "cooldown": {
+    "text": "约 5 分钟。今天练了胸和推，重点放松胸、肩前侧和肱三头，再用婴儿式放松划船用到的背。每个动作做到有拉伸感、不疼，保持时呼吸放慢。",
+    "text_en": "About 5 minutes. Today was chest and pressing, so the focus is the chest, front of the shoulders and triceps, with a child's pose to release the back after the rows. Stretch to a pull, never pain, and slow the breathing while holding.",
+    "rest": "不休息，动作之间直接换",
+    "rest_en": "no rest, move straight from one to the next",
+    "items": [
+      {
+        "ex": "open-book",
+        "sets": "1",
+        "reps": "8 次 每侧",
+        "target": "自重",
+        "target_en": "bodyweight",
+        "how": "教练教过的侧躺开书。膝盖压住地面不抬起，手打开到最远处停 2 秒再合上。打开胸和胸椎。",
+        "how_en": "The side-lying open book your trainer taught. Keep the top knee pinned to the floor; open the arm as far as it goes, hold 2 seconds, close. Opens the chest and mid-back."
+      },
+      {
+        "ex": "doorway-pec-stretch",
+        "sets": "2",
+        "reps": "30 秒 每侧",
+        "target": "自重",
+        "target_en": "bodyweight",
+        "how": "用深蹲架立柱或门框。肘和肩同高，前臂贴柱，同侧脚向前迈，身体慢慢前倾到胸前侧有拉感。肩不要耸起。",
+        "how_en": "Use the squat rack upright or a door frame. Elbow at shoulder height, forearm on the post, step forward with the same-side foot and lean until you feel the front of the chest. Keep the shoulder down."
+      },
+      {
+        "ex": "triceps-stretch",
+        "sets": "1",
+        "reps": "30 秒 每侧",
+        "target": "自重",
+        "target_en": "bodyweight",
+        "how": "教练教过的掰肘拉伸。手肘指向天花板，另一只手把肘往头后轻拉，上身别歪。",
+        "how_en": "The elbow-pull stretch your trainer taught. Point the elbow at the ceiling and gently pull it behind the head with the other hand; keep the torso upright."
+      },
+      {
+        "ex": "childs-pose",
+        "sets": "1",
+        "reps": "45 秒",
+        "target": "自重",
+        "target_en": "bodyweight",
+        "how": "教练教过的婴儿式。手尽量往前爬，臀部往脚跟坐，深呼吸 5 次。放松背阔肌和下背。",
+        "how_en": "The child's pose your trainer taught. Walk the hands forward, sit the hips back to the heels, take 5 deep breaths. Releases the lats and lower back."
+      }
+    ]
+  },
+  "after": {
+    "items": [
+      "把每个动作的实际重量和次数告诉 Claude，这一页会变成“自练 1”的记录。",
+      "哪个动作的重量和课上记的差很多？告诉我，下次计划据此调整。",
+      "练完 30 分钟内吃午饭，先吃碳水和蛋白质。",
+      "周五教练课前不要再练胸。"
+    ],
+    "items_en": [
+      "Tell Claude the actual weight and reps for each exercise; this page becomes the log for Self Session 1.",
+      "Did any weight differ a lot from what was logged in class? Tell me and the next plan adjusts.",
+      "Eat lunch within 30 minutes of finishing, carbs and protein first.",
+      "No more chest work before Friday's trainer session."
+    ]
+  }
+}
