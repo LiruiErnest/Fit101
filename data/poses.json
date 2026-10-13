@@ -442,17 +442,6 @@
       ]
     },
     {
-      "id": "standing-hip-abduction", "zh": "站姿髋外展", "en": "Standing Hip Abduction", "view": "front", "period": 2.6,
-      "iso": {"eq": {"0": {"z": 52}}},
-      "muscles": { "primary": ["glute-med"], "secondary": ["glutes", "obliques"] },
-      "equipment": [ { "type": "column", "x": 133, "top": 70 } ],
-      "base": { "root": [200, 165], "armL": [40, 70, 1], "armR": [8, 10, 1], "legL": [3, 0, 1], "ik": { "handL": [139, 148] } },
-      "keyframes": [
-        { "legR": [3, 0, 1] },
-        { "legR": [32, 0, 1] }
-      ]
-    },
-    {
       "id": "seated-shoulder-press", "zh": "坐姿哑铃推举", "en": "Seated Shoulder Press", "view": "side", "period": 3,
       "iso": {"el": 40, "ha": 34, "kn": 12, "an": 12},
       "muscles": { "primary": ["front-delt", "side-delt"], "secondary": ["triceps", "traps"] },
@@ -465,6 +454,39 @@
         { "ik": { "elbowN": [195, 205], "elbowF": [195, 205], "forearmWorld": 180 } },
         { "ik": { "elbowN": [200, 180], "elbowF": [200, 180], "forearmWorld": 180 } },
         { "ik": { "handN": { "rel": "torso", "at": [4, -140] }, "handF": { "rel": "torso", "at": [4, -140] } } }
+      ]
+    },
+    {
+      "id": "db-fly", "zh": "哑铃飞鸟", "en": "Dumbbell Fly", "view": "side", "period": 3,
+      "iso": {"el": 20, "ha": 12},
+      "muscles": { "primary": ["chest"], "secondary": ["front-delt", "biceps"] },
+      "equipment": [ { "type": "bench", "x": 70, "y": 226, "w": 170 }, { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 180 } ],
+      "base": { "rot": -90, "root": [165, 213], "torso": 0, "ik": { "footN": [234, 279], "footF": [234, 279] } },
+      "keyframes": [
+        { "armN": [88, 14, 1, 1], "armF": [88, 14, 1, 1], "props": { "zel": 20, "zha": 12 } },
+        { "armN": [100, 20, 0.25, 0.3], "armF": [100, 20, 0.25, 0.3], "props": { "zel": 58, "zha": 92 } }
+      ]
+    },
+    {
+      "id": "side-lying-hip-abduction", "zh": "卧姿髋外展", "en": "Side-Lying Hip Abduction", "view": "side", "viewLabel": "俯视", "period": 2.8, "ground": false,
+      "iso": {"top": true, "pitch": 55, "scale": 1, "lift": 136},
+      "muscles": { "primary": ["glute-med"], "secondary": ["glutes", "obliques"] },
+      "muscleSide": "N",
+      "equipment": [ { "type": "mat", "x": 30, "y": 28, "w": 340, "h": 244, "rx": 14 } ],
+      "base": { "rot": -90, "root": [205, 160], "torso": 0, "armF": [175, 10], "armN": [40, 70], "legN": [0, 0, 0], "legF": [18, 30, 0] },
+      "keyframes": [
+        { "props": { "liftN": 0 } },
+        { "props": { "liftN": 38 } }
+      ]
+    },
+    {
+      "id": "ball-wall-squat", "zh": "瑞士球靠墙马步", "en": "Stability Ball Wall Squat", "view": "side", "period": 3.4,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["hamstrings", "abs"] },
+      "equipment": [ { "type": "wall", "x": 119, "top": 40 }, { "type": "ball", "cx": 149, "cy": "$ballY", "r": 30 } ],
+      "base": { "torso": 0, "armN": [12, 25], "armF": [12, 25], "ik": { "footN": [254, 279], "footF": [254, 279] } },
+      "keyframes": [
+        { "root": [192, 184], "props": { "ballY": 162 } },
+        { "root": [196, 224], "props": { "ballY": 202 } }
       ]
     }
   ]

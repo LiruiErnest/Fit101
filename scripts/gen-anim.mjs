@@ -398,6 +398,8 @@ function joints3D(ex, rig, P, iso) {
   const pt = (spec) => pointOf(rig, P, spec);
   if (ex.view === 'side') {
     const z = { ...ISO_SIDE, ...iso };
+    // 关键帧 props 里的 zsh/zel/zha/zhip/zkn/zan 覆盖 iso（随动画插值，如飞鸟手臂向两侧张开）
+    for (const k of ['sh', 'el', 'ha', 'hip', 'kn', 'an']) if (P['$z' + k] !== undefined) z[k] = P['$z' + k];
     const top = !!iso.top;
     const m3 = top ? ([x, y], h) => [x, G - 14 - h, y - 150] : ([x, y], zz) => [x, y, zz];
     const v3 = top ? ([x, y]) => [x, 0, y] : ([x, y]) => [x, y, 0];
@@ -409,6 +411,17 @@ function joints3D(ex, rig, P, iso) {
       put('heel' + s, { node: 'an' + s, at: [-4, 0] }, m * z.an); put('toe' + s, 'toe' + s, m * z.an);
     }
     if (P.$face !== undefined) put('nose', { node: 'head', at: [P.$face, -25] }, 15);
+    // props.liftN：近侧腿绕髋向上抬起的角度（侧卧髋外展），在 3D 里绕“水平、垂直于腿”的轴旋转
+    if (P.$liftN) {
+      const H = J.hipN, A = J.anN;
+      const up = top ? [0, -1, 0] : [0, 0, 1];
+      const lh = sub3(A, H); const ld = nrm3(sub3(lh, mul3(up, dot3(lh, up))));
+      const ax = nrm3(cross3(ld, up));
+      const rot = (d, th) => add3(add3(mul3(d, Math.cos(th)), mul3(cross3(ax, d), Math.sin(th))), mul3(ax, dot3(ax, d) * (1 - Math.cos(th))));
+      let th = rad(P.$liftN);
+      if (dot3(rot(lh, th), up) < dot3(lh, up)) th = -th;
+      for (const n of ['knN', 'anN', 'heelN', 'toeN']) J[n] = add3(H, rot(sub3(J[n], H), th));
+    }
     const fr = (node) => { const M = nodeM(rig, P, node); const l = Math.hypot(M[0], M[1]); return nrm3(v3([M[0] / l, M[1] / l])); };
     return { J, front: fr, torsoFront: fr('torso'), torsoLat: top ? [0, -1, 0] : [0, 0, 1], z3: (spec, zz) => m3(pt(spec), zz) };
   }
@@ -900,6 +913,12 @@ function render(ex, samples, rig, STATIC) {
         push(sleeve + g, -1e9);
         break;
       }
+      case 'wall': {
+        // 墙：竖直厚板（x 为墙面，向后加厚 thick），z 方向宽 2*half
+        const z0 = eqz(qi, 0), th = q.thick ?? 12, half = q.half ?? 70, top = q.top ?? 30;
+        push(box([q.x - th, top, z0 - half], [th, 0, 0], [0, G - top, 0], [0, 0, 2 * half]), -1e9);
+        break;
+      }
       case 'anchor': {
         const z0 = eqz(qi, 0);
         let s = box([q.x - 16, q.y - 12, z0 - 8], [32, 0, 0], [0, 6, 0], [0, 0, 16], 'metal');
@@ -918,9 +937,11 @@ function render(ex, samples, rig, STATIC) {
       case 'ball': {
         const r = q.r, z0 = eqz(qi, 0);
         const cxs = Ps.map((P) => (typeof q.cx === 'string' ? P[q.cx] : q.cx));
-        const pos = cxs.map((cx) => pt3(cx, G - r, z0));
+        const cys = Ps.map((P) => (typeof q.cy === 'string' ? P[q.cy] : q.cy ?? G - r));
+        const pos = cxs.map((cx, i) => pt3(cx, cys[i], z0));
         const R = r * pj.SC;
-        const seamFr = cxs.map((cx) => deg((cx - cxs[0]) / r));
+        // 地上滚：转角 = 水平位移 / r；贴墙滚（cy 变化）：转角 = 竖直位移 / r
+        const seamFr = cxs.map((cx, i) => deg((cx - cxs[0] + cys[i] - cys[0]) / r));
         const seam = O.rigid(seamFr.map((a) => ({ tx: 0, ty: 0, rot: a })), `<path d="M${f1(-R * 0.75)} ${f1(-R * 0.55)}Q0 ${f1(R * 0.05)} ${f1(R * 0.75)} ${f1(-R * 0.55)}" fill="none" stroke="${C.dk}" stroke-width="1.6" stroke-opacity=".7"/><path d="M${f1(-R * 0.6)} ${f1(R * 0.7)}Q0 ${f1(R * 0.2)} ${f1(R * 0.6)} ${f1(R * 0.7)}" fill="none" stroke="${C.dk}" stroke-width="1.2" stroke-opacity=".45"/>`);
         const kids = `<circle r="${f1(R)}" fill="url(#${ID}-ball)" stroke="${C.dk}" stroke-width="1"/>${seam}<ellipse cx="${f1(-R * 0.34)}" cy="${f1(-R * 0.4)}" rx="${f1(R * 0.22)}" ry="${f1(R * 0.13)}" transform="rotate(-35 ${f1(-R * 0.34)} ${f1(-R * 0.4)})" fill="${C.white}" fill-opacity=".7"/>`;
         push(O.rigid(pos.map((p) => ({ tx: p[0], ty: p[1] })), kids), mean(pos.map((p) => p[2])));

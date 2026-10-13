@@ -365,3 +365,18 @@ type Next = {
 - tricep-oh-press：侧视站姿，双手托一只哑铃举过头，肘指向前上方，前臂向后下落到脑后再伸直。
 - standing-hip-abduction：正面站姿，一手扶住立柱，另一侧腿伸直向外侧抬起约 30° 再放下，躯干保持直立。
 - seated-shoulder-press：侧视，坐在带靠背的凳上，双手持哑铃从肩上方推到头顶上方再回落。
+
+## 17. 第 4、5 节的更正（2026-10-13）
+
+用户更正了三处，按实际教学内容为准：
+
+| id | 中文 | 英文 | 器械 | 视角 | 主要 | 辅助 | 说明 |
+|---|---|---|---|---|---|---|---|
+| db-fly | 哑铃飞鸟 | Dumbbell Fly | 哑铃 ×2 + 平凳 | 侧 | chest | front-delt, biceps | 仰卧，双臂微弯从两侧张开到胸前合拢。第 5 节表上写 DB Chest Press 30 lb，实际是飞鸟 15 lb |
+| side-lying-hip-abduction | 卧姿髋外展 | Side-Lying Hip Abduction | 自重，侧卧 | 俯视（同 open-book 的垫子） | glute-med | glutes, obliques | 侧卧，下腿微屈，上腿伸直向上抬约 30 到 45° 再放下。第 5 节表上写 Standing Hip Abduction |
+| ball-wall-squat | 瑞士球靠墙马步 | Stability Ball Wall Squat | 瑞士球 + 墙 | 侧 | quads, glutes | hamstrings, abs | 球夹在下背和墙之间，双脚前伸，沿球下蹲到大腿接近平行并停住。第 4 节学的，组次时长未记录 |
+
+- `standing-hip-abduction` 从 exercises.json、poses.json 和 assets/anim 删除（用户没做过）。
+- 第 5 节：第一组第一条改为 db-fly 3 × 10-12 · 15 lb，note “表上写 DB Chest Press 30 lb，实际是哑铃飞鸟 15 lb”，note_en 对应；第二组第三条改为 side-lying-hip-abduction 3 × 15 · 自重，note “表上写 Standing Hip Abduction，实际是卧姿”。
+- 第 4 节：第二组加 ball-wall-squat 3 × 未记录 · 自重，note “背靠瑞士球的马步，时长未记录”。
+- 动画：db-fly 侧视仰卧在平凳上（同 db-bench-press 的凳子），双臂从张开到合拢画弧，哑铃手柄朝身体方向；side-lying-hip-abduction 俯视垫子，人侧卧，上腿抬起放下；ball-wall-squat 侧视，身后一面墙（竖直厚板）和夹在腰后的球，人沿球下蹲再起身。

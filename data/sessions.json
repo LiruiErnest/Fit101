@@ -404,6 +404,14 @@
             "reps": "未记录",
             "note": "重量未记录",
             "note_en": "weight not recorded"
+          },
+          {
+            "ex": "ball-wall-squat",
+            "sets": "3",
+            "reps": "未记录",
+            "weight": "自重",
+            "note": "背靠瑞士球的马步，时长未记录",
+            "note_en": "Wall squat with a stability ball behind your back; hold time not recorded"
           }
         ]
       }
@@ -448,12 +456,12 @@
         "rest": "1 分钟",
         "items": [
           {
-            "ex": "db-bench-press",
+            "ex": "db-fly",
             "sets": "3",
             "reps": "10-12",
-            "weight": "30 lb",
-            "note": "表上名 DB Chest Press",
-            "note_en": "Listed as DB Chest Press on the sheet"
+            "weight": "15 lb",
+            "note": "表上写 DB Chest Press 30 lb，实际是哑铃飞鸟 15 lb",
+            "note_en": "Sheet says DB Chest Press 30 lb; actually dumbbell flys at 15 lb"
           },
           {
             "ex": "single-arm-db-row",
@@ -485,10 +493,12 @@
             "weight": "25 lb"
           },
           {
-            "ex": "standing-hip-abduction",
+            "ex": "side-lying-hip-abduction",
             "sets": "3",
             "reps": "15",
-            "weight": "自重"
+            "weight": "自重",
+            "note": "表上写 Standing Hip Abduction，实际是卧姿",
+            "note_en": "Sheet says Standing Hip Abduction; actually done lying on the side"
           }
         ]
       },

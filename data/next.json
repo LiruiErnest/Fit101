@@ -14,14 +14,14 @@
     "推和拉要平衡。第 4 节学了辅助引体（85 lb 辅助做了 10 个），今天用它代替 TRX 划船，辅助减到 80 lb 做 8 个，这是通往第一个标准引体的路。",
     "周一刚做了深蹲和硬拉，周五还会做，所以今天腿只在热身里出现，核心用 Pallof 推和平板支撑。",
     "中午练，距早饭 2 到 4 小时，强度中等：组间休息 90 秒，大部分组留 2 次余力，不做到力竭。",
-    "全部动作都是前五节课学过的，没有新动作。重量以课上记录为起点：第 5 节卧推已经做到每手 30 lb × 10-12。"
+    "全部动作都是前五节课学过的，没有新动作。卧推课上只做过一次且没记重量，所以从 20 lb 试起。"
   ],
   "rationale_en": [
     "Trainer sessions give the chest only 3 sets each (push-ups or dumbbell bench), about 6 sets a week. Chest grows better at 10 to 16 weekly sets. Today adds 10: 4 sets of bench, 3 of cable crossover, 3 of cable fly.",
     "Push and pull need balance. Session 4 taught the assisted pull-up (10 reps at 85 lb assist), so today it replaces the TRX row: 80 lb assist for 8 reps, the road to your first unassisted pull-up.",
     "You squatted and deadlifted on Monday and will again on Friday, so legs appear only in the warm-up. Core work comes from the Pallof press and plank.",
     "Training at noon, 2 to 4 hours after breakfast, means moderate intensity: 90 seconds rest, leave 2 reps in reserve on most sets, no sets to failure.",
-    "Every exercise was learned in the first five sessions; nothing new. Start from the weights logged in class: in session 5 the bench was already 30 lb per hand for 10-12."
+    "Every exercise was learned in the first five sessions; nothing new. The bench was done once in class with no weight logged, so start by testing 20 lb."
   ],
   "blocks": [
     {
@@ -74,10 +74,10 @@
           "ex": "db-bench-press",
           "sets": "4",
           "reps": "8-10",
-          "target": "每手 30 lb，第 4 组试 35 lb",
-          "target_en": "30 lb per hand; try 35 lb on set 4",
-          "how": "第 5 节课用 30 lb 做了 3 × 10-12，今天 4 组 8-10 次。前 3 组 30 lb，如果第 3 组做完还能多做 3 次，第 4 组换 35 lb。",
-          "how_en": "Session 5 was 3 × 10-12 at 30 lb; today is 4 sets of 8-10. Use 30 lb for the first three, and if set 3 leaves 3 reps in the tank, take 35 lb for set 4."
+          "target": "每手 25 lb",
+          "target_en": "25 lb per hand",
+          "how": "第 2 节课做过但没记重量，先用 20 lb 做一组 10 个试手。第 4 组做完还能多做 2 次就是对的重量；能做满 10 个就下次加 5 lb。",
+          "how_en": "Done in session 2 with no weight logged, so try one set of 10 at 20 lb first. The right weight leaves 2 reps in the tank after set 4. If you get all 10, add 5 lb next time."
         },
         {
           "ex": "cable-crossover",
