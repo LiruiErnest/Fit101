@@ -365,8 +365,49 @@
     "n": 4,
     "date": "2026-10-09",
     "weekday": "周五",
-    "status": "planned",
-    "kind": "trainer"
+    "status": "done",
+    "kind": "trainer",
+    "title": "上肢 · 辅助引体与双杠",
+    "title_en": "Upper Body · Assisted Pull-Ups & Dips",
+    "blocks": [
+      {
+        "name": "热身",
+        "items": []
+      },
+      {
+        "name": "第一组",
+        "items": [
+          {
+            "ex": "assisted-pull-up",
+            "sets": "3",
+            "reps": "10",
+            "weight": "辅助 85 lb",
+            "note": "配重 85 lb 抵消体重，双膝跪在踏板上",
+            "note_en": "85 lb of assistance, kneeling on the pad"
+          },
+          {
+            "ex": "assisted-dip",
+            "sets": "3",
+            "reps": "未记录",
+            "weight": "辅助 75 lb",
+            "note": "配重 75 lb，同一台机器",
+            "note_en": "75 lb of assistance, same machine"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "items": [
+          {
+            "ex": "incline-db-press",
+            "sets": "3",
+            "reps": "未记录",
+            "note": "重量未记录",
+            "note_en": "weight not recorded"
+          }
+        ]
+      }
+    ]
   },
   {
     "n": 5,

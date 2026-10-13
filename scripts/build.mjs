@@ -126,6 +126,11 @@ const SUFFIX = { en: '', zh: '.zh-CN' };
 // every "N lb" / "N-M lb" gets its kg value; anything without "lb" (2.5, 自重, a pin setting) stays as written
 const addKg = (text) => String(text ?? '').replace(/(\d+(?:\.\d+)?)(?:\s*[-–~]\s*(\d+(?:\.\d+)?))?\s*lbs?\b(?!\s*\()/gi,
   (all, a, b) => (b ? `${a}-${b} lb (${kg(Number(a))}-${kg(Number(b))} kg)` : `${a} lb (${kg(Number(a))} kg)`));
+// "辅助 N lb" is machine assistance, not load: no kg, never treated as a weight; English reads "N lb assist"
+const ASSIST = /^\s*辅助\s*/;
+const assistLb = (w) => { const m = /^\s*辅助\s*([\d.]+)\s*lbs?\s*$/i.exec(w || ''); return m ? Number(m[1]) : null; };
+const assistText = (w, lang) => { const v = String(w).replace(ASSIST, '').trim(); return lang === 'zh' ? `辅助 ${v}` : `${v} assist`; };
+const showWeight = (w, lang) => (ASSIST.test(w || '') ? assistText(w, lang) : frag(addKg(w), lang));
 function weightLb(w) {
   const m = /^\s*([\d.]+)(?:\s*[-–~]\s*([\d.]+))?\s*lbs?\s*$/i.exec(w || '');
   return m ? Number(m[2] || m[1]) : null;
@@ -157,10 +162,15 @@ function perSession(id) {
 }
 const sessionNo = (s, lang) => (s.kind === 'self' ? labels[lang].selfNo(s.n) : labels[lang].sessionNo(s.n));
 // a weight in lb (or an unknown unit) says more than the reps; bodyweight / no weight shows sets × reps
-const recordText = (h, lang) => `${sessionNo(h.s, lang)} ${h.weight && h.weight !== '自重' ? frag(h.weight, lang) : frag(`${h.sets} × ${h.reps}`, lang)}`;
+const recordText = (h, lang) => `${sessionNo(h.s, lang)} ${ASSIST.test(h.weight || '') ? `${assistText(h.weight, lang)} × ${frag(h.reps, lang)}` : h.weight && h.weight !== '自重' ? frag(h.weight, lang) : frag(`${h.sets} × ${h.reps}`, lang)}`;
 function bestText(id, lang) {
   const t = labels[lang], hs = history.get(id) || [];
   if (!hs.length) return t.noBest;
+  if (hs.every((h) => assistLb(h.weight) != null)) {
+    let a = null;
+    for (const h of hs) { const v = assistLb(h.weight); if (!a || v < a.v) a = { v, h }; }
+    return `${assistText(a.h.weight, lang)} × ${frag(a.h.reps, lang)} · ${sessionNo(a.h.s, lang)}`;
+  }
   let best = null;
   for (const h of hs) { const lb = weightLb(h.weight); if (lb != null && (!best || lb > best.lb)) best = { lb, h }; }
   if (best) return `${addKg(best.h.weight)} × ${frag(best.h.reps, lang)} · ${sessionNo(best.h.s, lang)}`;
@@ -282,7 +292,7 @@ function sessionPage(s, lang) {
         [t.equipment, equipment(ex, lang)],
         [t.setsReps, esc(frag(`${it.sets} × ${it.reps}`, lang))],
         [t.rest, esc(frag(b.rest || '', lang))],
-        [t.weight, esc(it.weight ? frag(addKg(it.weight), lang) : t.notRecorded)],
+        [t.weight, esc(it.weight ? showWeight(it.weight, lang) : t.notRecorded)],
         [t.history, records.length > 1 ? records.map((h) => (h.s === s ? `<b>${esc(recordText(h, lang))}</b>` : esc(recordText(h, lang)))).join(' · ') : ''],
         [t.note, esc(it.note ? en(it, 'note', lang, 'item.note_en', `${pagePath(s)} ${it.ex}`) : '')],
       ]));
@@ -306,7 +316,7 @@ function nextPage(lang) {
         [t.equipment, equipment(ex, lang)],
         [t.setsReps, esc(frag(`${it.sets} × ${it.reps}`, lang))],
         [t.rest, esc(f(b, 'rest') || '')],
-        [t.target, esc(addKg(f(it, 'target') || ''))],
+        [t.target, esc(f(it, 'target') ? showWeight(f(it, 'target'), lang) : '')],
         [t.how, esc(f(it, 'how') || '')],
         [t.history, perSession(it.ex).map((h) => esc(recordText(h, lang))).join(' · ')],
       ]));

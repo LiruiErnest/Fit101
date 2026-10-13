@@ -320,3 +320,24 @@ type Next = {
 ### 页面侧
 - `build.mjs` 输出的卡片 `<img>` 加 `loading="lazy"` 和 `decoding="async"`。
 - 动作库和课程页同时有十几到三十个动画，加“只在视口内播放”：build 在每页末尾放一小段脚本，用 IntersectionObserver 把离开视口超过一屏的 `<img>` 的 `src` 换成 `data-src` 保存的同名静态首帧（`assets/anim/<id>.poster.svg`，由生成器一并输出，无动画，≤ 15 KB），进入视口再换回动画。没有 IntersectionObserver 就不处理。
+
+## 15. 第 4 节课（2026-10-09）与两个新动作
+
+教练没上传第 4 节的表，内容按用户回忆记录（组数都是 3 组；没记的写“未记录”）。
+
+| id | 中文 | 英文 | 器械 | 视角 | 主要 | 辅助 |
+|---|---|---|---|---|---|---|
+| assisted-pull-up | 辅助引体向上 | Assisted Pull-Up | 辅助引体/双杠机（跪在踏板上，配重块抵消体重） | 正 | lats | biceps, rear-delt, upper-back, forearms |
+| assisted-dip | 辅助双杠臂屈伸 | Assisted Dip | 同一台机器的双杠，跪在踏板上 | 侧 | chest, triceps | front-delt |
+
+第 4 节 `status: "done"`，`title` “上肢 · 辅助引体与双杠”，`title_en` “Upper Body · Assisted Pull-Ups & Dips”，blocks：
+- 热身：items 空（“无具体记录”）。
+- 第一组：assisted-pull-up 3 × 10 · weight "辅助 85 lb" / note "配重 85 lb 抵消体重，双膝跪在踏板上" / note_en "85 lb of assistance, kneeling on the pad"；assisted-dip 3 × 未记录 · weight "辅助 75 lb" / note "配重 75 lb，同一台机器" / note_en "75 lb of assistance, same machine"。
+- 第二组：incline-db-press 3 × 未记录 · weight 省略 / note "重量未记录" / note_en "weight not recorded"。
+- 其他动作用户没记起，不要编造。
+
+重量显示：以“辅助 N lb”开头的值不换算成 kg 也不当作负重；动作库“最好成绩”对辅助动作取辅助最少的那次（数字越小越好），显示为“辅助 85 lb × 10”。
+
+动画：
+- assisted-pull-up：正面，人跪在机器的踏板上（膝盖着垫，小腿向后），双手宽握头顶的把手，身体整体上下。机器画立柱、顶部横梁和把手、下方的跪垫和配重片堆。
+- assisted-dip：侧视，人跪在踏板上，双手撑在身体两侧的双杠上，肘屈伸使身体上下，上身略前倾。机器同上，但把手在腰高两侧。

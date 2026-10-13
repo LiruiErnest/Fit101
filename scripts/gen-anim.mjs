@@ -314,13 +314,15 @@ const ISO_SIDE = { sh: 17, el: 17, ha: 16, hip: 9, kn: 10, an: 10 };
 const RAD = { UA: [9.2, 7], FA: [7, 5.2], TH: [12.6, 8.8], SH: [8.8, 5.8], FT: [5.2, 3.8], NK: [6.8, 6.8], head: 15.5, hand: 6, elbow: 6.8, knee: 8.4 };
 const TORSO = { depth: 13, side: 17, front: 21 }; // 躯干横截面半轴（3D 单位）
 
+// 深度排序里“高度”的权重：真实俯视下高处更近，但对上下相邻、前后错开的部件（双杠 vs 躯干）会排错，所以压低
+const DEPTH_H = 0.15;
 function mkProj(o) {
   const yaw = o.yaw ?? 34, pitch = o.pitch ?? 16, SC = o.scale ?? 1.1, LIFT = o.lift ?? 22;
   const cy = Math.cos(rad(yaw)), sy = Math.sin(rad(yaw)), cp = Math.cos(rad(pitch)), sp = Math.sin(rad(pitch));
   const V = ([x, y, z]) => [SC * (x * cy - z * sy), SC * (y * cp + (x * sy + z * cy) * sp)];
   const Pt = ([x, y, z]) => {
     const dx = x - PIV, xr = dx * cy - z * sy, zr = dx * sy + z * cy;
-    return [PIV + SC * xr, G - LIFT + SC * ((y - G) * cp + zr * sp), zr * cp + (G - y) * sp];
+    return [PIV + SC * xr, G - LIFT + SC * ((y - G) * cp + zr * sp), zr * cp + (G - y) * sp * DEPTH_H];
   };
   const W = [sy * cp, -sp, cy * cp]; // 指向观者
   return { V, Pt, W, SC };
@@ -757,14 +759,14 @@ function render(ex, samples, rig, STATIC) {
         faces.push({ pts: quad(o, f1v, f2v).map((p) => pj.Pt(p)), up, nz: dn });
       }
     }
-    return faces.map((f) => {
-      let fill;
-      if (style === 'metal') fill = C.eq;
-      else fill = f.up > 0.6 ? C.paper : f.nz > 0.7 ? C.ground : C.body;
-      const extra = style === 'metal' ? (f.up > 0.6 ? `<path d="M${f.pts.map(P2).join('L')}Z" fill="${C.white}" fill-opacity=".14"/>` : '') : '';
-      const stroke = style === 'metal' ? C.eq : C.dk;
-      return `<path d="M${f.pts.map(P2).join('L')}Z" fill="${fill}" stroke="${stroke}" stroke-width="1" stroke-linejoin="round"/>` + extra;
+    // 描边属性放在外层 <g>，每个面只写 d 和 fill（省体积）
+    const metal = style === 'metal';
+    const inner = faces.map((f) => {
+      const d = `M${f.pts.map(P2).join('L')}Z`;
+      if (metal) return `<path d="${d}"/>` + (f.up > 0.6 ? `<path d="${d}" fill="${C.white}" fill-opacity=".14"/>` : '');
+      return `<path d="${d}" fill="${f.up > 0.6 ? C.paper : f.nz > 0.7 ? C.ground : C.body}"/>`;
     }).join('');
+    return `<g ${metal ? `fill="${C.eq}" ` : ''}stroke="${metal ? C.eq : C.dk}" stroke-width="1" stroke-linejoin="round">${inner}</g>`;
   };
   const pt3 = (x, y, z) => pj.Pt([x, y, z]);
   const hasPulleyEx = eq.some((q) => q.type === 'pulley' || q.type === 'bar' || (q.type === 'column' && (q.pulleys || []).length));
@@ -827,7 +829,7 @@ function render(ex, samples, rig, STATIC) {
       case 'column': {
         const z0 = eqz(qi, front ? -6 : 0);
         const top = q.top ?? 20; let s = '';
-        if (!hasPulleyEx && !(q.pulleys || []).length) {
+        if (!q.metal && !hasPulleyEx && !(q.pulleys || []).length) {
           s += box([q.x - 6, top, z0 - 6], [12, 0, 0], [0, G - top, 0], [0, 0, 12]);
         } else {
           s += box([q.x - 17, G - 4, z0 - 17], [34, 0, 0], [0, 4, 0], [0, 0, 34], 'metal');
@@ -850,8 +852,47 @@ function render(ex, samples, rig, STATIC) {
           const dx = q.x2 - q.x1, dy = q.y2 - q.y1;
           const dep = q.layer === 'front' ? 16 : 34;
           s = box([q.x1, q.y1 - w / 2, z0 - dep / 2], [dx, dy, 0], [0, w, 0], [0, 0, dep]);
-        } else s = metalTube(pt3(q.x1, q.y1, z0), pt3(q.x2, q.y2, z0), w / 2);
-        push(s, -1e9);
+        } else s = metalTube(pt3(q.x1, q.y1, z0), pt3(q.x2, q.y2, iso.eq?.[qi]?.z2 ?? z0), w / 2);
+        // layer: "sort" = 按深度和人体一起排序（如双杠：近侧杠在躯干前、在手后）
+        push(s, q.layer === 'sort' ? mean([pt3(q.x1, q.y1, z0)[2], pt3(q.x2, q.y2, iso.eq?.[qi]?.z2 ?? z0)[2]]) : -1e9);
+        break;
+      }
+      case 'stack': {
+        // 配重片堆：n 片金属片（顶片略亮）+ 两根导杆
+        const z0 = eqz(qi, front ? -40 : 0), n = q.n ?? 8, w = q.w ?? 34, d = q.d ?? 20;
+        const ph = (G - 4 - q.y) / n;
+        let st = '';
+        for (const gx of [q.x - w / 2 + 5, q.x + w / 2 - 5]) st += metalTube(pt3(gx, q.top ?? q.y - 40, z0), pt3(gx, G, z0), 1.6);
+        st += box([q.x - w / 2 - 3, G - 4, z0 - d / 2 - 3], [w + 6, 0, 0], [0, 4, 0], [0, 0, d + 6], 'metal');
+        st += box([q.x - w / 2, q.y, z0 - d / 2], [w, 0, 0], [0, G - 4 - q.y, 0], [0, 0, d], 'metal');
+        // 片与片之间的缝：一条折线画在两个可见侧面上
+        let gaps = '';
+        const fx = dot3([1, 0, 0], pj.W) > 0 ? q.x + w / 2 : q.x - w / 2, fz = dot3([0, 0, 1], pj.W) > 0 ? z0 + d / 2 : z0 - d / 2;
+        for (let k = 1; k < n; k++) {
+          const y = q.y + k * ph;
+          gaps += `M${P2(pt3(q.x - w / 2, y, fz))}L${P2(pt3(fx, y, fz))}L${P2(pt3(fx, y, 2 * z0 - fz))}`;
+        }
+        st += `<path d="${gaps}" fill="none" stroke="${C.white}" stroke-opacity=".28" stroke-width=".9"/>`;
+        const pin = pt3(q.x, q.y + ph * 4.5, fz);
+        st += `<circle cx="${f1(pin[0])}" cy="${f1(pin[1])}" r="2" fill="${C.ground}"/>`;
+        push(st, -1e9);
+        break;
+      }
+      case 'kneePad': {
+        // 跟随膝盖上下移动的跪垫（辅助机踏板）：静态画在第 0 帧位置，整体平移
+        const [ja, jb] = q.at;
+        const mid3 = JJ.map((j) => mul3(add3(j.J[ja], j.J[jb]), 0.5));
+        const w = q.w ?? 40, d = q.d ?? 46, drop = q.drop ?? 8, th = q.h ?? 9;
+        const m0 = mid3[0];
+        const along = front ? [0, 0, 1] : [1, 0, 0], across = front ? [1, 0, 0] : [0, 0, 1];
+        const o = add3(add3(add3(m0, [0, drop, 0]), mul3(along, -d / 2 + (q.shift ?? 0))), mul3(across, -w / 2));
+        const travel = Math.max(...mid3.map((m) => m[1])) - Math.min(...mid3.map((m) => m[1]));
+        let kids = metalTube(pj.Pt(add3(m0, [0, drop + th, 0])), pj.Pt(add3(m0, [0, drop + th + 26 + travel, 0])), 3) + box(o, mul3(along, d), [0, th, 0], mul3(across, w));
+        const p0 = pj.Pt(m0);
+        const g = O.rigid(mid3.map((m) => { const p = pj.Pt(m); return { tx: p[0] - p0[0], ty: p[1] - p0[1] }; }), kids);
+        // 固定的套管
+        const sleeve = metalTube(pj.Pt([m0[0], Math.max(...mid3.map((m) => m[1])) + drop + th + 20, m0[2]]), pj.Pt([m0[0], G - 2, m0[2]]), 4.2);
+        push(sleeve + g, -1e9);
         break;
       }
       case 'anchor': {

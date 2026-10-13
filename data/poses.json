@@ -374,6 +374,46 @@
         { "root": [214, 173], "torso": 1 },
         { "root": [222, 174], "torso": 11 }
       ]
+    },
+    {
+      "id": "assisted-pull-up", "zh": "辅助引体向上", "en": "Assisted Pull-Up", "view": "front", "period": 3,
+      "iso": {"eq": {"0": {"z": -40}, "1": {"z": -40}, "2": {"z": -40}, "3": {"z": -40, "z2": 26}, "4": {"z": -40, "z2": 26}, "5": {"z": -64}}},
+      "muscles": { "primary": ["lats"], "secondary": ["biceps", "rear-delt", "upper-back", "forearms"] },
+      "hideMuscles": ["upper-back"],
+      "equipment": [
+        { "type": "column", "x": 108, "top": 24, "metal": true },
+        { "type": "column", "x": 292, "top": 24, "metal": true },
+        { "type": "line", "x1": 108, "y1": 30, "x2": 292, "y2": 30, "width": 7 },
+        { "type": "line", "x1": 138, "y1": 30, "x2": 138, "y2": 40, "width": 5 },
+        { "type": "line", "x1": 262, "y1": 30, "x2": 262, "y2": 40, "width": 5 },
+        { "type": "stack", "x": 200, "y": 160, "top": 120, "w": 36, "n": 9 },
+        { "type": "kneePad", "at": ["knL", "knR"], "w": 54, "d": 34, "drop": 9 },
+        { "type": "handle", "hands": ["haL", "haR"], "angle": 0 }
+      ],
+      "base": { "legL": [5, 0, 1, 0.3], "legR": [5, 0, 1, 0.3], "ik": { "handL": [138, 40], "handR": [262, 40] } },
+      "keyframes": [
+        { "root": [200, 168], "armL": [150, 10, 1], "armR": [150, 10, 1] },
+        { "root": [200, 128], "armL": [120, 105, 1], "armR": [120, 105, 1] }
+      ]
+    },
+    {
+      "id": "assisted-dip", "zh": "辅助双杠臂屈伸", "en": "Assisted Dip", "view": "side", "period": 3,
+      "iso": {"el": 22, "ha": 23, "kn": 8, "an": 8, "eq": {"3": {"z": -26, "z2": 26}, "4": {"z": 23}, "5": {"z": -23}}},
+      "muscles": { "primary": ["chest", "triceps"], "secondary": ["front-delt"] },
+      "equipment": [
+        { "type": "stack", "x": 92, "y": 160, "top": 120, "w": 34, "n": 9 },
+        { "type": "column", "x": 122, "top": 24, "metal": true },
+        { "type": "line", "x1": 122, "y1": 30, "x2": 196, "y2": 30, "width": 6 },
+        { "type": "line", "x1": 196, "y1": 30, "x2": 196, "y2": 30, "width": 5 },
+        { "type": "line", "x1": 122, "y1": 164, "x2": 238, "y2": 164, "width": 6, "layer": "sort" },
+        { "type": "line", "x1": 122, "y1": 164, "x2": 238, "y2": 164, "width": 6, "layer": "sort" },
+        { "type": "kneePad", "at": ["knN", "knF"], "w": 46, "d": 34, "drop": 9 }
+      ],
+      "base": { "legN": [0, 100], "legF": [0, 100], "ik": { "handN": [214, 160], "handF": [214, 160] } },
+      "keyframes": [
+        { "root": [200, 140], "torso": 6 },
+        { "root": [194, 172], "torso": 22 }
+      ]
     }
   ]
 }
