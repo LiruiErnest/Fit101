@@ -8,7 +8,8 @@ const MUSCLES = ['chest','front-delt','side-delt','rear-delt','biceps','triceps'
 const BLOCKS = ['热身','第一组','第二组','第三组','放松'];
 const KNOWN_IDS = ['step-up','bodyweight-squat','glute-bridge','band-pull-apart','goblet-squat','push-up','trx-row','db-rdl','cable-crossover','cable-fly','half-kneeling-press','farmer-carry','worlds-greatest-stretch','dead-bug','db-reverse-lunge','db-bench-press','pallof-press','tricep-pushdown','bicep-curl','physio-ball','standing-press','plank','weighted-step-up','band-walk',
   'incline-db-press','lat-pulldown','assisted-pull-up','assisted-dip',
-  'childs-pose','triceps-stretch','open-book','doorway-pec-stretch'];   // 第 3 节 + 第 12、15 节 + 第 13 节
+  'single-arm-db-row','tricep-oh-press','standing-hip-abduction','seated-shoulder-press',
+  'childs-pose','triceps-stretch','open-book','doorway-pec-stretch'];   // 第 3 节 + 第 12、15、16 节 + 第 13 节
 const errors = [];
 const load = f => { try { return JSON.parse(readFileSync(join(root, 'data', f), 'utf8')); } catch (e) { errors.push(`${f}: 不是合法 JSON：${e.message}`); return []; } };
 
@@ -37,6 +38,8 @@ sessions.forEach((s, i) => {
   if (s.status === 'planned' && (s.title || s.blocks)) errors.push(`第 ${s.n} 节 planned 不应有 title/blocks`);
   if (s.status === 'done' && !(s.title && s.blocks)) errors.push(`第 ${s.n} 节 done 缺 title/blocks`);
   if (s.kind !== undefined && !['trainer','self'].includes(s.kind)) errors.push(`第 ${s.n} 节 kind 只能是 trainer/self：${s.kind}`);
+  for (const k of ['note','note_en']) if (s[k] !== undefined && (typeof s[k] !== 'string' || !s[k])) errors.push(`第 ${s.n} 节 ${k} 应为非空字符串`);
+  if (s.note && !s.note_en) errors.push(`第 ${s.n} 节有 note 缺 note_en`);
   if (s.title && !s.title_en) errors.push(`第 ${s.n} 节有 title 缺 title_en`);
   for (const b of s.blocks ?? []) {
     if (!BLOCKS.includes(b.name)) errors.push(`第 ${s.n} 节 block 名不在约定内：${b.name}`);

@@ -341,3 +341,27 @@ type Next = {
 动画：
 - assisted-pull-up：正面，人跪在机器的踏板上（膝盖着垫，小腿向后），双手宽握头顶的把手，身体整体上下。机器画立柱、顶部横梁和把手、下方的跪垫和配重片堆。
 - assisted-dip：侧视，人跪在踏板上，双手撑在身体两侧的双杠上，肘屈伸使身体上下，上身略前倾。机器同上，但把手在腰高两侧。
+
+## 16. 第 5 节课（2026-10-12）与四个新动作
+
+教练表上日期写 10/5/2026，但第 3 节已是 10/5，第 5 节按课表是 2026-10-12 周一；按 10-12 记录，title 备注里说明表上日期。
+
+| id | 中文 | 英文（表上原名） | 器械 | 视角 | 主要 | 辅助 |
+|---|---|---|---|---|---|---|
+| single-arm-db-row | 单臂哑铃划船 | Single Arm DB Row | 哑铃 ×1 + 平凳（一手一膝撑凳） | 侧 | lats, upper-back | biceps, rear-delt, forearms |
+| tricep-oh-press | 哑铃过头臂屈伸 | Tricep OH Press | 哑铃 ×1，双手托住举过头 | 侧 | triceps | front-delt, abs |
+| standing-hip-abduction | 站姿髋外展 | Standing Hip Abduction | 自重或弹力带，单腿向外侧抬 | 正 | glute-med | glutes, obliques |
+| seated-shoulder-press | 坐姿哑铃推举 | Seated Shoulder Press | 哑铃 ×2 + 靠背凳 | 侧 | front-delt, side-delt | triceps, traps |
+
+第 5 节 `status: "done"`，title “全身循环 C”，title_en “Full Body Circuit C”，blocks：
+- 热身：goblet-squat 3 × 10-12 · 30 lb；push-up 3 × 10 · 自重；trx-row 3 × 10-15 · 自重
+- 第一组（休息 1 分钟）：db-bench-press 3 × 10-12 · 30 lb（表上名 DB Chest Press，note 注明）；single-arm-db-row 3 × 10 · 30 lb；tricep-oh-press 3 × 10-15 · 15 lb
+- 第二组：db-rdl 3 × 8 · 25 lb；db-reverse-lunge 3 × 8 · 25 lb；standing-hip-abduction 3 × 15 · 自重
+- 第三组：seated-shoulder-press 3 × 10 · 15 lb；farmer-carry 3 × 30 秒 · 40 lb；dead-bug 3 × 15 · 自重
+- 放松：items 空
+
+动画：
+- single-arm-db-row：侧视，人面朝右，左手左膝撑在平凳上，右腿站地，右手持哑铃从下垂拉到髋侧，肘贴身。
+- tricep-oh-press：侧视站姿，双手托一只哑铃举过头，肘指向前上方，前臂向后下落到脑后再伸直。
+- standing-hip-abduction：正面站姿，一手扶住立柱，另一侧腿伸直向外侧抬起约 30° 再放下，躯干保持直立。
+- seated-shoulder-press：侧视，坐在带靠背的凳上，双手持哑铃从肩上方推到头顶上方再回落。

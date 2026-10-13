@@ -281,6 +281,8 @@ function sessionPage(s, lang) {
     return page([`# ${sessionTitle(s, lang)}`, cssLink(up), `${s.date} · ${t.weekday[s.weekday] || s.weekday} · ${kindLabel} · ${t.planned}`, t.plannedText]);
   }
   const out = [`# ${sessionTitle(s, lang)}`, cssLink(up), `${s.date} · ${t.weekday[s.weekday] || s.weekday} · ${kindLabel} · ${t.exCount(uniqueCount(s.blocks))}`];
+  const sessionNote = lang === 'zh' ? s.note : (s.note_en || s.note);
+  if (sessionNote) out.push(`*${sessionNote}*`);
   for (const b of s.blocks || []) {
     out.push(`## ${t.block(b.name)}${b.rest ? ` · ${t.restIn(frag(b.rest, lang))}` : ''}`);
     if (!(b.items || []).length) { out.push(t.noDetail); continue; }

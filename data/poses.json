@@ -414,6 +414,58 @@
         { "root": [200, 140], "torso": 6 },
         { "root": [194, 172], "torso": 22 }
       ]
+    },
+    {
+      "id": "single-arm-db-row", "zh": "单臂哑铃划船", "en": "Single Arm DB Row", "view": "side", "period": 3,
+      "iso": {"eq": {"0": {"z": -14}}},
+      "muscles": { "primary": ["lats", "upper-back"], "secondary": ["biceps", "rear-delt", "forearms"] },
+      "muscleSide": "N",
+      "equipment": [
+        { "type": "bench", "x": 118, "y": 230, "w": 170 },
+        { "type": "dumbbell", "hands": ["haN"], "angle": 180 }
+      ],
+      "base": { "root": [190, 166], "torso": 78, "legF": [0, 90], "ik": { "footN": [200, 279], "handF": [262, 224] } },
+      "keyframes": [
+        { "armN": [80, 0] },
+        { "ik": { "handN": { "rel": "torso", "at": [10, -10] } } }
+      ]
+    },
+    {
+      "id": "tricep-oh-press", "zh": "哑铃过头臂屈伸", "en": "Tricep OH Press", "view": "side", "period": 3,
+      "iso": {"el": 11, "ha": 4, "bellAt": "mid"},
+      "muscles": { "primary": ["triceps"], "secondary": ["front-delt", "abs"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN"], "angle": 90 } ],
+      "base": { "root": [200, 168], "torso": 2, "ik": { "footN": [205, 279], "footF": [205, 279] } },
+      "keyframes": [
+        { "armN": [176, 2], "armF": [176, 2] },
+        { "armN": [160, 145], "armF": [160, 145] }
+      ]
+    },
+    {
+      "id": "standing-hip-abduction", "zh": "站姿髋外展", "en": "Standing Hip Abduction", "view": "front", "period": 2.6,
+      "iso": {"eq": {"0": {"z": 52}}},
+      "muscles": { "primary": ["glute-med"], "secondary": ["glutes", "obliques"] },
+      "equipment": [ { "type": "column", "x": 133, "top": 70 } ],
+      "base": { "root": [200, 165], "armL": [40, 70, 1], "armR": [8, 10, 1], "legL": [3, 0, 1], "ik": { "handL": [139, 148] } },
+      "keyframes": [
+        { "legR": [3, 0, 1] },
+        { "legR": [32, 0, 1] }
+      ]
+    },
+    {
+      "id": "seated-shoulder-press", "zh": "坐姿哑铃推举", "en": "Seated Shoulder Press", "view": "side", "period": 3,
+      "iso": {"el": 40, "ha": 34, "kn": 12, "an": 12},
+      "muscles": { "primary": ["front-delt", "side-delt"], "secondary": ["triceps", "traps"] },
+      "equipment": [
+        { "type": "bench", "x": 160, "y": 232, "w": 84, "back": 92 },
+        { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 }
+      ],
+      "base": { "root": [188, 223], "torso": 0, "legN": [90, 90], "legF": [90, 90] },
+      "keyframes": [
+        { "ik": { "elbowN": [195, 205], "elbowF": [195, 205], "forearmWorld": 180 } },
+        { "ik": { "elbowN": [200, 180], "elbowF": [200, 180], "forearmWorld": 180 } },
+        { "ik": { "handN": { "rel": "torso", "at": [4, -140] }, "handF": { "rel": "torso", "at": [4, -140] } } }
+      ]
     }
   ]
 }

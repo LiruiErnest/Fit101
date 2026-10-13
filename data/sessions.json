@@ -413,8 +413,113 @@
     "n": 5,
     "date": "2026-10-12",
     "weekday": "周一",
-    "status": "planned",
-    "kind": "trainer"
+    "status": "done",
+    "kind": "trainer",
+    "title": "全身循环 C",
+    "title_en": "Full Body Circuit C",
+    "note": "教练表上日期写 10/5，按课表应为 10/12",
+    "note_en": "Sheet dated 10/5; by schedule this is 10/12",
+    "blocks": [
+      {
+        "name": "热身",
+        "items": [
+          {
+            "ex": "goblet-squat",
+            "sets": "3",
+            "reps": "10-12",
+            "weight": "30 lb"
+          },
+          {
+            "ex": "push-up",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "trx-row",
+            "sets": "3",
+            "reps": "10-15",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第一组",
+        "rest": "1 分钟",
+        "items": [
+          {
+            "ex": "db-bench-press",
+            "sets": "3",
+            "reps": "10-12",
+            "weight": "30 lb",
+            "note": "表上名 DB Chest Press",
+            "note_en": "Listed as DB Chest Press on the sheet"
+          },
+          {
+            "ex": "single-arm-db-row",
+            "sets": "3",
+            "reps": "10",
+            "weight": "30 lb"
+          },
+          {
+            "ex": "tricep-oh-press",
+            "sets": "3",
+            "reps": "10-15",
+            "weight": "15 lb"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "items": [
+          {
+            "ex": "db-rdl",
+            "sets": "3",
+            "reps": "8",
+            "weight": "25 lb"
+          },
+          {
+            "ex": "db-reverse-lunge",
+            "sets": "3",
+            "reps": "8",
+            "weight": "25 lb"
+          },
+          {
+            "ex": "standing-hip-abduction",
+            "sets": "3",
+            "reps": "15",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "items": [
+          {
+            "ex": "seated-shoulder-press",
+            "sets": "3",
+            "reps": "10",
+            "weight": "15 lb"
+          },
+          {
+            "ex": "farmer-carry",
+            "sets": "3",
+            "reps": "30 秒",
+            "weight": "40 lb"
+          },
+          {
+            "ex": "dead-bug",
+            "sets": "3",
+            "reps": "15",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "放松",
+        "items": []
+      }
+    ]
   },
   {
     "n": 6,

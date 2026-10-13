@@ -808,6 +808,11 @@ function render(ex, samples, rig, STATIC) {
         for (const lx of [q.x + 18, q.x + q.w - 18]) {
           s += metalTube(pj.Pt([lx, q.y + 10, z0]), pj.Pt([lx, G, z0 - 15]), 2.6) + metalTube(pj.Pt([lx, q.y + 10, z0]), pj.Pt([lx, G, z0 + 15]), 2.6) + metalTube(pj.Pt([lx, G - 1, z0 - 17]), pj.Pt([lx, G - 1, z0 + 17]), 2.4);
         }
+        // back：竖起的靠背高度（坐姿推举用）——两根金属撑 + 竖直靠垫
+        if (q.back) {
+          for (const zz of [z0 - 9, z0 + 9]) s += metalTube(pt3(q.x + 6, q.y + 6, zz), pt3(q.x + 6, q.y - q.back + 12, zz), 2.4);
+          s += box([q.x - 2, q.y - q.back, z0 - 15], [10, 0, 0], [0, q.back, 0], [0, 0, 30]);
+        }
         s += box([q.x, q.y, z0 - 16], [q.w, 0, 0], [0, 11, 0], [0, 0, 32]);
         push(s, -1e9);
         break;
