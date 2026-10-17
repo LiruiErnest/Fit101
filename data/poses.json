@@ -582,6 +582,22 @@
         { "rot": 74, "armR": [74, 90, 1] },
         { "rot": 77, "armR": [77, 90, 1] }
       ]
+    },
+    {
+      "id": "band-external-rotation", "zh": "弹力带肩外旋", "en": "Band External Rotation", "view": "front", "period": 3,
+      "iso": {"eq": {"0": {"z": 0}}},
+      "muscles": { "primary": ["rear-delt"], "secondary": ["upper-back"] },
+      "hideMuscles": ["upper-back"],
+      "muscleSide": "R",
+      "equipment": [
+        { "type": "column", "x": 92, "top": 70 },
+        { "type": "band", "from": [98, 196], "to": "haR", "width": 5, "restLen": 120 }
+      ],
+      "base": { "root": [200, 165], "armL": [6, 8, 1], "armR": [0, 0, 1], "legL": [3, 0, 1], "legR": [3, 0, 1] },
+      "keyframes": [
+        { "props": { "erR": 155 } },
+        { "props": { "erR": 15 } }
+      ]
     }
   ]
 }

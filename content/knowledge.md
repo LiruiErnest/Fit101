@@ -10,6 +10,7 @@ This section explains where these numbers come from, which ones still apply as-i
   - Calories and gram amounts: the original plan deliberately set calories low for fat loss. At maintenance, work out your own numbers with the method in section 2, "Working out your own numbers at maintenance".
   - Meal order: the original plan trains before dinner; here the order follows "train before lunch" in section 3; if you train at a different time, see Q&A 13.
   - What to eat, takeaway, snacks, cardio, strength-training principles, Q&A: these do not depend on the body-weight goal, so use them as written.
+- The course this page draws on has been through a scientific review; where it conflicts with the review, the review wins (the changed points are marked in the text).
 
 ### What the original plan says about the weight loss itself
 
@@ -74,7 +75,7 @@ The goal is to hold weight with no calorie deficit; cardio is not counted for no
 1. Work out basal metabolism a with the Mifflin-St Jeor equation.
 2. b = a ÷ 0.7.
 3. Take strength-training expenditure c as the midpoint of 200 to 300 kcal, 250 (women: 150).
-4. Training-day balance calories = b + c; rest-day balance calories = b. Maintenance means eating at balance calories, without the fat-loss factor of 0.8.
+4. Training-day balance calories = b + c; rest-day balance calories = b. Maintenance means eating at balance calories, or 5 to 10% above it (if you want to build muscle slowly), without the fat-loss factor of 0.8 or any other reduction; then adjust by the two-week weight trend.
 5. Split the macronutrients as below.
 
 Example person (male, 70 kg, 175 cm, 30 years old):
@@ -93,19 +94,20 @@ Split the macronutrients like this:
 |---|---|---|---|
 | Protein | 1.6 to 2.0 g/kg × body weight | 110 to 140 g | 110 to 140 g |
 | Fat | about the same as the original plan, 60 to 70 g; still eat by the "recommended pattern" in section 4, no detailed counting | 60 to 70 g | 60 to 70 g |
-| Carbs | what is left of balance calories after protein and fat (see below) | about 300 g (about 4.3 g/kg) | about 250 g (about 3.6 g/kg) |
+| Carbs | what is left of balance calories after protein and fat (see below) | about 400 g (about 5.7 g/kg) | about 340 g (about 4.9 g/kg) |
 
 How the carbs are worked out:
 
-- The original plan pointed out two things: people unconsciously eat about 10 to 20% more when eating measured amounts, and the protein and fat in staple foods, and the carbs in milk, vegetables and seasonings, are not counted. So, as in the original plan, the numbers on paper are lower than real intake. Here the midpoint, 15%, is taken as "the uncounted part"; this is not a calorie deficit.
-- Carbs = (balance calories × 0.85 − protein g × 4 − fat g × 9) ÷ 4.
-- Example training day: 2600 × 0.85 ≈ 2210 kcal; subtract protein 112 g (about 450 kcal) and fat 60 g (540 kcal), leaving about 1220 kcal ÷ 4 ≈ 305 g, so about 300 g.
-- Example rest day: 2350 × 0.85 ≈ 2000 kcal; subtract the same roughly 990 kcal, leaving about 1010 kcal ÷ 4 ≈ 250 g.
+- Carbs = (balance calories − protein g × 4 − fat g × 9) ÷ 4.
+- Example training day: 2600 kcal minus protein 112 g (about 450 kcal) and fat 60 g (540 kcal) leaves about 1610 kcal ÷ 4 ≈ 400 g.
+- Example rest day: 2350 kcal minus the same roughly 990 kcal leaves about 1360 kcal ÷ 4 ≈ 340 g.
+- If you want to build muscle slowly and eat 5 to 10% above balance, put the extra calories (about 130 to 260 kcal on the example training day) into carbs, about 30 to 65 g more.
+- Review correction: an earlier version followed the original plan's reasoning ("people eat more than they log, and some calories are not counted") and multiplied balance calories by 0.85 before working out carbs. The review found that maintenance does not need this reduction; eating at balance calories and calibrating with the weight trend is more reliable.
 - If you eat more protein, the extra protein has the same calories as the same grams of carbs, so eat that many grams less carbs.
 
 How to check and fine-tune:
 
-- Look at average weight over 1 to 2 weeks (see section 7).
+- Look at the two-week average weight trend (see section 7) and adjust by the trend, not by single days.
 - If the two-week average drops by more than 0.5 kg: add about 25 to 50 g of carbs a day (about 80 to 160 g of cooked rice).
 - If the two-week average rises by more than 0.5 kg: cut about 25 g of carbs a day.
 - If you add regular cardio, convert its expenditure into food using the table in section 8 and add it on top.
@@ -119,7 +121,7 @@ This section answers "on a training day, which meal comes when and how much goes
 1. Breakfast.
 2. Pre-workout snack (optional): 20 to 30 g of carbs before training.
 3. Training 11:00 to 12:00.
-4. Lunch = post-workout meal: the largest meal of the day; eat carbs and protein first, vegetables little and last.
+4. Lunch = post-workout meal: the largest meal of the day; staple food + 30 to 50 g of protein, vegetables as usual, in any order.
 5. Dinner = other meal.
 6. Snack / late-night snack (can be skipped).
 
@@ -201,7 +203,8 @@ The original plan's rules:
 | 蛋白粉 protein powder | 40 g |
 
 - Ideally start eating within half an hour after training.
-- Eat carbs and protein first; vegetables little and last, to avoid blunting insulin.
+- Staple food + 30 to 50 g of protein, vegetables as usual, in any order.
+- Review correction: the original plan says to eat carbs and protein first after training and vegetables little and last, so as not to blunt insulin; the review found this unnecessary.
 - When no proper meal is available, portable fast carbs + protein powder will do.
 
 #### Dinner = other meal
@@ -283,7 +286,7 @@ Generally at least 10% fat; not for everyday eating:
 ### Vegetables: no limit
 
 - Vegetables have a very low carb rate; no need to weigh them; try to eat some every day.
-- At most meals eat vegetables first and plenty of them, carbs last; this blunts insulin and helps fat loss. The post-workout meal after strength training is the opposite: carbs and protein first, vegetables little and last.
+- At most meals eat vegetables first and plenty of them, carbs last; this blunts insulin and helps fat loss. The original plan says the post-workout meal is the opposite, with vegetables little and last; the review found this unnecessary, so eat vegetables as usual at the post-workout meal, in any order (see section 3).
 - These are not vegetables but carb staples (carb rate in brackets): 红薯 sweet potato (20%), 土豆 potato (18%), 玉米 corn (18%), 山药 Chinese yam (13%), 芋头 taro (13%).
 
 ### Fruit counts as carbs
@@ -298,6 +301,7 @@ Fruit is essentially sugar water, and sugar is a form of carbohydrate, so count 
 | Watermelon, honeydew melon, strawberries | 7% carb |
 
 - How to swap: 10 g of carbs from fruit = 30 g less cooked rice.
+- Review correction: eat 200 to 350 g of fruit a day and one serving of whole grains a day (oats, brown rice, wholemeal bread, etc.); just count them as carbs in place of the same amount of staple food. They are not "only occasionally" foods.
 
 ### How to eat fat
 
@@ -308,6 +312,7 @@ Do not count fat in detail; eat it in the following way. The key point is that t
 - Fat shortfall 1: no yolks and milk at breakfast gives about 10 to 20 g less fat than the recommended pattern; make it up over the day with 20 g of nuts or 3 egg yolks.
 - Fat shortfall 2: low-oil or no-oil dishes at lunch and dinner (卤肉 soy-braised meat, 炖肉 stewed meat, plain stir-fries, clear stews, "light meals", boiled dishes) give about 20 g less fat than the recommended pattern; make it up over the day with 30 g of nuts or 4 egg yolks.
 - Basically no fat in the pre-workout snack.
+- Review correction: eat 15 to 30 g of nuts a day; just count them in the fat allowance. They are not "only occasionally" foods.
 
 ## Takeaway, canteens and eating out
 

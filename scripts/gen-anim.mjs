@@ -450,6 +450,14 @@ function joints3D(ex, rig, P, iso) {
     const a = J['an' + s];
     J['heel' + s] = [a[0], a[1] + 3, a[2] - 4]; J['toe' + s] = [a[0], a[1] + 3, a[2] + 16];
   }
+  // props.erL / erR：肩外旋。上臂贴身下垂、肘屈 90°，前臂在水平面里转：角度 0 = 指向画面右侧，90 = 朝镜头，180 = 指向画面左侧
+  for (const s of ['L', 'R']) {
+    const phi = P['$er' + s];
+    if (phi === undefined) continue;
+    const sh = J['sh' + s], el = [sh[0], sh[1] + D.UA, 4];
+    J['el' + s] = el;
+    J['ha' + s] = [el[0] + D.FA * Math.cos(rad(phi)), el[1], el[2] + D.FA * Math.sin(rad(phi))];
+  }
   const M = nodeM(rig, P, 'torso'); const l = Math.hypot(M[0], M[1]);
   return { J, front: () => [0, 0, 1], torsoFront: [0, 0, 1], torsoLat: [M[0] / l, M[1] / l, 0], z3: (spec, zz) => { const p = pt(spec); return [p[0], p[1], zz]; } };
 }
@@ -684,6 +692,7 @@ function render(ex, samples, rig, STATIC) {
         if (!front) return w * sg;
         if (mid === 'adductors') return inner * (0.25 + 0.55 * (w + 1) / 2);
         if (mid === 'side-delt') return -inner * (0.2 + 0.6 * Math.abs(w));
+        if (mid === 'rear-delt') return -inner * (0.45 + 0.5 * Math.abs(w)); // 正面看不到肩后侧：画在肩外缘偏后
         if (/delt/.test(mid)) return w * 0.85;
         return w * 0.5;
       };

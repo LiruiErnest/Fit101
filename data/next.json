@@ -2,21 +2,23 @@
   "week": "2026-10-19",
   "title": "本周自练 · 教练休假周",
   "title_en": "This Week · Trainer Away",
-  "intro": "教练这周不在，自己练 3 次：周一推 + 核心，周三拉 + 腿，周五肩臂 + 核心。全部动作都是前六节课学过的。每次约 55 分钟，组间休息 60 到 90 秒，大部分组留 2 次余力。",
-  "intro_en": "The trainer is away this week, so three self sessions: Monday push + core, Wednesday pull + legs, Friday shoulders, arms + core. Every exercise was learned in the first six sessions. About 55 minutes each, 60 to 90 seconds between sets, leave 2 reps in reserve on most sets.",
+  "intro": "教练这周不在，自己练 3 次：周一推 + 核心，周三拉 + 腿，周五肩臂 + 核心。除了热身里的弹力带肩外旋，全部动作都是前六节课学过的。每次约 55 分钟，组间休息 60 到 90 秒，大部分组留 2 次余力。",
+  "intro_en": "The trainer is away this week, so three self sessions: Monday push + core, Wednesday pull + legs, Friday shoulders, arms + core. Apart from the band external rotation in the warm-up, every exercise was learned in the first six sessions. About 55 minutes each, 60 to 90 seconds between sets, leave 2 reps in reserve on most sets.",
   "rationale": [
-    "上肢为主：三次里有两次半是推、拉、肩臂，腿只在周三集中练一次，核心每次都有。",
+    "上肢为主，胸一周练两次：周一 10 组（卧推、双杠、飞鸟），周五 5 组（上斜卧推、俯卧撑）。腿只在周三集中练一次，核心每次都有。",
     "第 6 节后胸肌酸痛明显、三头和背的酸痛比第 4 节轻，说明胸的刺激到位、三头和背已经在适应。所以本周胸保持量，拉的强度再往上走一点。",
     "辅助引体和双杠从 70 lb 继续往下减 5 lb；卧推从 20 lb 起，最后一组试 25 lb。",
     "周三和周日有羽毛球，所以腿放周三中午、量适中，周五不练腿。",
-    "三次之间各隔一天，推和拉分开，肩臂放最后一天，肌肉有恢复时间。"
+    "三次之间各隔一天，推和拉分开，肩臂放最后一天，肌肉有恢复时间。",
+    "周一、周五热身里各加 2 组弹力带肩外旋，很轻，保护肩袖。这是唯一的新动作，简单到看一眼就会。"
   ],
   "rationale_en": [
-    "Upper body first: two and a half of the three sessions are push, pull and shoulders/arms; legs get one focused block on Wednesday; core appears every day.",
+    "Upper body first, chest twice a week: 10 sets Monday (bench, dips, flyes) and 5 Friday (incline press, push-ups). Legs get one focused block on Wednesday; core appears every day.",
     "After session 6 the chest was clearly sore while triceps and back were less sore than after session 4: chest stimulus is landing, triceps and back are adapting. So chest volume holds this week and pulling intensity edges up.",
     "Assisted pull-ups and dips drop another 5 lb from 70; the bench starts at 20 lb with 25 lb on the last set.",
     "Badminton falls on Wednesday and Sunday, so legs go in Wednesday's noon session at moderate volume and Friday has none.",
-    "A day between each session, push and pull on separate days, shoulders and arms last, so each muscle gets recovery time."
+    "A day between each session, push and pull on separate days, shoulders and arms last, so each muscle gets recovery time.",
+    "Monday and Friday warm-ups each add 2 light sets of band external rotation to protect the rotator cuff. It is the only new move and trivial to learn."
   ],
   "after": {
     "items": [
@@ -42,8 +44,8 @@
       "duration_en": "about 55 minutes",
       "title": "推 + 核心 · 胸优先",
       "title_en": "Push + Core · Chest Focus",
-      "goal": "卧推、上斜卧推、辅助双杠、哑铃飞鸟共 13 组推，然后核心三个动作。",
-      "goal_en": "13 pressing sets across bench, incline, assisted dips and dumbbell flyes, then three core moves.",
+      "goal": "卧推、辅助双杠、哑铃飞鸟共 10 组胸，然后核心三个动作。上斜卧推挪到周五，让胸一周练两次。",
+      "goal_en": "10 chest sets across bench, assisted dips and dumbbell flyes, then three core moves. Incline press moves to Friday so the chest gets two sessions a week.",
       "blocks": [
         {
           "name": "热身",
@@ -51,6 +53,15 @@
           "rest": "不休息，约 7 分钟",
           "rest_en": "no rest, about 7 minutes",
           "items": [
+            {
+              "ex": "band-external-rotation",
+              "sets": "2",
+              "reps": "15 每侧",
+              "target": "最轻的弹力带",
+              "target_en": "lightest band",
+              "how": "肘贴肋，只转前臂，很轻就对了。",
+              "how_en": "Elbow pinned to the ribs, only the forearm turns; it should feel light."
+            },
             {
               "ex": "band-pull-apart",
               "sets": "2",
@@ -79,8 +90,8 @@
         {
           "name": "第一组 · 胸",
           "name_en": "Block 1 · Chest",
-          "rest": "90 秒",
-          "rest_en": "90 seconds",
+          "rest": "2 分钟",
+          "rest_en": "2 minutes",
           "items": [
             {
               "ex": "db-bench-press",
@@ -90,15 +101,6 @@
               "target_en": "20 lb per hand, 25 lb on set 4",
               "how": "第 6 节 20 lb × 10 × 4。前 3 组 20 lb，第 3 组还能多做 3 次就第 4 组换 25 lb。",
               "how_en": "Session 6 was 4 × 10 at 20 lb. First three sets at 20 lb; if set 3 leaves 3 reps in the tank, take 25 lb for set 4."
-            },
-            {
-              "ex": "incline-db-press",
-              "sets": "3",
-              "reps": "10",
-              "target": "每手 15 lb",
-              "target_en": "15 lb per hand",
-              "how": "第 4 节做过 15 lb × 8。凳子 30 度，推到锁骨上方。10 个轻松就下次 20 lb。",
-              "how_en": "Session 4 was 15 lb × 8. Bench at 30 degrees, press over the collarbones. If 10 is easy, 20 lb next time."
             }
           ]
         },
@@ -384,8 +386,8 @@
       "duration_en": "about 55 minutes",
       "title": "肩臂 + 核心",
       "title_en": "Shoulders, Arms + Core",
-      "goal": "推举和弯举推举练肩臂，TRX 划船和过头臂屈伸补平衡，负重行走和 Pallof 推练核心，最后俯卧撑测试。",
-      "goal_en": "Presses and curl-to-press for shoulders and arms, TRX rows and overhead triceps for balance, loaded carries and Pallof press for core, ending with the push-up test.",
+      "goal": "上斜卧推给胸第二次刺激，推举和弯举推举练肩臂，TRX 划船和过头臂屈伸补平衡，负重行走和 Pallof 推练核心，最后俯卧撑测试。",
+      "goal_en": "Incline press gives the chest its second hit of the week; presses and curl-to-press for shoulders and arms, TRX rows and overhead triceps for balance, loaded carries and Pallof press for core, ending with the push-up test.",
       "blocks": [
         {
           "name": "热身",
@@ -393,6 +395,13 @@
           "rest": "不休息，约 6 分钟",
           "rest_en": "no rest, about 6 minutes",
           "items": [
+            {
+              "ex": "band-external-rotation",
+              "sets": "2",
+              "reps": "15 每侧",
+              "target": "最轻的弹力带",
+              "target_en": "lightest band"
+            },
             {
               "ex": "band-pull-apart",
               "sets": "2",
@@ -410,11 +419,20 @@
           ]
         },
         {
-          "name": "第一组 · 肩",
-          "name_en": "Block 1 · Shoulders",
-          "rest": "90 秒",
-          "rest_en": "90 seconds",
+          "name": "第一组 · 上胸 + 肩",
+          "name_en": "Block 1 · Upper Chest + Shoulders",
+          "rest": "2 分钟",
+          "rest_en": "2 minutes",
           "items": [
+            {
+              "ex": "incline-db-press",
+              "sets": "3",
+              "reps": "10",
+              "target": "每手 15 lb",
+              "target_en": "15 lb per hand",
+              "how": "第 4 节 15 lb × 8。凳子 15 到 30 度，大臂和躯干约 45 到 60 度，别水平开肘。10 个轻松就下次 20 lb。",
+              "how_en": "Session 4 was 15 lb × 8. Bench at 15 to 30 degrees, upper arms about 45 to 60 degrees from the torso, no flaring to 90. If 10 is easy, 20 lb next time."
+            },
             {
               "ex": "seated-shoulder-press",
               "sets": "3",
