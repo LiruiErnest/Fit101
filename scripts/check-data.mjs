@@ -5,12 +5,13 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MUSCLES = ['chest','front-delt','side-delt','rear-delt','biceps','triceps','forearms','abs','obliques','hip-flexors','quads','adductors','calves','traps','upper-back','lats','lower-back','glutes','glute-med','hamstrings'];
-const BLOCKS = ['热身','第一组','第二组','第三组','放松'];
+const BLOCKS = ['热身','第一组','第二组','第三组','第四组','放松'];
 const KNOWN_IDS = ['step-up','bodyweight-squat','glute-bridge','band-pull-apart','goblet-squat','push-up','trx-row','db-rdl','cable-crossover','cable-fly','half-kneeling-press','farmer-carry','worlds-greatest-stretch','dead-bug','db-reverse-lunge','db-bench-press','pallof-press','tricep-pushdown','bicep-curl','physio-ball','standing-press','plank','weighted-step-up','band-walk',
   'incline-db-press','lat-pulldown','assisted-pull-up','assisted-dip',
   'single-arm-db-row','tricep-oh-press','seated-shoulder-press',
   'db-fly','side-lying-hip-abduction','ball-wall-squat',
-  'childs-pose','triceps-stretch','open-book','doorway-pec-stretch'];   // 第 3 节 + 第 12、15、16、17 节 + 第 13 节
+  'single-arm-farmer-carry','leg-lift','elevated-push-up','battle-ropes',
+  'childs-pose','triceps-stretch','open-book','doorway-pec-stretch'];   // 第 3 节 + 第 12、15、16、17、18 节 + 第 13 节
 const errors = [];
 const load = f => { try { return JSON.parse(readFileSync(join(root, 'data', f), 'utf8')); } catch (e) { errors.push(`${f}: 不是合法 JSON：${e.message}`); return []; } };
 

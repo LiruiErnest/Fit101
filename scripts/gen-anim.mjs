@@ -913,6 +913,28 @@ function render(ex, samples, rig, STATIC) {
         push(sleeve + g, -1e9);
         break;
       }
+      case 'rope': {
+        // 战绳：从手到地面锚点的正弦波，波形随时间向锚点移动（每帧一条平滑 path，d 插值）
+        const z0 = eqz(qi, 0), A3 = pointAt(q.from, qi, z0), B = P3(q.to, z0);
+        const nP = 11, amp = q.amp ?? 11, waves = q.waves ?? 2.5, speed = q.speed ?? 2, ph = rad(q.phase ?? 0);
+        const up = iso.top ? [0, 0, -1] : [0, -1, 0];
+        const ds = Ps.map((P, i) => {
+          const t = Ps.length > 1 ? i / (Ps.length - 1) : 0;
+          const pts = [];
+          for (let k = 0; k <= nP; k++) {
+            const u = k / nP;
+            const env = Math.sin(Math.PI * Math.min(1, u * 1.15)) * (1 - u * 0.35);
+            const off = amp * env * Math.sin(2 * Math.PI * (waves * u - speed * t) + ph);
+            pts.push(pj.Pt(add3(add3(mul3(A3[i], 1 - u), mul3(B, u)), mul3(up, off))));
+          }
+          return smooth(pts, false);
+        });
+        const dep = mean(A3.map((a) => pj.Pt(a)[2])) - 1;
+        let svgR = O.attrs('path', { fill: 'none', stroke: C.eq, 'stroke-width': q.width ?? 4.4, 'stroke-linecap': 'round' }, { d: ds });
+        svgR += O.attrs('path', { fill: 'none', stroke: C.white, 'stroke-opacity': '.2', 'stroke-width': 1.2 }, { d: ds });
+        push(svgR, L ? dep : dep);
+        break;
+      }
       case 'wall': {
         // 墙：竖直厚板（x 为墙面，向后加厚 thick），z 方向宽 2*half
         const z0 = eqz(qi, 0), th = q.thick ?? 12, half = q.half ?? 70, top = q.top ?? 30;

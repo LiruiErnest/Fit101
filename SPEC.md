@@ -380,3 +380,29 @@ type Next = {
 - 第 5 节：第一组第一条改为 db-fly 3 × 10-12 · 15 lb，note “表上写 DB Chest Press 30 lb，实际是哑铃飞鸟 15 lb”，note_en 对应；第二组第三条改为 side-lying-hip-abduction 3 × 15 · 自重，note “表上写 Standing Hip Abduction，实际是卧姿”。
 - 第 4 节：第二组加 ball-wall-squat 3 × 未记录 · 自重，note “背靠瑞士球的马步，时长未记录”。
 - 动画：db-fly 侧视仰卧在平凳上（同 db-bench-press 的凳子），双臂从张开到合拢画弧，哑铃手柄朝身体方向；side-lying-hip-abduction 俯视垫子，人侧卧，上腿抬起放下；ball-wall-squat 侧视，身后一面墙（竖直厚板）和夹在腰后的球，人沿球下蹲再起身。
+
+## 18. 第 4 节课的正式版（教练 2026-10-17 补传，用户已确认）
+
+第 4 节（2026-10-09）按教练表重写，以下几点以用户确认为准：辅助引体是 85 lb（表写 75）；Wall Sit 就是瑞士球靠墙马步；Incline Bench Press 是上斜哑铃卧推每手 15 lb。
+
+新动作：
+| id | 中文 | 英文（表上原名） | 器械 | 视角 | 主要 | 辅助 | 描述 |
+|---|---|---|---|---|---|---|---|
+| single-arm-farmer-carry | 单臂农夫行走 | Single Arm Farmer Carry | 哑铃 ×1 | 侧 | obliques, forearms | traps, abs | 一手提哑铃行走，躯干保持直立不向负重侧倾 |
+| leg-lift | 仰卧举腿 | Leg Lifts - Lower Core | 自重，仰卧 | 侧 | abs, hip-flexors | obliques | 仰卧，双腿伸直从地面抬到垂直再慢放，下背贴地 |
+| elevated-push-up | 上斜俯卧撑 | Elevated Push Up | 自重 + 平凳（手撑凳上） | 侧 | chest, triceps | front-delt, abs | 手撑在凳子上，身体成直线做俯卧撑，比地面俯卧撑轻 |
+| battle-ropes | 战绳波浪 | Battle Ropes - Waves | 战绳 | 侧 | front-delt, forearms | abs, upper-back | 半蹲，双手各握一根绳交替上下甩出波浪 |
+
+第 4 节 title “上肢推拉 + 核心”，title_en “Upper Body Push-Pull + Core”，date 2026-10-12 不变为 2026-10-09，blocks：
+- 热身：band-pull-apart 1 × 10 · 自重
+- 第一组：assisted-pull-up 3 × 10 · 辅助 85 lb（note “表上写 75，按本人记忆为 85”/ note_en "Sheet says 75; 85 per the user's recollection"）；assisted-dip 3 × 10 · 辅助 75 lb
+- 第二组：incline-db-press 3 × 8 · 15 lb（note “表上写 Incline Bench Press”）；farmer-carry 3 × 未记录 · 30 lb
+- 第三组：plank 3 × 45-60 秒 · 自重；single-arm-farmer-carry 3 × 未记录（weight 省略）；leg-lift 3 × 10 · 自重
+- 第四组：elevated-push-up 2 × 10 · 自重；battle-ropes 2 × 30 秒；ball-wall-squat 2 × 30 秒 · 自重（note “表上写 Wall Sit”）
+- 删除原来按回忆写的顶层 note（如有）。block 名“第四组”要加进 labels（en “Block 4”）。
+
+动画：
+- single-arm-farmer-carry：同 farmer-carry 的步态，但只有近侧手持哑铃，远侧手自然摆。
+- leg-lift：侧视仰卧（同 dead-bug 的朝向），双腿并拢伸直从地面抬到竖直再放下，手放身体两侧。
+- elevated-push-up：侧视，双手撑在平凳上，身体斜线，做俯卧撑。
+- battle-ropes：侧视半蹲，身前地面有锚点，两根绳子从手到锚点画成正弦波，手上下交替，波形随时间移动（用几个关键帧的 path 插值或两条绳分别相位相反）。

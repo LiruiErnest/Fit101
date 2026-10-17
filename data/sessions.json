@@ -367,12 +367,19 @@
     "weekday": "周五",
     "status": "done",
     "kind": "trainer",
-    "title": "上肢 · 辅助引体与双杠",
-    "title_en": "Upper Body · Assisted Pull-Ups & Dips",
+    "title": "上肢推拉 + 核心",
+    "title_en": "Upper Body Push-Pull + Core",
     "blocks": [
       {
         "name": "热身",
-        "items": []
+        "items": [
+          {
+            "ex": "band-pull-apart",
+            "sets": "1",
+            "reps": "10",
+            "weight": "自重"
+          }
+        ]
       },
       {
         "name": "第一组",
@@ -382,16 +389,14 @@
             "sets": "3",
             "reps": "10",
             "weight": "辅助 85 lb",
-            "note": "配重 85 lb 抵消体重，双膝跪在踏板上",
-            "note_en": "85 lb of assistance, kneeling on the pad"
+            "note": "表上写 75，按本人记忆为 85",
+            "note_en": "Sheet says 75; 85 per the user's recollection"
           },
           {
             "ex": "assisted-dip",
             "sets": "3",
-            "reps": "未记录",
-            "weight": "辅助 75 lb",
-            "note": "配重 75 lb，同一台机器",
-            "note_en": "75 lb of assistance, same machine"
+            "reps": "10",
+            "weight": "辅助 75 lb"
           }
         ]
       },
@@ -401,17 +406,62 @@
           {
             "ex": "incline-db-press",
             "sets": "3",
+            "reps": "8",
+            "weight": "15 lb",
+            "note": "表上写 Incline Bench Press",
+            "note_en": "Listed as Incline Bench Press on the sheet"
+          },
+          {
+            "ex": "farmer-carry",
+            "sets": "3",
             "reps": "未记录",
-            "note": "重量未记录",
-            "note_en": "weight not recorded"
+            "weight": "30 lb"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "items": [
+          {
+            "ex": "plank",
+            "sets": "3",
+            "reps": "45-60 秒",
+            "weight": "自重"
+          },
+          {
+            "ex": "single-arm-farmer-carry",
+            "sets": "3",
+            "reps": "未记录"
+          },
+          {
+            "ex": "leg-lift",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第四组",
+        "items": [
+          {
+            "ex": "elevated-push-up",
+            "sets": "2",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "battle-ropes",
+            "sets": "2",
+            "reps": "30 秒"
           },
           {
             "ex": "ball-wall-squat",
-            "sets": "3",
-            "reps": "未记录",
+            "sets": "2",
+            "reps": "30 秒",
             "weight": "自重",
-            "note": "背靠瑞士球的马步，时长未记录",
-            "note_en": "Wall squat with a stability ball behind your back; hold time not recorded"
+            "note": "表上写 Wall Sit",
+            "note_en": "Listed as Wall Sit on the sheet"
           }
         ]
       }

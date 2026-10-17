@@ -87,7 +87,7 @@ const labels = {
     sessionNo: (n) => `Session ${n}`, selfNo: (n) => `Self ${n}`, sessionTitle: (n, t) => `Session ${n} · ${t}`, selfTitle: (n, t) => `Self Session ${n} · ${t}`,
     plannedTitle: (n) => `Session ${n} · Planned`, plannedText: 'After the session, tell Claude the exercises and weights and this page will update.', workout: 'Workout',
     weekday: { 周一: 'Monday', 周二: 'Tuesday', 周三: 'Wednesday', 周四: 'Thursday', 周五: 'Friday', 周六: 'Saturday', 周日: 'Sunday' },
-    block: (name) => name.replace(/^热身/, 'Warm-up').replace(/^第一组/, 'Block 1').replace(/^第二组/, 'Block 2').replace(/^第三组/, 'Block 3')
+    block: (name) => name.replace(/^热身/, 'Warm-up').replace(/^第一组/, 'Block 1').replace(/^第二组/, 'Block 2').replace(/^第三组/, 'Block 3').replace(/^第四组/, 'Block 4')
       .replace(/^第四组/, 'Block 4').replace(/^放松/, 'Cool-down').replace(/^收尾/, 'Finisher'),
     libraryTitle: 'Exercise Library', libraryDek: (n) => `${n} exercises · animation, key cue and muscles worked · “Appears in” and “Best” are collected from the sessions so far.`,
     nextTitle: 'Next Session', goal: 'Goal', why: 'Why this plan', cooldown: 'Cool-down', after: 'After the session',

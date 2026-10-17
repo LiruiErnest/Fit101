@@ -488,6 +488,56 @@
         { "root": [192, 184], "props": { "ballY": 162 } },
         { "root": [196, 224], "props": { "ballY": 202 } }
       ]
+    },
+    {
+      "id": "single-arm-farmer-carry", "zh": "单臂农夫行走", "en": "Single Arm Farmer Carry", "view": "side", "period": 2.2, "loop": "cycle", "ease": "linear",
+      "iso": {"ha": 17},
+      "muscles": { "primary": ["obliques", "forearms"], "secondary": ["traps", "abs"] },
+      "equipment": [ { "type": "ticks", "spacing": 50, "distance": 100 }, { "type": "dumbbell", "hands": ["haN"], "angle": 0 } ],
+      "base": { "torso": 3 },
+      "keyframes": [
+        { "root": [200, 170], "armN": [-4, 4], "armF": [16, 18], "ik": { "footN": [225, 279], "footF": [175, 279] } },
+        { "root": [200, 165], "armN": [0, 4], "armF": [0, 12], "ik": { "footN": [200, 279], "footF": [200, 262] } },
+        { "root": [200, 170], "armN": [4, 4], "armF": [-16, 8], "ik": { "footN": [175, 279], "footF": [225, 279] } },
+        { "root": [200, 165], "armN": [0, 4], "armF": [0, 12], "ik": { "footN": [200, 262], "footF": [200, 279] } }
+      ]
+    },
+    {
+      "id": "leg-lift", "zh": "仰卧举腿", "en": "Leg Lifts", "view": "side", "period": 3.2,
+      "muscles": { "primary": ["abs", "hip-flexors"], "secondary": ["obliques"] },
+      "equipment": [],
+      "base": { "rot": -90, "root": [182, 271], "torso": 0, "armN": [6, 4], "armF": [6, 4] },
+      "keyframes": [
+        { "legN": [4, 0, 0], "legF": [4, 0, 0] },
+        { "legN": [88, 0, 0], "legF": [88, 0, 0] }
+      ]
+    },
+    {
+      "id": "elevated-push-up", "zh": "上斜俯卧撑", "en": "Elevated Push Up", "view": "side", "period": 2.6,
+      "iso": {"el": 22, "ha": 15, "kn": 8, "an": 7},
+      "muscles": { "primary": ["chest", "triceps"], "secondary": ["front-delt", "abs"] },
+      "equipment": [ { "type": "bench", "x": 238, "y": 226, "w": 110 } ],
+      "base": { "legN": [0, 0, 0], "legF": [0, 0, 0], "anchor": { "joint": "toeN", "at": [92, 279] }, "ik": { "handN": [262, 222], "handF": [262, 222] } },
+      "keyframes": [
+        { "rot": 48 },
+        { "rot": 60 }
+      ]
+    },
+    {
+      "id": "battle-ropes", "zh": "战绳波浪", "en": "Battle Ropes - Waves", "view": "side", "period": 1.2,
+      "iso": {"el": 18, "ha": 15, "eq": {"0": {"z": 0}, "1": {"z": 0}}},
+      "muscles": { "primary": ["front-delt", "forearms"], "secondary": ["abs", "upper-back"] },
+      "equipment": [
+        { "type": "anchor", "x": 362, "y": 282 },
+        { "type": "rope", "from": "haN", "to": [360, 278], "phase": 0 },
+        { "type": "rope", "from": "haF", "to": [360, 278], "phase": 180 },
+        { "type": "handle", "hands": ["haN", "haF"], "angle": 0 }
+      ],
+      "base": { "root": [190, 192], "torso": 22, "ik": { "footN": [214, 279], "footF": [200, 279] } },
+      "keyframes": [
+        { "ik": { "handN": { "rel": "torso", "at": [40, -42] }, "handF": { "rel": "torso", "at": [40, -6] } } },
+        { "ik": { "handN": { "rel": "torso", "at": [40, -6] }, "handF": { "rel": "torso", "at": [40, -42] } } }
+      ]
     }
   ]
 }
