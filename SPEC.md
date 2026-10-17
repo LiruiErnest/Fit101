@@ -406,3 +406,18 @@ type Next = {
 - leg-lift：侧视仰卧（同 dead-bug 的朝向），双腿并拢伸直从地面抬到竖直再放下，手放身体两侧。
 - elevated-push-up：侧视，双手撑在平凳上，身体斜线，做俯卧撑。
 - battle-ropes：侧视半蹲，身前地面有锚点，两根绳子从手到锚点画成正弦波，手上下交替，波形随时间移动（用几个关键帧的 path 插值或两条绳分别相位相反）。
+
+## 19. 第 6 节课（2026-10-16，表上写 10/15，用户已确认）
+
+| id | 中文 | 英文（表上原名） | 器械 | 视角 | 主要 | 辅助 | 描述 |
+|---|---|---|---|---|---|---|---|
+| db-curl-to-press | 哑铃弯举推举 | DB Curl to Press | 哑铃 ×2 | 侧 | biceps, front-delt | side-delt, triceps | 一个连续动作：站姿先弯举到肩，翻转手腕，再把哑铃推过头顶，原路回落 |
+| clamshell | 侧卧蛤壳式 | Sidelying Clamshells | 自重（可加弹力带），侧卧 | 俯视（同 side-lying-hip-abduction 的垫子） | glute-med | glutes | 侧卧屈髋屈膝，脚跟并拢，上膝像蛤壳一样打开再合上，骨盆不后仰 |
+| banded-glute-bridge | 弹力带臀桥 | Glutebridge with Band | 弹力带（膝上）+ 自重，仰卧 | 侧 | glutes | hamstrings, glute-med | 同臀桥，膝上套弹力带，顶起时膝盖向外顶住带子 |
+| side-plank | 侧平板 | Side Plank | 自重 | 正（人侧卧面朝镜头，前臂撑地） | obliques | abs, side-delt | 前臂撑地，髋抬起让身体成直线，保持；动画是髋略微下落再顶起 |
+
+第 6 节 `status: "done"`，date 2026-10-16，weekday 周五，title “上肢推拉 + 臀”，title_en “Upper Body Push-Pull + Glutes”，note “教练表上日期写 10/15，实际为 10/16 周五”，note_en "Sheet dated 10/15; actually Friday 10/16"，blocks：
+- 第一组：db-bench-press 4 × 10 · 20 lb；db-curl-to-press 4 × 10 · 10 lb（note “表上写 15 lb，实际 10 lb” / note_en "Sheet says 15 lb; actually 10 lb"）
+- 第二组：assisted-pull-up 4 × 10 · 辅助 70 lb；assisted-dip 4 × 10 · 辅助 70 lb
+- 第三组：clamshell 3 × 15 · 自重；banded-glute-bridge 3 × 15 · 自重；side-plank 3 × 10 秒 · 自重
+- 热身和放松：表上没有，不加。

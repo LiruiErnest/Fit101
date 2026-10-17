@@ -585,8 +585,73 @@
     "n": 6,
     "date": "2026-10-16",
     "weekday": "周五",
-    "status": "planned",
-    "kind": "trainer"
+    "status": "done",
+    "kind": "trainer",
+    "title": "上肢推拉 + 臀",
+    "title_en": "Upper Body Push-Pull + Glutes",
+    "note": "教练表上日期写 10/15，实际为 10/16 周五",
+    "note_en": "Sheet dated 10/15; actually Friday 10/16",
+    "blocks": [
+      {
+        "name": "第一组",
+        "items": [
+          {
+            "ex": "db-bench-press",
+            "sets": "4",
+            "reps": "10",
+            "weight": "20 lb"
+          },
+          {
+            "ex": "db-curl-to-press",
+            "sets": "4",
+            "reps": "10",
+            "weight": "10 lb",
+            "note": "表上写 15 lb，实际 10 lb",
+            "note_en": "Sheet says 15 lb; actually 10 lb"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "items": [
+          {
+            "ex": "assisted-pull-up",
+            "sets": "4",
+            "reps": "10",
+            "weight": "辅助 70 lb"
+          },
+          {
+            "ex": "assisted-dip",
+            "sets": "4",
+            "reps": "10",
+            "weight": "辅助 70 lb"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "items": [
+          {
+            "ex": "clamshell",
+            "sets": "3",
+            "reps": "15",
+            "weight": "自重"
+          },
+          {
+            "ex": "banded-glute-bridge",
+            "sets": "3",
+            "reps": "15",
+            "weight": "自重"
+          },
+          {
+            "ex": "side-plank",
+            "sets": "3",
+            "reps": "10 秒",
+            "weight": "自重"
+          }
+        ]
+      }
+    ]
   },
   {
     "n": 7,

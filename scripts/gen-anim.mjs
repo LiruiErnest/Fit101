@@ -422,6 +422,16 @@ function joints3D(ex, rig, P, iso) {
       if (dot3(rot(lh, th), up) < dot3(lh, up)) th = -th;
       for (const n of ['knN', 'anN', 'heelN', 'toeN']) J[n] = add3(H, rot(sub3(J[n], H), th));
     }
+    // props.openN：近侧膝绕“髋→踝”轴向上打开的角度（蛤壳式），踝和脚不动
+    if (P.$openN) {
+      const H = J.hipN, ax = nrm3(sub3(J.anN, H));
+      const up = top ? [0, -1, 0] : [0, 0, 1];
+      const rot = (d, th) => add3(add3(mul3(d, Math.cos(th)), mul3(cross3(ax, d), Math.sin(th))), mul3(ax, dot3(ax, d) * (1 - Math.cos(th))));
+      const d0 = sub3(J.knN, H);
+      let th = rad(P.$openN);
+      if (dot3(rot(d0, th), up) < dot3(d0, up)) th = -th;
+      J.knN = add3(H, rot(d0, th));
+    }
     const fr = (node) => { const M = nodeM(rig, P, node); const l = Math.hypot(M[0], M[1]); return nrm3(v3([M[0] / l, M[1] / l])); };
     return { J, front: fr, torsoFront: fr('torso'), torsoLat: top ? [0, -1, 0] : [0, 0, 1], z3: (spec, zz) => m3(pt(spec), zz) };
   }
@@ -539,7 +549,7 @@ function render(ex, samples, rig, STATIC) {
     const JJ0 = samples.P.map((P) => joints3D(ex, rig, P, iso).J);
     let k = 1; const gy = G - (iso.lift ?? 22);
     for (const J of JJ0) for (const [n, p] of Object.entries(J)) {
-      const q = pj.Pt(p); const pad = n === 'headC' ? RAD.head + 2 : 8;
+      const q = pj.Pt(p); const pad = n === 'headC' ? RAD.head + 2 : /^ha/.test(n) ? 14 : 8;
       if (q[1] - pad < 16) k = Math.min(k, (gy - 16) / (gy - q[1] + pad));
       if (q[0] - pad < 8) k = Math.min(k, (PIV - 8) / (PIV - q[0] + pad));
       if (q[0] + pad > 392) k = Math.min(k, (392 - PIV) / (q[0] + pad - PIV));
@@ -988,7 +998,7 @@ function render(ex, samples, rig, STATIC) {
           const ws = A.map((a, i) => f1(clamp(w * Math.sqrt(base / Math.max(1, len2(sub2(B[i], a)))), 2, w * 1.3)));
           s = O.attrs('line', { stroke: C.eq, 'stroke-linecap': 'round' }, { x1: v(A, 0), y1: v(A, 1), x2: v(B, 0), y2: v(B, 1), 'stroke-width': ws });
           s += O.attrs('line', { stroke: C.white, 'stroke-opacity': '.22', 'stroke-width': 1.1 }, { x1: v(A, 0), y1: v(A, 1), x2: v(B, 0), y2: v(B, 1) });
-          for (const E of [A, B]) s += O.attrs('ellipse', { rx: 6.5, ry: 4.2, fill: 'none', stroke: C.eq, 'stroke-width': 2.2 }, { cx: v(E, 0), cy: v(E, 1) });
+          if (q.rings !== false) for (const E of [A, B]) s += O.attrs('ellipse', { rx: 6.5, ry: 4.2, fill: 'none', stroke: C.eq, 'stroke-width': 2.2 }, { cx: v(E, 0), cy: v(E, 1) });
         }
         push(s, L ? dep : dep + 3);
         break;

@@ -538,6 +538,50 @@
         { "ik": { "handN": { "rel": "torso", "at": [40, -42] }, "handF": { "rel": "torso", "at": [40, -6] } } },
         { "ik": { "handN": { "rel": "torso", "at": [40, -6] }, "handF": { "rel": "torso", "at": [40, -42] } } }
       ]
+    },
+    {
+      "id": "db-curl-to-press", "zh": "哑铃弯举推举", "en": "DB Curl to Press", "view": "side", "period": 3.8,
+      "muscles": { "primary": ["biceps", "front-delt"], "secondary": ["side-delt", "triceps"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "root": [200, 167], "torso": 2, "ik": { "footN": [203, 279], "footF": [203, 279] } },
+      "keyframes": [
+        { "armN": [2, 6], "armF": [2, 6] },
+        { "armN": [12, 142], "armF": [12, 142] },
+        { "armN": [174, 6], "armF": [174, 6] }
+      ]
+    },
+    {
+      "id": "clamshell", "zh": "侧卧蛤壳式", "en": "Sidelying Clamshells", "view": "side", "viewLabel": "俯视", "period": 2.8, "ground": false,
+      "iso": {"top": true, "pitch": 55, "scale": 1, "lift": 136},
+      "muscles": { "primary": ["glute-med"], "secondary": ["glutes"] },
+      "muscleSide": "N",
+      "equipment": [ { "type": "mat", "x": 30, "y": 28, "w": 340, "h": 244, "rx": 14 } ],
+      "base": { "rot": -90, "root": [205, 160], "torso": 0, "armF": [175, 10], "armN": [40, 70], "legN": [50, 95], "legF": [50, 95] },
+      "keyframes": [
+        { "props": { "openN": 0 } },
+        { "props": { "openN": 58 } }
+      ]
+    },
+    {
+      "id": "banded-glute-bridge", "zh": "弹力带臀桥", "en": "Glutebridge with Band", "view": "side", "period": 3,
+      "iso": {"kn": 12},
+      "muscles": { "primary": ["glutes"], "secondary": ["hamstrings", "glute-med"] },
+      "equipment": [ { "type": "band", "from": { "node": "knN", "at": [0, -12] }, "to": { "node": "knF", "at": [0, -12] }, "width": 7, "restLen": 22, "rings": false } ],
+      "base": { "rot": -90, "ik": { "footN": [238, 279], "footF": [238, 279], "handN": [192, 277], "handF": [192, 277] } },
+      "keyframes": [
+        { "root": [168, 271], "props": { "zkn": 11 } },
+        { "root": [166, 236], "ik": { "neck": [104, 271] }, "neck": 25, "props": { "zkn": 15 } }
+      ]
+    },
+    {
+      "id": "side-plank", "zh": "侧平板", "en": "Side Plank", "view": "front", "period": 3,
+      "muscles": { "primary": ["obliques"], "secondary": ["abs", "side-delt"] },
+      "equipment": [],
+      "base": { "anchor": { "joint": "anR", "at": [118, 274] }, "armL": [0, -50, 1], "legL": [2, 0, 1], "legR": [2, 0, 1] },
+      "keyframes": [
+        { "rot": 74, "armR": [74, 90, 1] },
+        { "rot": 77, "armR": [77, 90, 1] }
+      ]
     }
   ]
 }
