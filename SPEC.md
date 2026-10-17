@@ -421,3 +421,20 @@ type Next = {
 - 第二组：assisted-pull-up 4 × 10 · 辅助 70 lb；assisted-dip 4 × 10 · 辅助 70 lb
 - 第三组：clamshell 3 × 15 · 自重；banded-glute-bridge 3 × 15 · 自重；side-plank 3 × 10 秒 · 自重
 - 热身和放松：表上没有，不加。
+
+## 20. 周计划（2026-10-17 起，取代单次“下次训练”）
+
+用户每周告诉 Claude 要自练几次和重点，Claude 写 `data/next.json`。格式改为周计划：
+```ts
+type Week = {
+  week: string;                        // 周一日期 "2026-10-19"
+  title: string; title_en: string;     // 页面标题
+  intro: string; intro_en: string;     // 一段说明
+  rationale: string[]; rationale_en: string[];   // 本周安排的理由
+  after: { items: string[]; items_en: string[] }; // 练完之后（整周共用）
+  sessions: NextSession[];             // 1 到 N 次，每次和旧的 Next 同形：date, weekday, weekday_en, time, duration, duration_en, title, title_en, goal, goal_en, blocks, cooldown
+};
+```
+页面 `next-session`（标题用 Week.title）：先 intro，`## 为什么这样安排`，然后每次训练一个 `## 第 N 次 · 周一 10/19 · 标题`，下面一行元信息（日期、时间、时长、goal），每个 block 一个加粗行“第一组 · 胸 · 休息 90 秒”，紧跟动作卡片（`###`），放松同样处理，最后 `## 练完之后`。旧格式（顶层直接有 blocks）仍要兼容：当作 sessions 只有一项。
+首页“下次训练”那行改成列出本周每次的日期和标题。
+练完一次，Claude 把那一次写进 sessions.json（kind self），并从 next.json 的 sessions 里删掉。

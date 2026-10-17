@@ -635,7 +635,9 @@
             "ex": "clamshell",
             "sets": "3",
             "reps": "15",
-            "weight": "自重"
+            "weight": "弹力带",
+            "note": "膝上套弹力带",
+            "note_en": "Band above the knees"
           },
           {
             "ex": "banded-glute-bridge",

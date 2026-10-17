@@ -72,9 +72,10 @@ const labels = {
     block: (name) => name,
     libraryTitle: '动作库', libraryDek: (n) => `${n} 个动作 · 动画、要点和练到的肌肉 · “出现在”和“最好成绩”从已上的课汇总。`,
     nextTitle: '下次训练', goal: '目标', why: '为什么这样安排', cooldown: '放松', after: '练完之后',
+    weekSession: (n, line) => `第 ${n} 次 · ${line}`, restPrefix: (r) => `休息 ${r}`,
     homeDek: (done, total) => `12 节私教课和自练的记录：每节课做了哪些动作、几组几次、用了多重，每个动作配一段动画、一句要点和练到的肌肉图。教练课已上 ${done} 节，共 ${total} 节。重量以 lb 记，括号里是 kg。`,
     trainerSessions: '教练课', selfSessions: '自练', noSelf: '还没有自练记录。练完一次自练后告诉 Claude，这里会出现记录。',
-    th: ['节', '日期', '状态', '动作数', '链接'], nextLink: (n) => `[下次训练](next-session.zh-CN.md)：${n.date} ${n.weekday} ${n.time} · ${n.title}`,
+    th: ['节', '日期', '状态', '动作数', '链接'], nextLink: (w, lines) => `[${w.title || '下次训练'}](next-session.zh-CN.md)\n\n${lines.map((l) => `- ${l}`).join('\n')}`,
     noNext: '还没有安排下次训练。', libraryLink: (n) => `[动作库](library.zh-CN.md)：全部 ${n} 个动作，带“出现在哪几节课”和“最好成绩”。`,
     knowledgeHead: '饮食与知识', knowledgeLink: '[饮食与知识](knowledge.zh-CN.md)：热量、三大营养素、餐序、吃什么、有氧和力训原则。',
     knowledgeSoon: '饮食与知识页还在整理中。', strength: '力量动作', stretches: '拉伸与放松',
@@ -90,10 +91,11 @@ const labels = {
     block: (name) => name.replace(/^热身/, 'Warm-up').replace(/^第一组/, 'Block 1').replace(/^第二组/, 'Block 2').replace(/^第三组/, 'Block 3').replace(/^第四组/, 'Block 4')
       .replace(/^第四组/, 'Block 4').replace(/^放松/, 'Cool-down').replace(/^收尾/, 'Finisher'),
     libraryTitle: 'Exercise Library', libraryDek: (n) => `${n} exercises · animation, key cue and muscles worked · “Appears in” and “Best” are collected from the sessions so far.`,
-    nextTitle: 'Next Session', goal: 'Goal', why: 'Why this plan', cooldown: 'Cool-down', after: 'After the session',
+    nextTitle: 'Next Session', goal: 'Goal', why: 'Why this layout', cooldown: 'Cool-down', after: 'After the week',
+    weekSession: (n, line) => `Session ${n} · ${line}`, restPrefix: (r) => `rest ${r}`,
     homeDek: (done, total) => `A log of 12 personal-training sessions and the workouts in between: the exercises, sets, reps and weights of each, with an animation, a key cue and a muscle map for every exercise. ${done} of ${total} trainer sessions done. Weights are in lb with kg in brackets.`,
     trainerSessions: 'Trainer sessions', selfSessions: 'Self sessions', noSelf: 'No self sessions logged yet. After one, tell Claude and it will show up here.',
-    th: ['#', 'Date', 'Status', 'Exercises', 'Link'], nextLink: (n) => `[Next session](next-session.md): ${n.date} ${n.weekday_en || n.weekday} ${n.time} · ${n.title_en || n.title}`,
+    th: ['#', 'Date', 'Status', 'Exercises', 'Link'], nextLink: (w, lines) => `[${w.title_en || w.title || 'Next Session'}](next-session.md)\n\n${lines.map((l) => `- ${l}`).join('\n')}`,
     noNext: 'No next session planned yet.', libraryLink: (n) => `[Exercise library](library.md): all ${n} exercises, with where each appears and your best.`,
     knowledgeHead: 'Nutrition & knowledge', knowledgeLink: '[Nutrition & knowledge](knowledge.md): calories, macros, meal order, what to eat, cardio and strength principles.',
     knowledgeSoon: 'The nutrition and knowledge page is still being written.', strength: 'Strength', stretches: 'Stretches & Cool-down',
@@ -303,13 +305,23 @@ function sessionPage(s, lang) {
   return page(out);
 }
 
-// ── next session ────────────────────────────────────────────────────────────
+// ── next session (week plan, SPEC §20; an old single-session next.json counts as a one-session week) ──
+const week = next && (Array.isArray(next.sessions) ? next
+  : { title: labels.zh.nextTitle, title_en: labels.en.nextTitle, rationale: next.rationale, rationale_en: next.rationale_en, after: next.after, sessions: [next] });
+const mmdd = (d) => { const m = /^\d{4}-(\d{2})-(\d{2})$/.exec(d || ''); return m ? `${+m[1]}/${+m[2]}` : d || ''; };
+const fx = (lang) => (o, k) => (lang === 'zh' ? o[k] : o[`${k}_en`] ?? o[k]);
+const sessionLine = (s, lang) => {
+  const f = fx(lang);
+  return `${lang === 'zh' ? s.weekday : s.weekday_en || labels.en.weekday[s.weekday] || s.weekday} ${mmdd(s.date)} · ${f(s, 'title')}`;
+};
 function nextPage(lang) {
-  const t = labels[lang], up = '', n = next, f = (o, k) => (lang === 'zh' ? o[k] : o[`${k}_en`] ?? o[k]);
-  const out = [`# ${t.nextTitle}`, cssLink(up),
-    `${n.date} · ${lang === 'zh' ? n.weekday : n.weekday_en || n.weekday} · ${n.time} · ${f(n, 'duration')} · ${t.self} · ${f(n, 'title')}`,
-    `## ${t.goal}`, f(n, 'goal'),
-    `## ${t.why}`, (f(n, 'rationale') || []).map((x) => `- ${x}`).join('\n')];
+  const t = labels[lang], up = '', f = fx(lang), w = week;
+  const out = [`# ${f(w, 'title') || t.nextTitle}`, cssLink(up)];
+  if (f(w, 'intro')) out.push(f(w, 'intro'));
+  if ((f(w, 'rationale') || []).length) out.push(`## ${t.why}`, f(w, 'rationale').map((x) => `- ${x}`).join('\n'));
+  // a block = one bold line "name · rest", then its exercise cards (### headings)
+  const restText = (r) => (!r ? '' : /休息|\brest\b/i.test(r) ? r : t.restPrefix(r));
+  const blockLine = (name, rest) => `**${[name, restText(rest)].filter(Boolean).join(' · ')}**`;
   const cards = (b) => {
     for (const it of b.items || []) {
       const ex = exercise(it.ex);
@@ -324,10 +336,19 @@ function nextPage(lang) {
       ]));
     }
   };
-  for (const b of n.blocks || []) { out.push(`## ${f(b, 'name')}`); cards(b); }
-  // cool-down: a sentence, then cards like any block when it lists exercises (older next.json: text only)
-  if (n.cooldown) { out.push(`## ${t.cooldown}`, f(n.cooldown, 'text')); if ((n.cooldown.items || []).length) cards(n.cooldown); }
-  if (n.after) out.push(`## ${t.after}`, (f(n.after, 'items') || []).map((x) => `- [ ] ${x}`).join('\n'));
+  (w.sessions || []).forEach((s, i) => {
+    out.push(`## ${t.weekSession(i + 1, sessionLine(s, lang))}`);
+    out.push([s.date, s.time, f(s, 'duration'), t.self].filter(Boolean).join(' · '));
+    if (f(s, 'goal')) out.push(`${t.goal}${lang === 'zh' ? '：' : ': '}${f(s, 'goal')}`);
+    for (const b of s.blocks || []) { out.push(blockLine(f(b, 'name'), f(b, 'rest'))); cards(b); }
+    // cool-down: bold line, a sentence, then cards when it lists exercises (older next.json: text only)
+    if (s.cooldown) {
+      out.push(blockLine(t.cooldown, f(s.cooldown, 'rest')));
+      if (f(s.cooldown, 'text')) out.push(f(s.cooldown, 'text'));
+      if ((s.cooldown.items || []).length) cards(s.cooldown);
+    }
+  });
+  if (w.after) out.push(`## ${t.after}`, (f(w.after, 'items') || []).map((x) => `- [ ] ${x}`).join('\n'));
   return page(out);
 }
 
@@ -367,7 +388,7 @@ function indexPage(lang) {
   return page([
     '# Fit101', cssLink(''),
     t.homeDek(trainer.filter((s) => s.status === 'done').length, trainer.length),
-    `## ${t.nextTitle}`, next ? t.nextLink(next) : t.noNext,
+    `## ${t.nextTitle}`, week ? t.nextLink(week, (week.sessions || []).map((x) => sessionLine(x, lang))) : t.noNext,
     `## ${t.trainerSessions}`, sessionTable(trainer, lang),
     `## ${t.selfSessions}`, self.length ? sessionTable(self, lang) : t.noSelf,
     `## ${t.libraryTitle}`, t.libraryLink(exById.size),
