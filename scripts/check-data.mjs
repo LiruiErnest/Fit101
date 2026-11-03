@@ -12,7 +12,7 @@ const KNOWN_IDS = ['step-up','bodyweight-squat','glute-bridge','band-pull-apart'
   'db-fly','side-lying-hip-abduction','ball-wall-squat',
   'single-arm-farmer-carry','leg-lift','elevated-push-up','battle-ropes',
   'db-curl-to-press','clamshell','banded-glute-bridge','side-plank','band-external-rotation',
-  'db-split-squat','hamstring-curl','glute-bridge-chest-press',
+  'db-split-squat',
   'barbell-bench-press','spiderman-plank-ball','band-up-and-over','db-thruster','squat-hold',
   'childs-pose','triceps-stretch','open-book','doorway-pec-stretch'];   // 第 3 节 + 第 12、15–19、21–23 节 + 第 13 节
 const errors = [];

@@ -663,8 +663,8 @@
     "kind": "trainer",
     "title": "全身循环 D",
     "title_en": "Full Body Circuit D",
-    "note": "教练表上没写日期；10/19 那周教练休假，本节为 10/26",
-    "note_en": "Sheet has no date; the trainer was away the week of 10/19, so this is 10/26",
+    "note": "教练表上没写日期；10/19 那周教练休假，本节为 10/26。表上的 Hamstring Curls 没做过，已删",
+    "note_en": "Sheet has no date; the trainer was away the week of 10/19, so this is 10/26. The sheet's Hamstring Curls were not done and are removed",
     "blocks": [
       {
         "name": "第一组",
@@ -693,20 +693,18 @@
         "name": "第二组",
         "items": [
           {
-            "ex": "hamstring-curl",
-            "sets": "3",
-            "reps": "15"
-          },
-          {
             "ex": "side-plank",
             "sets": "3",
             "reps": "10 秒",
             "weight": "自重"
           },
           {
-            "ex": "glute-bridge-chest-press",
-            "sets": "3",
-            "reps": "15"
+            "ex": "barbell-bench-press",
+            "sets": "4",
+            "reps": "12",
+            "weight": "50 lb",
+            "note": "表上写 Glute Bridge w/ Chest Press 3 × 15，实际是杠铃卧推 4 × 12 总重 50 lb",
+            "note_en": "Sheet says Glute Bridge w/ Chest Press 3 × 15; actually barbell bench press 4 × 12 at 50 lb total"
           }
         ]
       },
