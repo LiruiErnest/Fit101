@@ -480,3 +480,14 @@ type Week = {
 - 第二组：db-thruster 3 × 12 · 17.5 lb（note “每手 17.5 lb”）；db-reverse-lunge 3 × 15 · 自重（note “自重，表上 Reverse Lunge”）；squat-hold 3 × 20 秒 · 自重
 - 第三组：tricep-pushdown 3 × 10（weight 省略）；push-up 3 × 5 · 自重；trx-row 3 × 12 · 自重
 - 放松：items 空
+（2026-11-02 更正：第 7 节的 Hamstring Curls 没做过，Glute Bridge w/ Chest Press 实为杠铃卧推 4 × 12 · 50 lb；第 8 节的龙门架动作实为 pallof-press 3 × 12 每侧 · 17.5。hamstring-curl、glute-bridge-chest-press 两个动作已从动作库删除。）
+
+## 24. 课程笔记上线（2026-11-02）
+
+把本地知识库 `Resources/onlinecourse/` 的 Markdown 和图片复制进仓库并发布为站点的一个分区。iCloud 里的原件不动。
+- 源：13 个 md（00 审查、01 到 11 课程笔记、知识库摘要）+ `images/`（513 张 jpg，39 MB）。
+- 仓库位置：`content/course/<原文件名>.zh-CN.md`（只有中文，用 `.zh-CN.md` 后缀让 html-author 显示中文标签）；图片 `content/course/images/...` 原路径不变，md 里的相对图片链接保持可用。
+- 隐私：复制时去掉所有针对本人的数字和描述（176 cm、71 kg、BMI 22.9、“对用户的建议”里的本人数字、“用户：男 176 cm/71 kg…”）。改法：数字改用“以 70 kg 为例”，描述改成“BMI 在正常范围的增肌期新手”。原文的“对用户的建议”标题改成“落地建议”。不删其他内容。
+- build：把 `content/course/` 复制到 `docs/course/`，图片随 html-author 一起复制到 `site/course/images/`。首页加一段“课程笔记”链接列表（13 个页面，按文件名顺序，显示 md 的一级标题），英文首页同样列出（标题保留中文）。知识页第 1 段末尾加一句链接到 `course/知识库摘要-给排计划用.zh-CN.html`。
+- 文件名含中文，URL 会被编码，html-author 已能处理；首页链接用相对路径即可。
+- 来源说明：每个课程页末尾由 build 追加一行“来源：B 站 好人松松 公开课程，笔记为个人学习整理；审查报告与摘要为 Claude 整理。”（如果原文已有来源行则不重复）。

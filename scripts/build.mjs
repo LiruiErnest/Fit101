@@ -78,7 +78,7 @@ const labels = {
     th: ['节', '日期', '状态', '动作数', '链接'], nextLink: (w, lines) => `[${w.title || '下次训练'}](next-session.zh-CN.md)\n\n${lines.map((l) => `- ${l}`).join('\n')}`,
     noNext: '还没有安排下次训练。', libraryLink: (n) => `[动作库](library.zh-CN.md)：全部 ${n} 个动作，带“出现在哪几节课”和“最好成绩”。`,
     knowledgeHead: '饮食与知识', knowledgeLink: '[饮食与知识](knowledge.zh-CN.md)：热量、三大营养素、餐序、吃什么、有氧和力训原则。',
-    knowledgeSoon: '饮食与知识页还在整理中。', strength: '力量动作', stretches: '拉伸与放松',
+    knowledgeSoon: '饮食与知识页还在整理中。', courseHead: '课程笔记', courseDek: 'B 站好人松松 11 节公开课程的文字笔记，加一份科学性审查和一份排计划用的摘要。', strength: '力量动作', stretches: '拉伸与放松',
   },
   en: {
     equipment: 'Equipment', setsReps: 'Sets × reps', rest: 'Rest', weight: 'Weight', history: 'History', note: 'Note', target: 'Target', how: 'How to choose',
@@ -98,7 +98,7 @@ const labels = {
     th: ['#', 'Date', 'Status', 'Exercises', 'Link'], nextLink: (w, lines) => `[${w.title_en || w.title || 'Next Session'}](next-session.md)\n\n${lines.map((l) => `- ${l}`).join('\n')}`,
     noNext: 'No next session planned yet.', libraryLink: (n) => `[Exercise library](library.md): all ${n} exercises, with where each appears and your best.`,
     knowledgeHead: 'Nutrition & knowledge', knowledgeLink: '[Nutrition & knowledge](knowledge.md): calories, macros, meal order, what to eat, cardio and strength principles.',
-    knowledgeSoon: 'The nutrition and knowledge page is still being written.', strength: 'Strength', stretches: 'Stretches & Cool-down',
+    knowledgeSoon: 'The nutrition and knowledge page is still being written.', courseHead: 'Course notes', courseDek: 'Written notes on the 11 public lessons by 好人松松 on Bilibili, plus a science review and a planning summary. In Chinese.', strength: 'Strength', stretches: 'Stretches & Cool-down',
   },
 };
 const MUSCLES = {
@@ -374,6 +374,25 @@ function libraryPage(lang) {
 // ── home ────────────────────────────────────────────────────────────────────
 const KNOWLEDGE = { en: path.join(CONTENT, 'knowledge.md'), zh: path.join(CONTENT, 'knowledge.zh-CN.md') };
 const hasKnowledge = existsSync(KNOWLEDGE.en) && existsSync(KNOWLEDGE.zh);
+// course notes (SPEC §24): content/course/*.zh-CN.md + images/ → docs/course/, Chinese only, filename order
+const COURSE = path.join(CONTENT, 'course');
+const COURSE_SUMMARY = '知识库摘要-给排计划用.zh-CN.md';
+const courseFiles = existsSync(COURSE) ? readdirSync(COURSE).filter((f) => f.endsWith('.zh-CN.md')).sort() : [];
+const COURSE_SOURCE = '来源：B 站 好人松松 公开课程，笔记为个人学习整理；审查报告与摘要为 Claude 整理。';
+const courseTitle = (f) => /^#\s+(.+?)\s*#*\s*$/m.exec(readFileSync(path.join(COURSE, f), 'utf8'))?.[1] || f.replace(/\.zh-CN\.md$/, '');
+const courseLink = (f) => `[${courseTitle(f)}](<course/${f}>)`;
+// knowledge page: one sentence at the end of its first plain paragraph pointing at the course summary
+const knowledgeText = (lang) => {
+  const text = readFileSync(KNOWLEDGE[lang], 'utf8');
+  if (!courseFiles.includes(COURSE_SUMMARY)) return text;
+  const add = lang === 'zh' ? `排计划用的要点见[课程笔记摘要](<course/${COURSE_SUMMARY}>)。` : ` For the planning digest of the course notes, see the [course summary](<course/${COURSE_SUMMARY}>) (Chinese).`;
+  const lines = text.split('\n');
+  const i = lines.findIndex((l) => l.trim() && !/^\s*(#|[-*+] |\d+\. |>|\||<|```)/.test(l));
+  if (i < 0) return text;
+  let j = i; while (j + 1 < lines.length && lines[j + 1].trim() && !/^\s*(#|[-*+] |\d+\. |>|\||<|```)/.test(lines[j + 1])) j++;
+  lines[j] += add;
+  return lines.join('\n');
+};
 function sessionTable(list, lang) {
   const t = labels[lang];
   const rows = list.map((s) => {
@@ -393,6 +412,7 @@ function indexPage(lang) {
     `## ${t.selfSessions}`, self.length ? sessionTable(self, lang) : t.noSelf,
     `## ${t.libraryTitle}`, t.libraryLink(exById.size),
     `## ${t.knowledgeHead}`, hasKnowledge ? t.knowledgeLink : t.knowledgeSoon,
+    ...(courseFiles.length ? [`## ${t.courseHead}`, t.courseDek, courseFiles.map((f) => `- ${courseLink(f)}`).join('\n')] : []),
   ], lang === 'en' ? HOME_EN_SCRIPT : LANG_SCRIPT);
 }
 
@@ -407,9 +427,16 @@ for (const lang of ['en', 'zh']) {
   files.set(`library${SUFFIX[lang]}.md`, libraryPage(lang));
   files.set(`index${SUFFIX[lang]}.md`, indexPage(lang));
 }
-if (hasKnowledge) for (const lang of ['en', 'zh']) files.set(`knowledge${SUFFIX[lang]}.md`, readFileSync(KNOWLEDGE[lang], 'utf8').replace(/\s*$/, '\n\n') + LANG_SCRIPT + '\n');
+if (hasKnowledge) for (const lang of ['en', 'zh']) files.set(`knowledge${SUFFIX[lang]}.md`, knowledgeText(lang).replace(/\s*$/, '\n\n') + LANG_SCRIPT + '\n');
 else console.warn('content/knowledge.md or content/knowledge.zh-CN.md missing: knowledge page skipped');
 if (!next) console.warn('data/next.json missing: next-session page skipped');
+for (const f of courseFiles) {
+  const text = readFileSync(path.join(COURSE, f), 'utf8').replace(/\s*$/, '\n');
+  const hasSource = text.split('\n').slice(-12).some((l) => /^\s*[*_>]*\s*来源[:：]/.test(l));
+  files.set(`course/${f}`, (hasSource ? text : `${text}\n${COURSE_SOURCE}\n`) + '\n' + LANG_SCRIPT + '\n');
+}
+if (!courseFiles.length) console.warn('content/course/*.zh-CN.md missing: course notes skipped (run the build again once they are copied in)');
+else if (courseFiles.length > 14) console.warn(`content/course has ${courseFiles.length} pages: html-author lists at most 14 per folder`);
 
 rmSync(DOCS, { recursive: true, force: true });
 for (const [rel, text] of files) {
@@ -417,9 +444,14 @@ for (const [rel, text] of files) {
   writeFileSync(path.join(DOCS, rel), text);
 }
 
+const COURSE_IMAGES = path.join(COURSE, 'images');
+if (courseFiles.length && existsSync(COURSE_IMAGES)) cpSync(COURSE_IMAGES, path.join(DOCS, 'course', 'images'), { recursive: true });
+
 // ── html-author → site/ (English default; *.zh-CN.md pair with their twins) ─
 rmSync(SITE, { recursive: true, force: true });
 execFileSync(process.execPath, [HTML_AUTHOR, '--src', DOCS, '--out', SITE, '--title', 'Fit101', '--no-notes'], { stdio: 'inherit' });
+
+if (courseFiles.length && existsSync(COURSE_IMAGES)) cpSync(COURSE_IMAGES, path.join(SITE, 'course', 'images'), { recursive: true, force: false });
 
 // ── assets/ → site/assets/ (site.css / site.js from html-author stay) ──────
 const SKIP = new Set(['contact-sheet.html', 'body-map-preview.html']);
