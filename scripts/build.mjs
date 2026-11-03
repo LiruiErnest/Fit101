@@ -78,7 +78,8 @@ const labels = {
     th: ['节', '日期', '状态', '动作数', '链接'], nextLink: (w, lines) => `[${w.title || '下次训练'}](next-session.zh-CN.md)\n\n${lines.map((l) => `- ${l}`).join('\n')}`,
     noNext: '还没有安排下次训练。', libraryLink: (n) => `[动作库](library.zh-CN.md)：全部 ${n} 个动作，带“出现在哪几节课”和“最好成绩”。`,
     knowledgeHead: '饮食与知识', knowledgeLink: '[饮食与知识](knowledge.zh-CN.md)：热量、三大营养素、餐序、吃什么、有氧和力训原则。',
-    knowledgeSoon: '饮食与知识页还在整理中。', courseHead: '课程笔记', courseDek: 'B 站好人松松 11 节公开课程的文字笔记，加一份科学性审查和一份排计划用的摘要。', strength: '力量动作', stretches: '拉伸与放松',
+    knowledgeSoon: '饮食与知识页还在整理中。', courseHead: '课程笔记', courseLink: '[课程笔记](course.zh-CN.md)：B 站好人松松 11 节公开课程的文字笔记，加科学性审查和排计划用的摘要。',
+    courseDek: 'B 站 UP 主好人松松 11 节公开课程的文字笔记（个人学习整理），另有一份科学性审查报告和一份排计划用的摘要（Claude 整理）。课程说法与审查结论冲突时，以审查报告为准。', strength: '力量动作', stretches: '拉伸与放松',
   },
   en: {
     equipment: 'Equipment', setsReps: 'Sets × reps', rest: 'Rest', weight: 'Weight', history: 'History', note: 'Note', target: 'Target', how: 'How to choose',
@@ -98,7 +99,8 @@ const labels = {
     th: ['#', 'Date', 'Status', 'Exercises', 'Link'], nextLink: (w, lines) => `[${w.title_en || w.title || 'Next Session'}](next-session.md)\n\n${lines.map((l) => `- ${l}`).join('\n')}`,
     noNext: 'No next session planned yet.', libraryLink: (n) => `[Exercise library](library.md): all ${n} exercises, with where each appears and your best.`,
     knowledgeHead: 'Nutrition & knowledge', knowledgeLink: '[Nutrition & knowledge](knowledge.md): calories, macros, meal order, what to eat, cardio and strength principles.',
-    knowledgeSoon: 'The nutrition and knowledge page is still being written.', courseHead: 'Course notes', courseDek: 'Written notes on the 11 public lessons by 好人松松 on Bilibili, plus a science review and a planning summary. In Chinese.', strength: 'Strength', stretches: 'Stretches & Cool-down',
+    knowledgeSoon: 'The nutrition and knowledge page is still being written.', courseHead: 'Course Notes', courseLink: '[Course notes](course.md): written notes on the 11 public lessons by 好人松松 on Bilibili, plus a science review and a planning summary (in Chinese).',
+    courseDek: 'Written notes on the 11 public lessons by the Bilibili creator 好人松松 (Haoren Songsong), kept as personal study notes, plus a science review and a planning summary written by Claude. Where a lesson and the review disagree, the review wins. The notes are in Chinese.', strength: 'Strength', stretches: 'Stretches & Cool-down',
   },
 };
 const MUSCLES = {
@@ -412,7 +414,7 @@ function indexPage(lang) {
     `## ${t.selfSessions}`, self.length ? sessionTable(self, lang) : t.noSelf,
     `## ${t.libraryTitle}`, t.libraryLink(exById.size),
     `## ${t.knowledgeHead}`, hasKnowledge ? t.knowledgeLink : t.knowledgeSoon,
-    ...(courseFiles.length ? [`## ${t.courseHead}`, t.courseDek, courseFiles.map((f) => `- ${courseLink(f)}`).join('\n')] : []),
+    ...(courseFiles.length ? [`## ${t.courseHead}`, t.courseLink] : []),
   ], lang === 'en' ? HOME_EN_SCRIPT : LANG_SCRIPT);
 }
 
@@ -434,6 +436,10 @@ for (const f of courseFiles) {
   const text = readFileSync(path.join(COURSE, f), 'utf8').replace(/\s*$/, '\n');
   const hasSource = text.split('\n').slice(-12).some((l) => /^\s*[*_>]*\s*来源[:：]/.test(l));
   files.set(`course/${f}`, (hasSource ? text : `${text}\n${COURSE_SOURCE}\n`) + '\n' + LANG_SCRIPT + '\n');
+}
+if (courseFiles.length) for (const lang of ['en', 'zh']) {
+  const t = labels[lang];
+  files.set(`course${SUFFIX[lang]}.md`, page([`# ${t.courseHead}`, cssLink(''), t.courseDek, courseFiles.map((f) => `- ${courseLink(f)}`).join('\n')]));
 }
 if (!courseFiles.length) console.warn('content/course/*.zh-CN.md missing: course notes skipped (run the build again once they are copied in)');
 else if (courseFiles.length > 14) console.warn(`content/course has ${courseFiles.length} pages: html-author lists at most 14 per folder`);

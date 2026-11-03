@@ -860,28 +860,28 @@
   },
   {
     "n": 9,
-    "date": "2026-11-06",
-    "weekday": "周五",
-    "status": "planned",
-    "kind": "trainer"
-  },
-  {
-    "n": 10,
     "date": "2026-11-09",
     "weekday": "周一",
     "status": "planned",
     "kind": "trainer"
   },
   {
+    "n": 10,
+    "date": "2026-11-16",
+    "weekday": "周一",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
     "n": 11,
-    "date": "2026-11-13",
-    "weekday": "周五",
+    "date": "2026-11-23",
+    "weekday": "周一",
     "status": "planned",
     "kind": "trainer"
   },
   {
     "n": 12,
-    "date": "2026-11-16",
+    "date": "2026-11-30",
     "weekday": "周一",
     "status": "planned",
     "kind": "trainer"
