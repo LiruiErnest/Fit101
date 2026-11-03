@@ -461,3 +461,22 @@ type Week = {
 - 第二组：hamstring-curl 3 × 15（weight 省略）；side-plank 3 × 10 秒 · 自重；glute-bridge-chest-press 3 × 15（weight 省略）
 - 第三组：pallof-press 3 × 10 每侧 · 重量原文 "17.5"（note “龙门架档位”）；db-fly 3 × 10 · 12.5 lb；tricep-pushdown 3 × 10 · 重量原文 "12.5"（note “龙门架档位”）
 - 放松：items 空
+
+## 23. 第 8 节课（2026-11-02）与课表再次顺延
+
+第 8 节实际在 2026-11-02 周一（表上写 10/26 是错的；10/30 周五没上）。第 8 到 12 节再顺延：8 · 11-02 周一，9 · 11-06 周五，10 · 11-09 周一，11 · 11-13 周五，12 · 11-16 周一。
+
+| id | 中文 | 英文（表上原名） | 器械 | 视角 | 主要 | 辅助 | 描述 |
+|---|---|---|---|---|---|---|---|
+| barbell-bench-press | 杠铃卧推 | Bench Press | 杠铃 + 卧推架 | 侧 | chest | triceps, front-delt | 仰卧平凳，杠铃从胸上方推起再下放到胸口，重量是总重含杆 |
+| spiderman-plank-ball | 单臂平板推球 | Spidermans | 自重 + 小球 | 侧 | abs, obliques | front-delt, chest | 平板姿势，一只手撑地，另一只手把地上的小球前后推拉，髋不转 |
+| band-up-and-over | 弹力带过顶绕肩 | Band Up and Overs | 弹力带 | 正 | rear-delt, upper-back | side-delt | 双手宽握弹力带于体前，手臂伸直把带子举过头顶再放到身后臀部位置，原路回；做法待用户确认 |
+| db-thruster | 哑铃深蹲推举 | Squat to Overhead Press | 哑铃 ×2 | 侧 | quads, front-delt | glutes, triceps, abs | 双手持哑铃在肩上，深蹲，站起时顺势把哑铃推过头顶 |
+| squat-hold | 深蹲保持 | Squat Hold | 自重 | 侧 | quads, glutes | abs | 蹲到大腿平行地面保持 20 秒；动画是轻微起伏 |
+
+第 8 节 `status: "done"`，date 2026-11-02，weekday 周一，title “全身循环 E”，title_en “Full Body Circuit E”，note “表上日期写 10/26，实际 11/02；10/30 未上课” / note_en "Sheet dated 10/26; actually 11/02. No session on 10/30"，blocks：
+- 热身：step-up 3 × 10-12 · 自重；push-up 3 × 10 · 自重；spiderman-plank-ball 3 × 10 · 自重
+- 第一组：barbell-bench-press 3 × 10 · 55 lb（note “总重含杆” / "total including the bar"）；band-pull-apart 3 × 15 · 自重；band-up-and-over 3 × 15 · 自重
+- 第二组：db-thruster 3 × 12 · 17.5 lb（note “每手 17.5 lb”）；db-reverse-lunge 3 × 15 · 自重（note “自重，表上 Reverse Lunge”）；squat-hold 3 × 20 秒 · 自重
+- 第三组：tricep-pushdown 3 × 10（weight 省略）；push-up 3 × 5 · 自重；trx-row 3 × 12 · 自重
+- 放松：items 空

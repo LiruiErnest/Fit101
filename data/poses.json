@@ -634,6 +634,66 @@
         { "armN": [62, 0], "armF": [62, 0] },
         { "armN": [-48, 118], "armF": [-48, 118] }
       ]
+    },
+    {
+      "id": "barbell-bench-press", "zh": "杠铃卧推", "en": "Bench Press", "view": "side", "period": 3,
+      "iso": {"el": 30, "ha": 27, "eq": {"1": {"z": -60}, "2": {"z": 60}}},
+      "muscles": { "primary": ["chest"], "secondary": ["triceps", "front-delt"] },
+      "equipment": [
+        { "type": "bench", "x": 70, "y": 226, "w": 170 },
+        { "type": "column", "x": 128, "top": 150, "metal": true },
+        { "type": "column", "x": 128, "top": 150, "metal": true },
+        { "type": "barbell" }
+      ],
+      "base": { "rot": -90, "root": [165, 213], "torso": 0, "ik": { "footN": [234, 279], "footF": [234, 279] } },
+      "keyframes": [
+        { "armN": [86, 0], "armF": [86, 0] },
+        { "armN": [-24, 112], "armF": [-24, 112] }
+      ]
+    },
+    {
+      "id": "spiderman-plank-ball", "zh": "单臂平板推球", "en": "Spidermans", "view": "side", "period": 2.6,
+      "iso": {"el": 24, "ha": 21, "kn": 8, "an": 7, "eq": {"0": {"z": 21}}},
+      "muscles": { "primary": ["abs", "obliques"], "secondary": ["front-delt", "chest"] },
+      "equipment": [ { "type": "ball", "cx": "$ballX", "r": 9 } ],
+      "base": { "rot": 68, "legN": [0, 0, 0], "legF": [0, 0, 0], "anchor": { "joint": "toeN", "at": [88, 279] }, "ik": { "handF": [232, 277] } },
+      "keyframes": [
+        { "props": { "ballX": 214 }, "ik": { "handN": [214, 262] } },
+        { "props": { "ballX": 268 }, "ik": { "handN": [268, 262] } }
+      ]
+    },
+    {
+      "id": "band-up-and-over", "zh": "弹力带过顶绕肩", "en": "Band Up and Overs", "view": "front", "period": 3.6,
+      "muscles": { "primary": ["rear-delt", "upper-back"], "secondary": ["side-delt"] },
+      "equipment": [ { "type": "band", "from": "haL", "to": "haR", "width": 5, "restLen": 70 } ],
+      "base": { "root": [200, 165], "legL": [3, 0, 1], "legR": [3, 0, 1] },
+      "keyframes": [
+        { "armL": [24, 0, 0.6], "armR": [24, 0, 0.6], "props": { "back": 0 } },
+        { "armL": [160, 0, 1], "armR": [160, 0, 1], "props": { "back": 0.5 } },
+        { "armL": [24, 0, 0.6], "armR": [24, 0, 0.6], "props": { "back": 1 } }
+      ]
+    },
+    {
+      "id": "db-thruster", "zh": "哑铃深蹲推举", "en": "Squat to Overhead Press", "view": "side", "period": 3.4, "seq": [0, 1, 2, 0],
+      "iso": {"el": 26, "ha": 22},
+      "muscles": { "primary": ["quads", "front-delt"], "secondary": ["glutes", "triceps", "abs"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "ik": { "footN": [205, 279], "footF": [205, 279] } },
+      "keyframes": [
+        { "root": [200, 168], "torso": 4, "ik": { "handN": { "rel": "torso", "at": [16, -68] }, "handF": { "rel": "torso", "at": [16, -68] } } },
+        { "root": [162, 220], "torso": 38, "ik": { "handN": { "rel": "torso", "at": [16, -68] }, "handF": { "rel": "torso", "at": [16, -68] } } },
+        { "root": [200, 166], "torso": 2, "ik": { "handN": { "rel": "torso", "at": [4, -142] }, "handF": { "rel": "torso", "at": [4, -142] } } }
+      ]
+    },
+    {
+      "id": "squat-hold", "zh": "深蹲保持", "en": "Squat Hold", "view": "side", "period": 3,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["abs"] },
+      "equipment": [],
+      "base": { "armN": [88, 8], "armF": [88, 8], "ik": { "footN": [205, 279], "footF": [205, 279] } },
+      "keyframes": [
+        { "root": [160, 222], "torso": 40 },
+        { "root": [163, 214], "torso": 37 }
+      ]
     }
   ]
 }

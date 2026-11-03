@@ -440,7 +440,8 @@ function joints3D(ex, rig, P, iso) {
   put('root', 'root'); put('neck', 'head'); put('neckTop', { node: 'head', at: [0, -12] }); put('headC', { node: 'head', at: [0, -26] });
   const fwd = (a, b, L) => Math.sqrt(Math.max(0, L * L - (b[0] - a[0]) ** 2 - (b[1] - a[1]) ** 2));
   for (const s of ['L', 'R']) {
-    const sg = (ex.armsBehind || []).includes(s) ? -1 : 1;
+    // props.back > 0.5：手臂在身后（如弹力带过顶绕到身后）
+    const sg = (ex.armsBehind || []).includes(s) || P.$back > 0.5 ? -1 : 1;
     put('sh' + s, 'sh' + s, 0); put('el' + s, 'el' + s); put('ha' + s, 'ha' + s);
     J['el' + s][2] = sg * fwd(J['sh' + s], J['el' + s], D.UA);
     J['ha' + s][2] = J['el' + s][2] + sg * fwd(J['el' + s], J['ha' + s], D.FA);
@@ -828,6 +829,29 @@ function render(ex, samples, rig, STATIC) {
           const dep = mean(pos.map((p) => p[2]));
           push(O.rigid(pos.map((p) => ({ tx: p[0], ty: p[1] })), kids), Math.max(dep, fa ? fa.depth : -1e9) + 0.2, h === 'mid' ? '' : h.slice(2));
         }
+        break;
+      }
+      case 'barbell': {
+        // 杠铃：横杆沿左右方向，中心在两手中点；两端各两片圆片 + 卡箍。拆成远半边（先画）和近半边（后画）两个部件
+        const hs = q.hands || (front ? ['haL', 'haR'] : ['haN', 'haF']);
+        const u = front ? [1, 0, 0] : [0, 0, 1];
+        const half = q.half ?? 64;
+        const pos = JJ.map((j) => pj.Pt(mul3(add3(j.J[hs[0]], j.J[hs[1]]), 0.5)));
+        const at = (t) => pj.V(mul3(u, t));
+        const toward = dot3(u, pj.W) >= 0 ? 1 : -1;
+        const sideSvg = (sg) => {
+          const parts = [
+            disc(at(sg * 44), u, 16 * pj.SC, 4.5 * pj.SC, false),
+            disc(at(sg * 49), u, 12 * pj.SC, 3.5 * pj.SC, true),
+            disc(at(sg * 52.5), u, 3.4 * pj.SC, 3 * pj.SC, false),
+          ];
+          return sg === toward ? parts.join('') : parts.reverse().join('');
+        };
+        const bar = metalTube(at(-half), at(half), 1.9);
+        const dep = mean(pos.map((p) => p[2]));
+        const fr = pos.map((p) => ({ tx: p[0], ty: p[1] }));
+        push(O.rigid(fr, sideSvg(-toward) + bar), dep - 30);
+        push(O.rigid(fr, sideSvg(toward)), dep + 30);
         break;
       }
       case 'box': {
