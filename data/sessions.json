@@ -831,9 +831,12 @@
         "name": "第三组",
         "items": [
           {
-            "ex": "tricep-pushdown",
+            "ex": "pallof-press",
             "sets": "3",
-            "reps": "10"
+            "reps": "12 每侧",
+            "weight": "17.5",
+            "note": "龙门架档位。表上写 Tricep Pulldown，实际是 Pallof 推",
+            "note_en": "Cable-stack setting. Sheet says Tricep Pulldown; actually a Pallof press"
           },
           {
             "ex": "push-up",
