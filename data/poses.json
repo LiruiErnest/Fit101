@@ -598,6 +598,42 @@
         { "props": { "erR": 155 } },
         { "props": { "erR": 15 } }
       ]
+    },
+    {
+      "id": "db-split-squat", "zh": "哑铃分腿蹲", "en": "Split Squat - DB", "view": "side", "period": 3,
+      "muscles": { "primary": ["quads", "glutes"], "secondary": ["hamstrings", "abs"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "torso": 3, "armN": [3, 0], "armF": [3, 0], "ik": { "footN": [236, 279], "footF": [150, 268, 55] } },
+      "keyframes": [
+        { "root": [200, 172] },
+        { "root": [196, 218] }
+      ]
+    },
+    {
+      "id": "hamstring-curl", "zh": "腿弯举机", "en": "Hamstring Curls", "view": "side", "period": 3,
+      "muscles": { "primary": ["hamstrings"], "secondary": ["calves"] },
+      "equipment": [
+        { "type": "bench", "x": 112, "y": 199, "w": 190 },
+        { "type": "line", "x1": 276, "y1": 214, "x2": 276, "y2": 214, "width": 5 },
+        { "type": "roller", "at": { "node": "knN", "at": [-12, 50] }, "pivot": "knN", "w": 44 }
+      ],
+      "iso": {"eq": {"1": {"z": -24, "z2": 24}}},
+      "base": { "rot": 90, "root": [196, 186], "torso": 0, "neck": -10, "ik": { "handN": [276, 214], "handF": [276, 214] } },
+      "keyframes": [
+        { "legN": [0, 4], "legF": [0, 4] },
+        { "legN": [0, 112], "legF": [0, 112] }
+      ]
+    },
+    {
+      "id": "glute-bridge-chest-press", "zh": "臀桥卧推", "en": "Glute Bridge w/ Chest Press", "view": "side", "period": 3,
+      "iso": {"el": 25, "ha": 24},
+      "muscles": { "primary": ["glutes", "chest"], "secondary": ["triceps", "hamstrings"] },
+      "equipment": [ { "type": "dumbbell", "hands": ["haN", "haF"], "angle": 0 } ],
+      "base": { "rot": -90, "root": [166, 236], "neck": 25, "ik": { "neck": [104, 271], "footN": [238, 279], "footF": [238, 279] } },
+      "keyframes": [
+        { "armN": [62, 0], "armF": [62, 0] },
+        { "armN": [-48, 118], "armF": [-48, 118] }
+      ]
     }
   ]
 }

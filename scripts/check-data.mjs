@@ -12,7 +12,8 @@ const KNOWN_IDS = ['step-up','bodyweight-squat','glute-bridge','band-pull-apart'
   'db-fly','side-lying-hip-abduction','ball-wall-squat',
   'single-arm-farmer-carry','leg-lift','elevated-push-up','battle-ropes',
   'db-curl-to-press','clamshell','banded-glute-bridge','side-plank','band-external-rotation',
-  'childs-pose','triceps-stretch','open-book','doorway-pec-stretch'];   // 第 3 节 + 第 12、15、16、17、18、19、21 节 + 第 13 节
+  'db-split-squat','hamstring-curl','glute-bridge-chest-press',
+  'childs-pose','triceps-stretch','open-book','doorway-pec-stretch'];   // 第 3 节 + 第 12、15–19、21、22 节 + 第 13 节
 const errors = [];
 const load = f => { try { return JSON.parse(readFileSync(join(root, 'data', f), 'utf8')); } catch (e) { errors.push(`${f}: 不是合法 JSON：${e.message}`); return []; } };
 

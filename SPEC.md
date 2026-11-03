@@ -445,3 +445,19 @@ type Week = {
 - 周计划：每肌群每周 2 次、约 10 组起步；单次单肌群 6 到 10 组；每周 2 到 3 组轻重量肩外旋；大肌群组间休息 2 到 3 分钟。
 - 新动作 `band-external-rotation` 弹力带肩外旋 Band External Rotation：弹力带一端固定在立柱腰高处，人侧对立柱，远离立柱的手肘贴肋、屈 90°，前臂从腹前向外旋转到体侧再回。正面视角。primary rear-delt（代表冈下肌、小圆肌），secondary upper-back。器械“弹力带 + 立柱”。cue：肘贴身夹一张纸、只转前臂、12 到 20 次很轻、别耸肩。
 - 知识页（content/knowledge*.md）改三处：①第 2 段“维持体重时怎么算”去掉 0.85 的扣减，改为“吃到平衡热量或加 5 到 10%，按两周体重趋势调”；②第 3 段餐序，练后餐改为“主食 + 30 到 50 g 蛋白质，蔬菜照吃，不必先后”，并在该处注明“原方案说练后少吃蔬菜以免压制胰岛素，审查认为无必要”；③第 4 段吃什么，水果每天 200 到 350 g、坚果 15 到 30 g、全谷物每天一份，计入碳水即可，不是“只能偶尔”。另加一行说明：本页来源课程已做科学性审查，与审查冲突处以审查为准。
+
+## 22. 第 7 节课（2026-10-26）与课表顺延
+
+教练 10/19 那周休假，第 7 节实际在 2026-10-26 周一。第 7 到 12 节的日期全部顺延一周：7 · 10-26 周一，8 · 10-30 周五，9 · 11-02 周一，10 · 11-06 周五，11 · 11-09 周一，12 · 11-13 周五。
+
+| id | 中文 | 英文（表上原名） | 器械 | 视角 | 主要 | 辅助 | 描述 |
+|---|---|---|---|---|---|---|---|
+| db-split-squat | 哑铃分腿蹲 | Split Squat - DB | 哑铃 ×2 | 侧 | quads, glutes | hamstrings, abs | 前后分腿站定，双手持哑铃垂于体侧，直上直下蹲到后膝接近地面再站起，脚不移动 |
+| hamstring-curl | 腿弯举机 | Hamstring Curls | 腿弯举机（俯卧或坐姿） | 侧 | hamstrings | calves | 俯卧在机器上，脚跟勾住滚垫，屈膝把滚垫拉向臀部再慢放 |
+| glute-bridge-chest-press | 臀桥卧推 | Glute Bridge w/ Chest Press | 哑铃 ×2，仰卧 | 侧 | glutes, chest | triceps, hamstrings | 仰卧屈膝，顶起臀桥并保持，同时双手持哑铃做卧推 |
+
+第 7 节 `status: "done"`，date 2026-10-26，title “全身循环 D”，title_en “Full Body Circuit D”，note “教练表上没写日期；10/19 那周教练休假，本节为 10/26” / note_en "Sheet has no date; the trainer was away the week of 10/19, so this is 10/26"，blocks：
+- 第一组（休息 1 分钟）：goblet-squat 3 × 12 · 40 lb；db-split-squat 3 × 10 每侧（weight 省略）；trx-row 3 × 12 · 自重
+- 第二组：hamstring-curl 3 × 15（weight 省略）；side-plank 3 × 10 秒 · 自重；glute-bridge-chest-press 3 × 15（weight 省略）
+- 第三组：pallof-press 3 × 10 每侧 · 重量原文 "17.5"（note “龙门架档位”）；db-fly 3 × 10 · 12.5 lb；tricep-pushdown 3 × 10 · 重量原文 "12.5"（note “龙门架档位”）
+- 放松：items 空

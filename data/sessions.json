@@ -657,42 +657,123 @@
   },
   {
     "n": 7,
-    "date": "2026-10-19",
+    "date": "2026-10-26",
     "weekday": "周一",
-    "status": "planned",
-    "kind": "trainer"
+    "status": "done",
+    "kind": "trainer",
+    "title": "全身循环 D",
+    "title_en": "Full Body Circuit D",
+    "note": "教练表上没写日期；10/19 那周教练休假，本节为 10/26",
+    "note_en": "Sheet has no date; the trainer was away the week of 10/19, so this is 10/26",
+    "blocks": [
+      {
+        "name": "第一组",
+        "rest": "1 分钟",
+        "items": [
+          {
+            "ex": "goblet-squat",
+            "sets": "3",
+            "reps": "12",
+            "weight": "40 lb"
+          },
+          {
+            "ex": "db-split-squat",
+            "sets": "3",
+            "reps": "10 每侧"
+          },
+          {
+            "ex": "trx-row",
+            "sets": "3",
+            "reps": "12",
+            "weight": "自重"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "items": [
+          {
+            "ex": "hamstring-curl",
+            "sets": "3",
+            "reps": "15"
+          },
+          {
+            "ex": "side-plank",
+            "sets": "3",
+            "reps": "10 秒",
+            "weight": "自重"
+          },
+          {
+            "ex": "glute-bridge-chest-press",
+            "sets": "3",
+            "reps": "15"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "items": [
+          {
+            "ex": "pallof-press",
+            "sets": "3",
+            "reps": "10 每侧",
+            "weight": "17.5",
+            "note": "龙门架档位",
+            "note_en": "Cable-stack setting"
+          },
+          {
+            "ex": "db-fly",
+            "sets": "3",
+            "reps": "10",
+            "weight": "12.5 lb"
+          },
+          {
+            "ex": "tricep-pushdown",
+            "sets": "3",
+            "reps": "10",
+            "weight": "12.5",
+            "note": "龙门架档位",
+            "note_en": "Cable-stack setting"
+          }
+        ]
+      },
+      {
+        "name": "放松",
+        "items": []
+      }
+    ]
   },
   {
     "n": 8,
-    "date": "2026-10-23",
-    "weekday": "周五",
-    "status": "planned",
-    "kind": "trainer"
-  },
-  {
-    "n": 9,
-    "date": "2026-10-26",
-    "weekday": "周一",
-    "status": "planned",
-    "kind": "trainer"
-  },
-  {
-    "n": 10,
     "date": "2026-10-30",
     "weekday": "周五",
     "status": "planned",
     "kind": "trainer"
   },
   {
-    "n": 11,
+    "n": 9,
     "date": "2026-11-02",
     "weekday": "周一",
     "status": "planned",
     "kind": "trainer"
   },
   {
-    "n": 12,
+    "n": 10,
     "date": "2026-11-06",
+    "weekday": "周五",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 11,
+    "date": "2026-11-09",
+    "weekday": "周一",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 12,
+    "date": "2026-11-13",
     "weekday": "周五",
     "status": "planned",
     "kind": "trainer"

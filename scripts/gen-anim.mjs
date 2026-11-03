@@ -736,7 +736,7 @@ function render(ex, samples, rig, STATIC) {
     return nrm3([Math.cos(rad(ang)), Math.sin(rad(ang)), 0]);
   };
   // 有厚度的圆片（屏幕偏移 c2，法线 u，半径 R，厚度 t），正面带同心圆和高光
-  const disc = (c2, u, R, t, face = true) => {
+  const disc = (c2, u, R, t, face = true, fill = C.eq) => {
     const [a3, b3] = basis(u);
     const A = mul2(pj.V(a3), R / pj.SC), B = mul2(pj.V(b3), R / pj.SC);
     const vu = pj.V(mul3(u, t / 2 / pj.SC));
@@ -746,8 +746,8 @@ function render(ex, samples, rig, STATIC) {
     const th = Math.atan2(cross2(B, v), cross2(A, v));
     const e = (tt) => add2(add2(mul2(A, Math.cos(tt)), mul2(B, Math.sin(tt))), back);
     const q0 = e(th), q1 = e(th + Math.PI);
-    let s = ellEl(back, A, B, `fill="${C.eq}"`) + `<path d="M${P2(q0)}L${P2(add2(q0, v))}L${P2(add2(q1, v))}L${P2(q1)}Z" fill="${C.eq}"/>`;
-    s += ellEl(fr2, A, B, `fill="${C.eq}" stroke="${C.white}" stroke-opacity=".14" stroke-width=".7"`);
+    let s = ellEl(back, A, B, `fill="${fill}"${fill === C.eq ? '' : ` stroke="${C.dk}" stroke-width=".8"`}`) + `<path d="M${P2(q0)}L${P2(add2(q0, v))}L${P2(add2(q1, v))}L${P2(q1)}Z" fill="${fill}"/>`;
+    s += ellEl(fr2, A, B, `fill="${fill}" stroke="${fill === C.eq ? C.white : C.dk}" stroke-opacity=".14" stroke-width=".7"`);
     if (face) {
       s += ellEl(fr2, mul2(A, 0.6), mul2(B, 0.6), `fill="none" stroke="${C.white}" stroke-opacity=".22" stroke-width=".8"`);
       s += ellEl(add2(fr2, mul2(LIGHT, R * 0.2)), mul2(A, 0.28), mul2(B, 0.28), `fill="${C.white}" fill-opacity=".16"`);
@@ -952,6 +952,20 @@ function render(ex, samples, rig, STATIC) {
         let svgR = O.attrs('path', { fill: 'none', stroke: C.eq, 'stroke-width': q.width ?? 4.4, 'stroke-linecap': 'round' }, { d: ds });
         svgR += O.attrs('path', { fill: 'none', stroke: C.white, 'stroke-opacity': '.2', 'stroke-width': 1.2 }, { d: ds });
         push(svgR, L ? dep : dep);
+        break;
+      }
+      case 'roller': {
+        // 腿弯举机滚垫：泡棉圆柱（沿 z）跟随小腿上的一点，金属摆臂从机器转轴（膝旁）连到滚垫一端
+        const P0 = pointAt(q.at, qi, 0), piv = pointAt(q.pivot, qi, 0);
+        const w = q.w ?? 44, Rr = (q.r ?? 7) * pj.SC, zs = -w / 2 - 4;
+        const pos = P0.map((p) => pj.Pt([p[0], p[1], 0]));
+        const kids = disc([0, 0], [0, 0, 1], Rr, w * pj.SC, true, C.ground);
+        let sv = O.attrs('line', { stroke: C.eq, 'stroke-width': 3.2, 'stroke-linecap': 'round' }, {
+          x1: piv.map((p) => f1(pj.Pt([p[0], p[1], zs])[0])), y1: piv.map((p) => f1(pj.Pt([p[0], p[1], zs])[1])),
+          x2: P0.map((p) => f1(pj.Pt([p[0], p[1], zs])[0])), y2: P0.map((p) => f1(pj.Pt([p[0], p[1], zs])[1])),
+        });
+        sv += O.rigid(pos.map((p) => ({ tx: p[0], ty: p[1] })), kids);
+        push(sv, mean(pos.map((p) => p[2])) + 1);
         break;
       }
       case 'wall': {
