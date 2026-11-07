@@ -457,6 +457,17 @@ if (courseFiles.length && existsSync(COURSE_IMAGES)) cpSync(COURSE_IMAGES, path.
 rmSync(SITE, { recursive: true, force: true });
 execFileSync(process.execPath, [HTML_AUTHOR, '--src', DOCS, '--out', SITE, '--title', 'Fit101', '--no-notes'], { stdio: 'inherit' });
 
+// ── app icons: html-author emits a 16 px data: favicon; replace it with the real icon set in every page ──
+const FAVICON_RE = /<link rel="icon" href="data:image\/svg\+xml[^>]*>/;
+const iconTags = (up) => `<link rel="icon" href="${up}assets/icons/icon-192.png" type="image/png">\n<link rel="apple-touch-icon" href="${up}assets/icons/apple-touch-icon.png">`;
+for (const f of readdirSync(SITE, { recursive: true })) {
+  if (!String(f).endsWith('.html')) continue;
+  const file = path.join(SITE, String(f));
+  const up = '../'.repeat(String(f).split(path.sep).length - 1);
+  const html = readFileSync(file, 'utf8');
+  if (FAVICON_RE.test(html)) writeFileSync(file, html.replace(FAVICON_RE, iconTags(up)));
+}
+
 if (courseFiles.length && existsSync(COURSE_IMAGES)) cpSync(COURSE_IMAGES, path.join(SITE, 'course', 'images'), { recursive: true, force: false });
 
 // ── assets/ → site/assets/ (site.css / site.js from html-author stay) ──────
