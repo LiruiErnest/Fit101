@@ -1,218 +1,53 @@
 {
-  "week": "2026-11-02",
-  "title": "本周自练 · 11/02 周",
-  "title_en": "This Week · Nov 2",
-  "intro": "从 10/26 起教练课改为每周一一次，其余自练 2 到 3 次。周一第 8 节已经练了杠铃卧推、深蹲推举、俯卧撑和 TRX 划船，所以本周再练两次：周三拉 + 腿，周五推 + 肩臂 + 核心。全部动作都是课上学过的，每次约 55 分钟。",
-  "intro_en": "Since Oct 26 the trainer session is once a week on Monday, with 2 to 3 self sessions in between. Monday's session 8 already covered barbell bench, thrusters, push-ups and TRX rows, so this week adds two: Wednesday pull + legs, Friday push + shoulders, arms + core. Every exercise was learned in class; about 55 minutes each.",
+  "week": "2026-11-09",
+  "title": "本周自练 · 11/09 周",
+  "title_en": "This Week · Nov 9",
+  "intro": "这周周一的教练课因时间冲突取消，第 9 节顺延到 11/16。周一自己练了一次胸；上周末的拉 + 腿没练。剩下两次：周五练胸（本周第二次），周六练拉，以辅助引体为主，顺带补一小段腿。动作全部是课上学过的，安排依据好人松松的课程框架，并按科学性审查做了修正。每次约 55 到 60 分钟。",
+  "intro_en": "Monday's trainer session was cancelled over a schedule conflict, so session 9 moves to Nov 16. Monday became a self-run chest day; last weekend's pull + legs did not happen. Two sessions remain: chest on Friday (the second time this week) and pull on Saturday, built around assisted pull-ups with a short leg block. Every exercise was learned in class. The layout follows the course framework, corrected by the science review. About 55 to 60 minutes each.",
   "rationale": [
-    "按松松的框架和审查意见：胸一周两次。周一已有杠铃卧推和两轮俯卧撑，周五再给胸 10 组（卧推、上斜、飞鸟）。",
-    "周一没有拉，所以周三先拉：辅助引体从 70 lb 辅助减到 65 lb，单臂划船 30 lb。每周拉的总量约 10 组。",
-    "腿一周一次集中练：股四和腘绳同一天，深蹲从第 7 节的 40 lb 起，罗马尼亚硬拉 25 lb，分腿蹲用第 7 节学的。",
-    "肩袖保护：两次热身各 2 组弹力带肩外旋。",
-    "周三晚有羽毛球，腿的组数控制在 8 组；周五不练腿。周一到周三、周三到周五各隔一天。"
+    "胸一周两次：周一练过，隔 3 天周五再练，正好符合「每肌群每周 2 次」。课程的胸日模板是 2 个推胸加 1 个上斜或夹胸；这里用平板卧推、上斜卧推、飞鸟，共 10 组，不再多加。",
+    "上斜卧推把凳子调到 15 到 30 度（审查修正：上胸靠上斜，不靠大开肘）。所有卧推大臂与躯干夹角 45 到 70 度，不开到 90 度。",
+    "课程的协同顺序：推胸 → 推举 → 臂屈伸。肩前束和三头在推胸时已经出过力，所以推举和臂屈伸各 3 组就够。三头用过头臂屈伸，长头拉长位刺激更好。",
+    "拉的那天按「1 个垂直拉 + 1 个水平划船」来排：辅助引体是垂直拉，单臂划船是水平划船，再加开肘的 TRX 划船带后束，一共 10 组。背日后面接二头，弯举 3 组。",
+    "距上次练拉和练腿都超过一周，所以周六在拉之后补 6 组腿：深蹲练股四，罗马尼亚硬拉练腘绳，两样都要有。周日打羽毛球，腿不加量；时间不够可以只做深蹲和硬拉各 2 组。",
+    "大动作组间休息 2 到 3 分钟，小动作 60 到 90 秒。两次热身各 2 组弹力带肩外旋，保护肩袖。每组做到还剩 1 到 3 个的余力，卧推不做到力竭。"
   ],
   "rationale_en": [
-    "Per the course framework and the review: chest twice a week. Monday had barbell bench and two rounds of push-ups; Friday gives the chest another 10 sets (bench, incline, flyes).",
-    "Monday had no pulling, so Wednesday pulls first: assisted pull-ups drop from 70 lb to 65 lb assist, single-arm rows at 30 lb. About 10 pulling sets for the week.",
-    "Legs once a week in one focused block: quads and hamstrings on the same day, goblet squat from session 7's 40 lb, Romanian deadlift 25 lb, split squats as learned in session 7.",
-    "Rotator cuff care: 2 sets of band external rotation in both warm-ups.",
-    "Badminton Wednesday night, so leg sets stay at 8; no legs Friday. A rest day between each session."
+    "Chest twice a week: Monday was the first, Friday comes three days later, which matches twice per muscle group per week. The course's chest template is two presses plus one incline or fly; here it is flat press, incline press and flyes, 10 sets in total and no more.",
+    "Set the bench to 15 to 30 degrees for the incline press (review correction: the upper chest needs an incline, not flared elbows). Keep the upper arm 45 to 70 degrees from the torso on every press, never 90.",
+    "The course's order for synergists: chest press, then overhead press, then triceps extension. The front delts and triceps already worked during the presses, so three sets each is enough. The triceps get the overhead extension, which loads the long head in a stretched position.",
+    "The pull day follows one vertical pull plus one horizontal row: assisted pull-ups are the vertical pull, single-arm rows the horizontal one, and wide-elbow TRX rows add the rear delts, 10 sets in total. Biceps follow the back, with three sets of curls.",
+    "It has been more than a week since the last pulling and leg work, so Saturday adds six leg sets after the pulling: squats for the quads and Romanian deadlifts for the hamstrings, both every time. Sunday is badminton, so do not add leg volume; if time is short, do two sets of each.",
+    "Rest 2 to 3 minutes between sets of the big lifts and 60 to 90 seconds on the small ones. Both warm-ups include two sets of band external rotation for the rotator cuff. Stop each set with 1 to 3 reps in reserve, and never take a bench press to failure."
   ],
   "after": {
     "items": [
       "每次练完把实际重量、次数和哪里酸告诉 Claude。",
-      "10/19 那周的三次自练数字也补给我，一起录。",
-      "肩前侧刺痛就停，换卧推或俯卧撑。"
+      "周一那次胸的动作和重量也补给我；如果周一卧推已经用了更重的哑铃，周五就从那个重量起。",
+      "10/19 那周的三次自练数字还没补，想得起来就一起给我。",
+      "肩前侧刺痛就停，换俯卧撑或降重量；持续疼先问教练。",
+      "下周一 11/16 是第 9 节教练课。"
     ],
     "items_en": [
       "After each session tell Claude the weights, reps and where you were sore.",
-      "Also send the numbers from the three self sessions of the Oct 19 week.",
-      "Sharp pain at the front of the shoulder means stop and switch to bench or push-ups."
+      "Also send Monday's chest exercises and weights; if Monday's bench already used heavier dumbbells, start Friday from that weight.",
+      "The numbers from the three self sessions of the Oct 19 week are still missing; send them if you remember.",
+      "Sharp pain at the front of the shoulder means stop and switch to push-ups or a lighter weight; ask the trainer if it persists.",
+      "Trainer session 9 is next Monday, Nov 16."
     ]
   },
   "sessions": [
     {
-      "date": "2026-11-04",
-      "weekday": "周三",
-      "weekday_en": "Wednesday",
-      "time": "11:00-12:00",
-      "duration": "约 55 分钟",
-      "duration_en": "about 55 minutes",
-      "title": "拉 + 腿",
-      "title_en": "Pull + Legs",
-      "goal": "7 组拉，8 组腿，最后臀和二头。",
-      "goal_en": "7 pulling sets, 8 leg sets, then glutes and biceps.",
-      "blocks": [
-        {
-          "name": "热身",
-          "name_en": "Warm-up",
-          "rest": "不休息，约 7 分钟",
-          "rest_en": "no rest, about 7 minutes",
-          "items": [
-            {
-              "ex": "band-external-rotation",
-              "sets": "2",
-              "reps": "15 每侧",
-              "target": "最轻的弹力带",
-              "target_en": "lightest band"
-            },
-            {
-              "ex": "band-pull-apart",
-              "sets": "2",
-              "reps": "15",
-              "target": "自重",
-              "target_en": "bodyweight"
-            },
-            {
-              "ex": "worlds-greatest-stretch",
-              "sets": "1",
-              "reps": "5 每侧",
-              "target": "自重",
-              "target_en": "bodyweight"
-            },
-            {
-              "ex": "bodyweight-squat",
-              "sets": "2",
-              "reps": "10",
-              "target": "自重",
-              "target_en": "bodyweight"
-            }
-          ]
-        },
-        {
-          "name": "第一组 · 拉",
-          "name_en": "Block 1 · Pull",
-          "rest": "2 分钟",
-          "rest_en": "2 minutes",
-          "items": [
-            {
-              "ex": "assisted-pull-up",
-              "sets": "4",
-              "reps": "8",
-              "target": "辅助 65 lb",
-              "target_en": "65 lb assist",
-              "how": "第 6 节 70 lb × 10 × 4。今天 65 lb 做 4 × 8，下巴过杆，下放 3 秒。做不到 8 个就回 70 lb。",
-              "how_en": "Session 6 was 4 × 10 at 70 lb. Today 65 lb for 4 × 8, chin over the bar, 3-second lowering. If 8 is not there, go back to 70 lb."
-            },
-            {
-              "ex": "single-arm-db-row",
-              "sets": "3",
-              "reps": "10 每侧",
-              "target": "30 lb",
-              "target_en": "30 lb",
-              "how": "第 5 节 30 lb × 10。轻松就下次 35 lb。",
-              "how_en": "Session 5 was 30 lb × 10. If easy, 35 lb next time."
-            }
-          ]
-        },
-        {
-          "name": "第二组 · 腿",
-          "name_en": "Block 2 · Legs",
-          "rest": "2 分钟",
-          "rest_en": "2 minutes",
-          "items": [
-            {
-              "ex": "goblet-squat",
-              "sets": "3",
-              "reps": "10",
-              "target": "40 lb",
-              "target_en": "40 lb",
-              "how": "第 7 节 40 lb × 12。蹲深一点，兼练臀。",
-              "how_en": "Session 7 was 40 lb × 12. Squat deep; it trains the glutes too."
-            },
-            {
-              "ex": "db-rdl",
-              "sets": "3",
-              "reps": "8",
-              "target": "每手 25 lb",
-              "target_en": "25 lb per hand",
-              "how": "膝微弯不动，屁股向后推，哑铃贴腿。",
-              "how_en": "Knees slightly bent and still, hips back, dumbbells close to the legs."
-            },
-            {
-              "ex": "db-split-squat",
-              "sets": "2",
-              "reps": "8 每侧",
-              "target": "每手 15 lb",
-              "target_en": "15 lb per hand",
-              "how": "第 7 节没记重量，15 lb 起。晚上羽毛球，只 2 组。",
-              "how_en": "No weight logged in session 7; start at 15 lb. Badminton tonight, so 2 sets."
-            }
-          ]
-        },
-        {
-          "name": "第三组 · 臀 + 二头",
-          "name_en": "Block 3 · Glutes + Biceps",
-          "rest": "60 秒",
-          "rest_en": "60 seconds",
-          "items": [
-            {
-              "ex": "banded-glute-bridge",
-              "sets": "3",
-              "reps": "15",
-              "target": "弹力带",
-              "target_en": "band"
-            },
-            {
-              "ex": "clamshell",
-              "sets": "2",
-              "reps": "15 每侧",
-              "target": "弹力带",
-              "target_en": "band"
-            },
-            {
-              "ex": "bicep-curl",
-              "sets": "3",
-              "reps": "10",
-              "target": "每手 15 lb",
-              "target_en": "15 lb per hand",
-              "how": "练背后补 3 组弯举就够。",
-              "how_en": "Three sets of curls after back work is enough."
-            }
-          ]
-        }
-      ],
-      "cooldown": {
-        "text": "约 4 分钟。",
-        "text_en": "About 4 minutes.",
-        "rest": "不休息",
-        "rest_en": "no rest",
-        "items": [
-          {
-            "ex": "childs-pose",
-            "sets": "1",
-            "reps": "45 秒",
-            "target": "自重",
-            "target_en": "bodyweight"
-          },
-          {
-            "ex": "open-book",
-            "sets": "1",
-            "reps": "8 次 每侧",
-            "target": "自重",
-            "target_en": "bodyweight"
-          },
-          {
-            "ex": "worlds-greatest-stretch",
-            "sets": "1",
-            "reps": "5 每侧",
-            "target": "自重",
-            "target_en": "bodyweight"
-          }
-        ]
-      }
-    },
-    {
-      "date": "2026-11-06",
+      "date": "2026-11-13",
       "weekday": "周五",
       "weekday_en": "Friday",
       "time": "11:00-12:00",
       "duration": "约 55 分钟",
       "duration_en": "about 55 minutes",
-      "title": "推 + 肩臂 + 核心",
-      "title_en": "Push, Shoulders, Arms + Core",
-      "goal": "胸 10 组，肩臂 6 组，TRX 划船补平衡，核心收尾。",
-      "goal_en": "10 chest sets, 6 shoulder and arm sets, TRX rows for balance, core to finish.",
+      "title": "胸 + 肩前束 + 三头",
+      "title_en": "Chest + Front Delts + Triceps",
+      "goal": "胸 10 组，推举和三头各 3 组，最后 5 组核心。",
+      "goal_en": "10 chest sets, 3 sets each of overhead press and triceps, then 5 core sets.",
       "blocks": [
         {
           "name": "热身",
@@ -220,96 +55,49 @@
           "rest": "不休息，约 6 分钟",
           "rest_en": "no rest, about 6 minutes",
           "items": [
-            {
-              "ex": "band-external-rotation",
-              "sets": "2",
-              "reps": "15 每侧",
-              "target": "最轻的弹力带",
-              "target_en": "lightest band"
-            },
-            {
-              "ex": "band-pull-apart",
-              "sets": "2",
-              "reps": "15",
-              "target": "自重",
-              "target_en": "bodyweight"
-            },
-            {
-              "ex": "push-up",
-              "sets": "1",
-              "reps": "8",
-              "target": "自重",
-              "target_en": "bodyweight",
-              "how": "慢速，当卧推热身。",
-              "how_en": "Slow tempo, as a warm-up for the bench."
-            }
+            { "ex": "band-external-rotation", "sets": "2", "reps": "15 每侧", "target": "最轻的弹力带", "target_en": "lightest band" },
+            { "ex": "band-pull-apart", "sets": "2", "reps": "15", "target": "自重", "target_en": "bodyweight" },
+            { "ex": "push-up", "sets": "1", "reps": "8", "target": "自重", "target_en": "bodyweight", "how": "慢速，当卧推的热身，不算正式组。", "how_en": "Slow tempo, as a warm-up for the bench; not a working set." }
           ]
         },
         {
           "name": "第一组 · 胸",
           "name_en": "Block 1 · Chest",
-          "rest": "2 分钟",
-          "rest_en": "2 minutes",
+          "rest": "2 到 3 分钟",
+          "rest_en": "2 to 3 minutes",
           "items": [
             {
-              "ex": "db-bench-press",
-              "sets": "4",
-              "reps": "8-10",
-              "target": "每手 25 lb",
-              "target_en": "25 lb per hand",
-              "how": "第 6 节 20 lb × 10 × 4，周一杠铃 55 lb × 10。今天哑铃 25 lb；第 4 组还有余力就 30 lb。大臂与躯干 45 到 70 度。",
-              "how_en": "Session 6 was 4 × 10 at 20 lb and Monday's barbell was 55 lb × 10. Today 25 lb dumbbells; 30 lb on set 4 if there is room. Upper arms 45 to 70 degrees from the torso."
+              "ex": "db-bench-press", "sets": "4", "reps": "8-10", "target": "每手 25 lb，末组 30 lb", "target_en": "25 lb per hand, last set 30 lb",
+              "how": "先用 15 lb 做 1 组 10 个找轨迹。前三组 25 lb 都做满 10 个，末组换 30 lb 做 6 到 8 个。大臂与躯干 45 到 70 度，下放 2 秒，肩胛收紧贴凳。",
+              "how_en": "First one easy set of 10 at 15 lb to find the path. If the first three sets at 25 lb all reach 10, take the last set at 30 lb for 6 to 8. Upper arm 45 to 70 degrees from the torso, 2-second lowering, shoulder blades pinned to the bench."
             },
             {
-              "ex": "incline-db-press",
-              "sets": "3",
-              "reps": "10",
-              "target": "每手 15 lb",
-              "target_en": "15 lb per hand",
-              "how": "凳子 15 到 30 度。10 个轻松就 20 lb。",
-              "how_en": "Bench at 15 to 30 degrees. If 10 is easy, 20 lb."
+              "ex": "incline-db-press", "sets": "3", "reps": "8-10", "target": "每手 20 lb", "target_en": "20 lb per hand",
+              "how": "凳子 15 到 30 度（一到两格），再高就变成练肩。上次 15 lb 偏轻，这次 20 lb；做不到 8 个退回 17.5 lb。",
+              "how_en": "Bench at 15 to 30 degrees (one or two notches); any higher and it becomes a shoulder press. 15 lb was light last time, so 20 lb today; if 8 is not there, go to 17.5 lb."
             },
             {
-              "ex": "db-fly",
-              "sets": "3",
-              "reps": "12",
-              "target": "每手 12.5 lb",
-              "target_en": "12.5 lb per hand",
-              "how": "第 7 节 12.5 lb × 10。3 秒下 1 秒上，到胸口有拉伸感就停。",
-              "how_en": "Session 7 was 12.5 lb × 10. Three seconds down, one up; stop when the chest feels the stretch."
+              "ex": "db-fly", "sets": "3", "reps": "10-12", "target": "每手 15 到 20 lb", "target_en": "15 to 20 lb per hand",
+              "how": "先试 20 lb。肘角全程固定微弯；如果越做手肘越弯、变成了推，就是太重，换 15 lb。底部感到胸被拉开即可，不要再往下。",
+              "how_en": "Try 20 lb first. Keep the elbow angle fixed and slightly bent; if the elbows bend more and it turns into a press, the weight is too heavy, so use 15 lb. Stop at the bottom when the chest feels stretched; go no lower."
             }
           ]
         },
         {
-          "name": "第二组 · 肩臂 + 划船（超级组）",
-          "name_en": "Block 2 · Shoulders, Arms + Row (superset)",
-          "rest": "两个连做，然后休息 90 秒",
-          "rest_en": "back to back, then rest 90 seconds",
+          "name": "第二组 · 肩前束 + 三头",
+          "name_en": "Block 2 · Front Delts + Triceps",
+          "rest": "90 秒到 2 分钟",
+          "rest_en": "90 seconds to 2 minutes",
           "items": [
             {
-              "ex": "seated-shoulder-press",
-              "sets": "3",
-              "reps": "10",
-              "target": "每手 15 lb",
-              "target_en": "15 lb per hand",
-              "how": "第 5 节 15 lb × 10；第 3 组有余力换 20 lb。",
-              "how_en": "Session 5 was 15 lb × 10; 20 lb on set 3 if there is room."
+              "ex": "seated-shoulder-press", "sets": "3", "reps": "10", "target": "每手 15 lb", "target_en": "15 lb per hand",
+              "how": "胸练完后肩和三头已经累了，重量比单练时轻是正常的。手腕在手肘正上方，三组都轻松下次 17.5 lb。",
+              "how_en": "After chest work the shoulders and triceps are already tired, so a lighter weight than usual is normal. Wrists stacked over elbows; if all three sets are easy, 17.5 lb next time."
             },
             {
-              "ex": "trx-row",
-              "sets": "3",
-              "reps": "12",
-              "target": "自重，身体放平",
-              "target_en": "bodyweight, body flat"
-            },
-            {
-              "ex": "tricep-oh-press",
-              "sets": "3",
-              "reps": "12",
-              "target": "15 lb",
-              "target_en": "15 lb",
-              "how": "肘夹紧指向前上，只动前臂。",
-              "how_en": "Elbows tight and pointing forward-up; only the forearms move."
+              "ex": "tricep-oh-press", "sets": "3", "reps": "12", "target": "15 lb", "target_en": "15 lb",
+              "how": "大臂贴近耳朵不动，只动小臂，底部放到位。",
+              "how_en": "Upper arms stay still close to the ears; only the forearms move. Lower fully at the bottom."
             }
           ]
         },
@@ -319,43 +107,106 @@
           "rest": "60 秒",
           "rest_en": "60 seconds",
           "items": [
+            { "ex": "leg-lift", "sets": "3", "reps": "10-12", "target": "自重", "target_en": "bodyweight", "how": "下背贴地，腿放下时腰不离地；太难就屈膝做。", "how_en": "Lower back flat on the floor, also while the legs go down; bend the knees if it is too hard." },
+            { "ex": "plank", "sets": "2", "reps": "45-60 秒", "target": "自重", "target_en": "bodyweight" }
+          ]
+        }
+      ],
+      "cooldown": {
+        "text": "约 4 分钟。",
+        "text_en": "About 4 minutes.",
+        "rest": "不休息",
+        "rest_en": "no rest",
+        "items": [
+          { "ex": "doorway-pec-stretch", "sets": "2", "reps": "30 秒 每侧", "target": "自重", "target_en": "bodyweight" },
+          { "ex": "triceps-stretch", "sets": "1", "reps": "30 秒 每侧", "target": "自重", "target_en": "bodyweight" },
+          { "ex": "childs-pose", "sets": "1", "reps": "45 秒", "target": "自重", "target_en": "bodyweight" }
+        ]
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "weekday": "周六",
+      "weekday_en": "Saturday",
+      "time": "待定",
+      "duration": "约 60 分钟",
+      "duration_en": "about 60 minutes",
+      "title": "拉（引体 + 划船）+ 二头 + 少量腿",
+      "title_en": "Pull (Pull-ups + Rows) + Biceps + Light Legs",
+      "goal": "背 10 组，二头 3 组，腿 6 组。",
+      "goal_en": "10 back sets, 3 biceps sets, 6 leg sets.",
+      "blocks": [
+        {
+          "name": "热身",
+          "name_en": "Warm-up",
+          "rest": "不休息，约 7 分钟",
+          "rest_en": "no rest, about 7 minutes",
+          "items": [
+            { "ex": "band-external-rotation", "sets": "2", "reps": "15 每侧", "target": "最轻的弹力带", "target_en": "lightest band" },
+            { "ex": "band-pull-apart", "sets": "2", "reps": "15", "target": "自重", "target_en": "bodyweight" },
+            { "ex": "worlds-greatest-stretch", "sets": "1", "reps": "5 每侧", "target": "自重", "target_en": "bodyweight" },
+            { "ex": "bodyweight-squat", "sets": "1", "reps": "10", "target": "自重", "target_en": "bodyweight" }
+          ]
+        },
+        {
+          "name": "第一组 · 垂直拉",
+          "name_en": "Block 1 · Vertical Pull",
+          "rest": "2 到 3 分钟",
+          "rest_en": "2 to 3 minutes",
+          "items": [
             {
-              "ex": "leg-lift",
-              "sets": "3",
-              "reps": "10",
-              "target": "自重",
-              "target_en": "bodyweight"
-            },
-            {
-              "ex": "side-plank",
-              "sets": "3",
-              "reps": "15 秒 每侧",
-              "target": "自重",
-              "target_en": "bodyweight"
-            },
-            {
-              "ex": "farmer-carry",
-              "sets": "2",
-              "reps": "30 秒",
-              "target": "每手 40 lb",
-              "target_en": "40 lb per hand"
+              "ex": "assisted-pull-up", "sets": "4", "reps": "8", "target": "辅助 65 lb", "target_en": "65 lb assist",
+              "how": "第 6 节是辅助 70 lb 做 4 × 10，今天减到 65 lb 做 4 × 8。握距比肩略宽，先沉肩再拉，下巴过杆，下放 3 秒到手臂伸直。哪一组做不到 6 个，剩下的组回 70 lb。四组都满 8 个，下次辅助 60 lb。",
+              "how_en": "Session 6 was 4 × 10 at 70 lb assist; today drop to 65 lb for 4 × 8. Grip slightly wider than the shoulders, set the shoulders down first, chin over the bar, 3 seconds down to straight arms. If any set falls below 6, finish the rest at 70 lb. If all four sets reach 8, use 60 lb assist next time."
             }
           ]
         },
         {
-          "name": "收尾",
-          "name_en": "Finisher",
-          "rest": "60 秒",
-          "rest_en": "60 seconds",
+          "name": "第二组 · 水平划船",
+          "name_en": "Block 2 · Horizontal Rows",
+          "rest": "2 分钟",
+          "rest_en": "2 minutes",
           "items": [
             {
-              "ex": "push-up",
-              "sets": "2",
-              "reps": "力竭",
-              "target": "自重",
-              "target_en": "bodyweight",
-              "how": "俯卧撑 20 个里程碑的测试，记次数。",
-              "how_en": "The 20 push-up milestone test; write down the reps."
+              "ex": "single-arm-db-row", "sets": "3", "reps": "10 每侧", "target": "30 lb", "target_en": "30 lb",
+              "how": "手肘贴着身体往后拉向髋部，躯干不转。三组都轻松下次 35 lb。小臂先酸是正常的，不代表背没练到。",
+              "how_en": "Pull the elbow back along the body toward the hip without rotating the torso. If all three sets are easy, 35 lb next time. Forearms tiring first is normal and does not mean the back was missed."
+            },
+            {
+              "ex": "trx-row", "sets": "3", "reps": "10-12", "target": "自重", "target_en": "bodyweight",
+              "how": "这次手肘打开到接近与肩同高，拉向胸口，练上背和肩后束。脚往前走一步身体更斜就更难；顶端停 1 秒。",
+              "how_en": "This time let the elbows flare to near shoulder height and pull to the chest, for the upper back and rear delts. Walk the feet forward for a steeper lean to make it harder; hold 1 second at the top."
+            }
+          ]
+        },
+        {
+          "name": "第三组 · 腿（适量）",
+          "name_en": "Block 3 · Legs (moderate)",
+          "rest": "2 分钟",
+          "rest_en": "2 minutes",
+          "items": [
+            {
+              "ex": "goblet-squat", "sets": "3", "reps": "10", "target": "40 lb", "target_en": "40 lb",
+              "how": "第 7 节 40 lb × 12。蹲深一点，兼练臀。明天打球，不加重。",
+              "how_en": "Session 7 was 40 lb × 12. Squat deep; it trains the glutes too. Badminton tomorrow, so do not add weight."
+            },
+            {
+              "ex": "db-rdl", "sets": "3", "reps": "8", "target": "每手 25 lb", "target_en": "25 lb per hand",
+              "how": "膝微弯不动，屁股向后推，哑铃贴腿，下背保持平直。",
+              "how_en": "Knees slightly bent and still, hips back, dumbbells close to the legs, lower back flat."
+            }
+          ]
+        },
+        {
+          "name": "第四组 · 二头",
+          "name_en": "Block 4 · Biceps",
+          "rest": "60 到 90 秒",
+          "rest_en": "60 to 90 seconds",
+          "items": [
+            {
+              "ex": "bicep-curl", "sets": "3", "reps": "10-12", "target": "每手 15 lb", "target_en": "15 lb per hand",
+              "how": "引体和划船已经练到二头，补 3 组就够。底部手臂放直，身体不晃。",
+              "how_en": "Pull-ups and rows already worked the biceps, so three sets is enough. Straighten the arms at the bottom and keep the body still."
             }
           ]
         }
@@ -366,27 +217,9 @@
         "rest": "不休息",
         "rest_en": "no rest",
         "items": [
-          {
-            "ex": "doorway-pec-stretch",
-            "sets": "2",
-            "reps": "30 秒 每侧",
-            "target": "自重",
-            "target_en": "bodyweight"
-          },
-          {
-            "ex": "triceps-stretch",
-            "sets": "1",
-            "reps": "30 秒 每侧",
-            "target": "自重",
-            "target_en": "bodyweight"
-          },
-          {
-            "ex": "childs-pose",
-            "sets": "1",
-            "reps": "45 秒",
-            "target": "自重",
-            "target_en": "bodyweight"
-          }
+          { "ex": "childs-pose", "sets": "1", "reps": "45 秒", "target": "自重", "target_en": "bodyweight" },
+          { "ex": "open-book", "sets": "1", "reps": "8 次 每侧", "target": "自重", "target_en": "bodyweight" },
+          { "ex": "worlds-greatest-stretch", "sets": "1", "reps": "5 每侧", "target": "自重", "target_en": "bodyweight" }
         ]
       }
     }

@@ -860,30 +860,191 @@
   },
   {
     "n": 9,
-    "date": "2026-11-09",
-    "weekday": "周一",
-    "status": "planned",
-    "kind": "trainer"
-  },
-  {
-    "n": 10,
     "date": "2026-11-16",
     "weekday": "周一",
     "status": "planned",
     "kind": "trainer"
   },
   {
-    "n": 11,
+    "n": 10,
     "date": "2026-11-23",
     "weekday": "周一",
     "status": "planned",
     "kind": "trainer"
   },
   {
-    "n": 12,
+    "n": 11,
     "date": "2026-11-30",
     "weekday": "周一",
     "status": "planned",
     "kind": "trainer"
+  },
+  {
+    "n": 12,
+    "date": "2026-12-07",
+    "weekday": "周一",
+    "status": "planned",
+    "kind": "trainer"
+  },
+  {
+    "n": 1,
+    "date": "2026-11-06",
+    "weekday": "周五",
+    "status": "done",
+    "kind": "self",
+    "title": "推 + 肩臂 + 核心",
+    "title_en": "Push, Shoulders, Arms + Core",
+    "note": "11/02 周计划里的周五推日，按计划完成。只报告了两处：上斜推 15 lb 至少做得了；飞鸟下次试 20 lb。其余按计划重量记录。",
+    "note_en": "The Friday push day from the Nov 2 week plan, done as planned. Two notes reported: 15 lb was at least fine on the incline press; try 20 lb on flyes next time. Everything else is logged at the planned weight.",
+    "blocks": [
+      {
+        "name": "热身",
+        "items": [
+          {
+            "ex": "band-external-rotation",
+            "sets": "2",
+            "reps": "15 每侧",
+            "weight": "自重",
+            "note": "最轻的弹力带",
+            "note_en": "lightest band"
+          },
+          {
+            "ex": "band-pull-apart",
+            "sets": "2",
+            "reps": "15",
+            "weight": "自重"
+          },
+          {
+            "ex": "push-up",
+            "sets": "1",
+            "reps": "8",
+            "weight": "自重",
+            "note": "慢速，当卧推热身",
+            "note_en": "Slow tempo, as a warm-up for the bench"
+          }
+        ]
+      },
+      {
+        "name": "第一组",
+        "rest": "2 分钟",
+        "items": [
+          {
+            "ex": "db-bench-press",
+            "sets": "4",
+            "reps": "8-10",
+            "weight": "25 lb",
+            "note": "每手 25 lb",
+            "note_en": "25 lb per hand"
+          },
+          {
+            "ex": "incline-db-press",
+            "sets": "3",
+            "reps": "10",
+            "weight": "15 lb",
+            "note": "每手 15 lb，至少做得了，下次可以试 20 lb",
+            "note_en": "15 lb per hand was at least fine; try 20 lb next time"
+          },
+          {
+            "ex": "db-fly",
+            "sets": "3",
+            "reps": "12",
+            "weight": "12.5 lb",
+            "note": "每手 12.5 lb，下次试 20 lb",
+            "note_en": "12.5 lb per hand; try 20 lb next time"
+          }
+        ]
+      },
+      {
+        "name": "第二组",
+        "rest": "90 秒",
+        "items": [
+          {
+            "ex": "seated-shoulder-press",
+            "sets": "3",
+            "reps": "10",
+            "weight": "15 lb",
+            "note": "每手 15 lb",
+            "note_en": "15 lb per hand"
+          },
+          {
+            "ex": "trx-row",
+            "sets": "3",
+            "reps": "12",
+            "weight": "自重",
+            "note": "与肩推超级组",
+            "note_en": "Superset with the shoulder press"
+          },
+          {
+            "ex": "tricep-oh-press",
+            "sets": "3",
+            "reps": "12",
+            "weight": "15 lb"
+          }
+        ]
+      },
+      {
+        "name": "第三组",
+        "rest": "60 秒",
+        "items": [
+          {
+            "ex": "leg-lift",
+            "sets": "3",
+            "reps": "10",
+            "weight": "自重"
+          },
+          {
+            "ex": "side-plank",
+            "sets": "3",
+            "reps": "15 秒 每侧",
+            "weight": "自重"
+          },
+          {
+            "ex": "farmer-carry",
+            "sets": "2",
+            "reps": "30 秒",
+            "weight": "40 lb",
+            "note": "每手 40 lb",
+            "note_en": "40 lb per hand"
+          }
+        ]
+      },
+      {
+        "name": "第四组",
+        "rest": "60 秒",
+        "items": [
+          {
+            "ex": "push-up",
+            "sets": "2",
+            "reps": "力竭",
+            "weight": "自重",
+            "note": "收尾，次数未记录",
+            "note_en": "Finisher; reps not recorded"
+          }
+        ]
+      },
+      {
+        "name": "放松",
+        "items": [
+          {
+            "ex": "doorway-pec-stretch",
+            "sets": "2",
+            "reps": "30 秒 每侧",
+            "weight": "自重"
+          },
+          {
+            "ex": "triceps-stretch",
+            "sets": "1",
+            "reps": "30 秒 每侧",
+            "weight": "自重"
+          },
+          {
+            "ex": "childs-pose",
+            "sets": "1",
+            "reps": "45 秒",
+            "weight": "自重"
+          }
+        ]
+      }
+    ]
   }
 ]
